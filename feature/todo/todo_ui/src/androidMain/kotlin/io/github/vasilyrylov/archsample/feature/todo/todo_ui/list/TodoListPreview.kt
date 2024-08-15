@@ -7,7 +7,7 @@ import androidx.compose.ui.tooling.preview.Preview
 @Preview(showBackground = true)
 @Composable
 private fun TodoListScreenPreview() {
-    TodoListScreenMain(toDoItemsPreviewData, {})
+    TodoListScreenMain(toDoItemsPreviewData, {}, {})
 }
 
 @Preview(showBackground = true)

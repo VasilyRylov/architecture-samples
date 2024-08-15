@@ -1,9 +1,10 @@
-package io.github.vasilyrylov.archsample.feature.todo.todo_component
+package io.github.vasilyrylov.archsample.feature.todo.todo_component.detail
 
 import com.arkivanov.decompose.ComponentContext
 
-class ToDoComponent(
+class ToDoDetailComponent(
     componentContext: ComponentContext,
+    private val toDoId: String
 ) : ComponentContext by componentContext {
     // Work in progress
 }

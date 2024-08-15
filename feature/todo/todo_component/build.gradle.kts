@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.compose)
+    alias(libs.plugins.kotlinx.serialization)
 }
 
 kotlin {
@@ -19,7 +20,12 @@ kotlin {
             implementation(project(":feature:todo:todo_ui"))
             implementation(project(":feature:todo:todo_domain"))
 
+            implementation(project(":common:common_component"))
+            implementation(project(":common:common_ui"))
+
             implementation(libs.decompose)
+            implementation(libs.decompose.compose)
+            implementation(libs.koin.core)
 
             implementation(compose.runtime)
             implementation(compose.foundation)

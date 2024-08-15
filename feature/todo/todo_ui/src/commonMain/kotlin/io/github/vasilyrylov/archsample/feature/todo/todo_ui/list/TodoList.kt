@@ -2,6 +2,7 @@ package io.github.vasilyrylov.archsample.feature.todo.todo_ui.list
 
 import ToDoItemData
 import ToDoItemId
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.consumeWindowInsets
@@ -25,7 +26,8 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun TodoListScreenMain(
     todoItems: List<ToDoItemData>,
-    onAddClick: () -> Unit
+    onAddClick: () -> Unit,
+    onTodoItemClick: (item: ToDoItemData) -> Unit
 ) {
     Scaffold(
         topBar = {
@@ -42,7 +44,7 @@ fun TodoListScreenMain(
             items(
                 items = todoItems
             ) { todoItem ->
-                ToDoItem(todoItem) { _ -> }
+                ToDoItem(todoItem, onCompletedChange = {}, onTodoItemClick = onTodoItemClick)
             }
         }
     }
@@ -51,10 +53,12 @@ fun TodoListScreenMain(
 @Composable
 fun ToDoItem(
     item: ToDoItemData,
-    onCompletedChange: (ToDoItemId) -> Unit
+    onCompletedChange: (ToDoItemId) -> Unit,
+    onTodoItemClick: (item: ToDoItemData) -> Unit
 ) {
     Row(
         modifier = Modifier.fillMaxWidth()
+            .clickable { onTodoItemClick(item) }
             .padding(8.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically

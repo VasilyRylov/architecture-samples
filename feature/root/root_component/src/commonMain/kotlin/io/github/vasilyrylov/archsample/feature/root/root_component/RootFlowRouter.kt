@@ -10,7 +10,7 @@ import io.github.vasilyrylov.archsample.feature.auth.auth_component.AuthComponen
 import io.github.vasilyrylov.archsample.feature.auth.auth_component.api.IAuthComponentDependencies
 import io.github.vasilyrylov.archsample.feature.auth.auth_domain.api.IAuthCompletionUseCase
 import io.github.vasilyrylov.archsample.feature.root.root_ui.api.IRootFlowRouter
-import io.github.vasilyrylov.archsample.feature.todo.todo_component.ToDoComponent
+import io.github.vasilyrylov.archsample.feature.todo.todo_component.ToDoFlowComponent
 import kotlinx.serialization.Serializable
 import org.koin.core.scope.Scope
 
@@ -35,14 +35,14 @@ class RootFlowRouter(componentContext: ComponentContext, private val koinScope: 
             )
 
             is Configuration.ToDo -> SlotChild.ToDo(
-                component = ToDoComponent(componentContext)
+                component = ToDoFlowComponent(componentContext, userId = config.userId)
             )
         }
     }
 
     internal sealed interface SlotChild {
         data class Auth(val component: AuthComponent) : SlotChild
-        data class ToDo(val component: ToDoComponent) : SlotChild
+        data class ToDo(val component: ToDoFlowComponent) : SlotChild
     }
 
     @Serializable
