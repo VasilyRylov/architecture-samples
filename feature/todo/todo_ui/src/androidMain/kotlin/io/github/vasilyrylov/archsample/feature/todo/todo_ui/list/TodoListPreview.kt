@@ -1,13 +1,13 @@
 package io.github.vasilyrylov.archsample.feature.todo.todo_ui.list
 
-import ToDoItemData
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import io.github.vasilyrylov.archsample.feature.todo.todo_domain.model.ToDoItem
 
 @Preview(showBackground = true)
 @Composable
-private fun TodoListScreenPreview() {
-    TodoListScreenMain(toDoItemsPreviewData, {}, {})
+private fun TodoListScreenContentPreview() {
+    TodoListScreenContent(toDoItemsPreviewData, {}, {})
 }
 
 @Preview(showBackground = true)
@@ -18,15 +18,15 @@ private fun AddToDoDialogPreview() {
 
 
 private val toDoItemsPreviewData = listOf(
-    ToDoItemData(
+    ToDoItem(
         text = "One",
         completed = false
     ),
-    ToDoItemData(
+    ToDoItem(
         text = "Two",
         completed = false
     ),
-    ToDoItemData(
+    ToDoItem(
         text = "Three",
         completed = true
     ),

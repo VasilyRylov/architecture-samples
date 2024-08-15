@@ -4,6 +4,7 @@ import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.childStack
+import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.router.stack.pushNew
 import com.arkivanov.decompose.value.Value
 import io.github.vasilyrylov.archsample.feature.todo.todo_component.detail.ToDoDetailComponent
@@ -18,19 +19,19 @@ class ToDoFlowRouter(
     private val koinScope: Scope
 ) : IToDoFlowRouter {
 
-    private val slotNavigation = StackNavigation<Configuration>()
+    private val stackNavigation = StackNavigation<Configuration>()
 
     internal val childStack: Value<ChildStack<*, Child>> = componentContext.childStack(
-        source = slotNavigation,
+        source = stackNavigation,
         serializer = Configuration.serializer(),
         handleBackButton = true,
-        childFactory = ::slotChild,
-        initialStack = { listOf(Configuration.ToDo(userId = userId)) }
+        childFactory = ::childFactory,
+        initialStack = { listOf(Configuration.ToDoList(userId = userId)) }
     )
 
-    private fun slotChild(config: Configuration, componentContext: ComponentContext): Child {
+    private fun childFactory(config: Configuration, componentContext: ComponentContext): Child {
         return when (config) {
-            is Configuration.ToDo -> Child.ToDoList(
+            is Configuration.ToDoList -> Child.ToDoList(
                 component = ToDoListComponent(componentContext, parentScope = koinScope)
             )
 
@@ -48,13 +49,17 @@ class ToDoFlowRouter(
     @Serializable
     internal sealed class Configuration {
         @Serializable
-        data class ToDo(val userId: String) : Configuration()
+        data class ToDoList(val userId: String) : Configuration()
 
         @Serializable
         data class ToDoDetail(val toDoId: String) : Configuration()
     }
 
     override fun toDetailToDo(toDoId: String) {
-        slotNavigation.pushNew(Configuration.ToDoDetail(toDoId = toDoId))
+        stackNavigation.pushNew(Configuration.ToDoDetail(toDoId = toDoId))
+    }
+
+    override fun back() {
+        stackNavigation.pop()
     }
 }

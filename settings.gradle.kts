@@ -33,6 +33,7 @@ dependencyResolutionManagement {
 include(":composeApp")
 include(":common:common_ui")
 include(":common:common_component")
+include(":common:common_domain")
 
 include(":feature:root:root_domain")
 include(":feature:root:root_ui")

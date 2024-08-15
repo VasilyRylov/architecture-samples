@@ -1,6 +1,5 @@
 package io.github.vasilyrylov.archsample.feature.todo.todo_ui.list
 
-import ToDoItemData
 import io.github.vasilyrylov.archsample.common.common_ui.CustomDialog
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -15,14 +14,15 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import io.github.vasilyrylov.archsample.feature.todo.todo_domain.model.ToDoItem
 
 
 @Composable
 fun AddToDoDialog(
-    onConfirm: (ToDoItemData) -> Unit,
+    onConfirm: (ToDoItem) -> Unit,
     onCancel: () -> Unit
 ) {
-    val todoState = remember { mutableStateOf(ToDoItemData(text = "", completed = false)) }
+    val todoState = remember { mutableStateOf(ToDoItem(text = "", completed = false)) }
 
     CustomDialog(
         header = "ToDo"
