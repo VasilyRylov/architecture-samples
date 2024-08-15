@@ -1,0 +1,49 @@
+Compose:
+  ViewModelForwarding:
+    active: true
+  RememberStateMissing:
+    active: true
+  MutableStateAutoboxing:
+    active: true
+  MutableParameters:
+    active: true
+  MutableStateParameter:
+    active: true
+  LambdaParameterInRestartableEffect:
+    active: true
+  ContentEmitterReturningValues:
+    active: true
+  MultipleContentEmitters:
+    active: true
+  ContentTrailingLambda:
+    active: true
+  CompositionLocalNaming:
+    active: true
+  PreviewAnnotationNaming:
+    active: true
+  Naming:
+    active: true
+  ParameterOrder:
+    active: true
+  ParameterNaming:
+    active: true
+  PreviewPublic:
+    active: true
+  ModifierClickableOrder:
+    active: true
+  ModifierNotUsedAtRoot:
+    active: true
+  ModifierReused:
+    active: true
+  ModifierWithoutDefault:
+    active: true
+  ModifierNaming:
+    active: true
+  ModifierComposable:
+    active: true
+  ModifierComposed:
+    active: true
+  DefaultsVisibility:
+    active: true
+  Material2:
+    active: true

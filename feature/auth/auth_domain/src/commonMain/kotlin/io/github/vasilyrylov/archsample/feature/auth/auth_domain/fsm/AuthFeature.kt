@@ -1,0 +1,68 @@
+package io.github.vasilyrylov.archsample.feature.auth.auth_domain.fsm
+
+import io.github.vasilyrylov.archsample.feature.auth.auth_domain.fsm.actions.AuthFSMAction
+import io.github.vasilyrylov.archsample.feature.auth.auth_domain.fsm.actions.Authenticate
+import io.github.vasilyrylov.archsample.feature.auth.auth_domain.fsm.actions.ChangeFlow
+import io.github.vasilyrylov.archsample.feature.auth.auth_domain.fsm.actions.HandleChangeLoginData
+import io.github.vasilyrylov.archsample.feature.auth.auth_domain.fsm.actions.HandleChangeRegistrationData
+import io.github.vasilyrylov.archsample.feature.auth.auth_domain.fsm.actions.HandleConfirmation
+import io.github.vasilyrylov.archsample.feature.auth.auth_domain.fsm.actions.HandleSnackBarShowed
+import io.github.vasilyrylov.archsample.feature.auth.auth_domain.fsm.actions.Logout
+import io.github.vasilyrylov.archsample.feature.auth.auth_domain.fsm.actions.StartRegistration
+import ru.kontur.mobile.visualfsm.Feature
+import ru.kontur.mobile.visualfsm.GenerateTransitionsFactory
+
+@GenerateTransitionsFactory
+class AuthFeature(
+    initialState: AuthFSMState,
+    private val asyncWorker: AuthAsyncWorker
+) : Feature<AuthFSMState, AuthFSMAction>(
+    initialState = initialState,
+    asyncWorker = asyncWorker,
+    transitionsFactory = GeneratedAuthFeatureTransitionsFactory()
+) {
+
+    fun toRegistration() {
+        proceed(ChangeFlow())
+    }
+
+    fun toLogin() {
+        proceed(ChangeFlow())
+    }
+
+    fun logout() {
+        proceed(Logout())
+    }
+
+    fun confirmRegistrationData() {
+        proceed(HandleConfirmation(true))
+    }
+
+    fun declineRegistrationData() {
+        proceed(HandleConfirmation(false))
+    }
+
+    fun startAuthenticating() {
+        proceed(Authenticate())
+    }
+
+    fun startRegistration() {
+        proceed(StartRegistration())
+    }
+
+    fun handleChangeRegistrationData(mail: String, password: String, repeatPassword: String) {
+        proceed(HandleChangeRegistrationData(mail, password, repeatPassword))
+    }
+
+    fun handleChangeLoginData(mail: String, password: String) {
+        proceed(HandleChangeLoginData(mail, password))
+    }
+
+    fun handleSnackBarShowed() {
+        proceed(HandleSnackBarShowed())
+    }
+
+    fun onDestroy() {
+        asyncWorker.unbind()
+    }
+}

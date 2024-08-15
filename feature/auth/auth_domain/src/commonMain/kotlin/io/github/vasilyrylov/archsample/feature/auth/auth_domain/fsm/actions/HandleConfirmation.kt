@@ -1,0 +1,28 @@
+package io.github.vasilyrylov.archsample.feature.auth.auth_domain.fsm.actions
+
+import ru.kontur.mobile.visualfsm.Transition
+import io.github.vasilyrylov.archsample.feature.auth.auth_domain.fsm.AuthFSMState.AsyncWorkState
+import io.github.vasilyrylov.archsample.feature.auth.auth_domain.fsm.AuthFSMState.ConfirmationRequested
+import io.github.vasilyrylov.archsample.feature.auth.auth_domain.fsm.AuthFSMState.Registration
+
+internal class HandleConfirmation(private val confirmed: Boolean) : AuthFSMAction() {
+    inner class Confirm : Transition<ConfirmationRequested, AsyncWorkState.Registering>() {
+        override fun predicate(state: ConfirmationRequested): Boolean {
+            return confirmed
+        }
+
+        override fun transform(state: ConfirmationRequested): AsyncWorkState.Registering {
+            return AsyncWorkState.Registering(mail = state.mail, password = state.password)
+        }
+    }
+
+    inner class Cancel : Transition<ConfirmationRequested, Registration>() {
+        override fun predicate(state: ConfirmationRequested): Boolean {
+            return !confirmed
+        }
+
+        override fun transform(state: ConfirmationRequested): Registration {
+            return Registration(mail = state.mail, password = state.password, repeatedPassword = state.password)
+        }
+    }
+}
