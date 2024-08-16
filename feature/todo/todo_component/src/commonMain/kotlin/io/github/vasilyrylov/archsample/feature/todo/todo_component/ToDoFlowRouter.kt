@@ -7,15 +7,16 @@ import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.router.stack.pushNew
 import com.arkivanov.decompose.value.Value
-import io.github.vasilyrylov.archsample.feature.todo.todo_component.detail.ToDoDetailComponent
+import com.benasher44.uuid.uuidFrom
+import io.github.vasilyrylov.archsample.feature.todo.todo_component.detail.ToDoDetailsComponent
 import io.github.vasilyrylov.archsample.feature.todo.todo_component.list.ToDoListComponent
+import io.github.vasilyrylov.archsample.feature.todo.todo_domain.model.ToDoItemId
 import io.github.vasilyrylov.archsample.feature.todo.todo_ui.api.IToDoFlowRouter
 import kotlinx.serialization.Serializable
 import org.koin.core.scope.Scope
 
 class ToDoFlowRouter(
     componentContext: ComponentContext,
-    private val userId: String,
     private val koinScope: Scope
 ) : IToDoFlowRouter {
 
@@ -26,30 +27,32 @@ class ToDoFlowRouter(
         serializer = Configuration.serializer(),
         handleBackButton = true,
         childFactory = ::childFactory,
-        initialStack = { listOf(Configuration.ToDoList(userId = userId)) }
+        initialStack = { listOf(Configuration.ToDoList) }
     )
 
     private fun childFactory(config: Configuration, componentContext: ComponentContext): Child {
         return when (config) {
             is Configuration.ToDoList -> Child.ToDoList(
-                component = ToDoListComponent(componentContext, parentScope = koinScope)
+                component = ToDoListComponent(componentContext = componentContext, parentScope = koinScope)
             )
 
             is Configuration.ToDoDetail -> Child.ToDoDetail(
-                component = ToDoDetailComponent(componentContext, config.toDoId)
+                component = ToDoDetailsComponent(
+                    componentContext = componentContext, parentScope = koinScope, itemId = ToDoItemId(uuidFrom(config.toDoId))
+                )
             )
         }
     }
 
     internal sealed interface Child {
         class ToDoList(val component: ToDoListComponent) : Child
-        class ToDoDetail(val component: ToDoDetailComponent) : Child
+        class ToDoDetail(val component: ToDoDetailsComponent) : Child
     }
 
     @Serializable
     internal sealed class Configuration {
         @Serializable
-        data class ToDoList(val userId: String) : Configuration()
+        data object ToDoList : Configuration()
 
         @Serializable
         data class ToDoDetail(val toDoId: String) : Configuration()

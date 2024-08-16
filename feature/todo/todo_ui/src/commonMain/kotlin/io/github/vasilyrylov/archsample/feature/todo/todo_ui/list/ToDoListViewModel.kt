@@ -9,8 +9,8 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
 
 class ToDoListViewModel(
+    observeToDoList: ObserveToDoListUseCase,
     private val routerHolder: RouterHolder<IToDoFlowRouter>,
-    observeToDoList: ObserveToDoListUseCase
 ) : BaseViewModel() {
     private val router: IToDoFlowRouter
         get() = routerHolder.router!!
@@ -31,9 +31,5 @@ class ToDoListViewModel(
 
     fun onToDoClick(toDoItemId: ToDoItemId) {
         router.toDetailToDo(toDoId = toDoItemId.toString())
-    }
-
-    override fun onCleared() {
-
     }
 }

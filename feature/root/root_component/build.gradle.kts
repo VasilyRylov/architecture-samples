@@ -19,11 +19,15 @@ kotlin {
         commonMain.dependencies {
             implementation(project(":feature:root:root_ui"))
             implementation(project(":feature:root:root_domain"))
-            implementation(project(":feature:auth:auth_domain"))
 
             implementation(project(":feature:auth:auth_component"))
+            implementation(project(":feature:auth:auth_domain"))
+
             implementation(project(":feature:todo:todo_component"))
+            implementation(project(":feature:todo:todo_domain"))
+
             implementation(project(":common:common_component"))
+            implementation(project(":common:common_domain"))
             implementation(project(":common:common_ui"))
 
             implementation(libs.decompose)

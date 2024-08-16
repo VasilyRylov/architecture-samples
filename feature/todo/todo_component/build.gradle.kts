@@ -21,6 +21,7 @@ kotlin {
             implementation(project(":feature:todo:todo_domain"))
 
             implementation(project(":common:common_component"))
+            implementation(project(":common:common_domain"))
             implementation(project(":common:common_ui"))
 
             implementation(libs.decompose)

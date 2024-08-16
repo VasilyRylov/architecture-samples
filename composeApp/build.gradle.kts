@@ -60,6 +60,7 @@ kotlin {
             implementation(compose.uiTooling)
             implementation(libs.androidx.activityCompose)
             implementation(libs.kotlinx.coroutines.android)
+            implementation(libs.koin.android)
         }
 
         jvmMain.dependencies {

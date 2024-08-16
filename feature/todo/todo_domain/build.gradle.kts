@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.multiplatform)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.kotlinx.serialization)
 }
 
 // ===============
@@ -32,6 +33,7 @@ kotlin {
             implementation(libs.kotlinx.coroutines.core)
             api(libs.visualfsm.core)
             api(libs.uuid)
+            implementation(libs.kotlinx.serialization.json)
         }
 
         commonTest.dependencies {
