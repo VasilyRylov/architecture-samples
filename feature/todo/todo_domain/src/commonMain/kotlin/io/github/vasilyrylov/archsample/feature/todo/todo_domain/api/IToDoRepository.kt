@@ -7,6 +7,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface IToDoRepository {
     fun observeToDoList(userId: UserId): Flow<List<ToDoItem>>
-    suspend fun save(toDoItem: ToDoItem)
-    suspend fun getById(toDoItemId: ToDoItemId)
+    suspend fun save(toDoItem: ToDoItem, userId: UserId)
+    suspend fun getById(toDoItemId: ToDoItemId): ToDoItem
+    suspend fun delete(toDoItemId: ToDoItemId)
 }

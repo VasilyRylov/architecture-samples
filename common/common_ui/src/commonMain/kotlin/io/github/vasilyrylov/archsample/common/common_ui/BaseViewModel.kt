@@ -17,5 +17,5 @@ abstract class BaseViewModel {
         onCleared()
     }
 
-    abstract fun onCleared()
+    open fun onCleared() {}
 }

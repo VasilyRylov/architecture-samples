@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.stateIn
 
 class ToDoListViewModel(
     private val routerHolder: RouterHolder<IToDoFlowRouter>,
-    private val observeToDoList: ObserveToDoListUseCase
+    observeToDoList: ObserveToDoListUseCase
 ) : BaseViewModel() {
     private val router: IToDoFlowRouter
         get() = routerHolder.router!!
@@ -23,6 +23,7 @@ class ToDoListViewModel(
         )
 
     fun onAddClick() {
+
     }
 
     fun onCompletedChange(toDoItemId: ToDoItemId) {
