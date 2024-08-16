@@ -8,7 +8,7 @@ sealed class AuthFSMState : State {
 
     @Serializable
     data class Login(
-        val mail: String,
+        val name: String,
         val password: String,
         val errorMessage: String? = null,
         val snackBarMessage: String? = null,
@@ -16,7 +16,7 @@ sealed class AuthFSMState : State {
 
     @Serializable
     data class Registration(
-        val mail: String,
+        val name: String,
         val password: String,
         val repeatedPassword: String,
         val errorMessage: String? = null
@@ -24,7 +24,7 @@ sealed class AuthFSMState : State {
 
     @Serializable
     data class ConfirmationRequested(
-        val mail: String,
+        val name: String,
         val password: String
     ) : AuthFSMState()
 
@@ -32,17 +32,17 @@ sealed class AuthFSMState : State {
     sealed class AsyncWorkState : AuthFSMState() {
         @Serializable
         data class Authenticating(
-            val mail: String,
+            val name: String,
             val password: String
         ) : AsyncWorkState()
 
         @Serializable
         data class Registering(
-            val mail: String,
+            val name: String,
             val password: String
         ) : AsyncWorkState()
     }
 
     @Serializable
-    data class UserAuthorized(val mail: String) : AuthFSMState()
+    data class UserAuthorized(val name: String) : AuthFSMState()
 }

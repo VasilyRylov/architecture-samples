@@ -61,10 +61,6 @@ class AuthViewModel(
         authFeature.handleChangeLoginData(mail, password)
     }
 
-    fun handleSnackBarShowed() {
-        authFeature.handleSnackBarShowed()
-    }
-
     override fun onCleared() {
         authFeature.onDestroy()
     }
@@ -73,7 +69,7 @@ class AuthViewModel(
         coroutineScope.launch {
             authFeature.observeState().collect { fsmState ->
                 if (fsmState is AuthFSMState.UserAuthorized) {
-                    authCompletion(fsmState.mail)
+                    authCompletion(fsmState.name)
                 }
             }
         }

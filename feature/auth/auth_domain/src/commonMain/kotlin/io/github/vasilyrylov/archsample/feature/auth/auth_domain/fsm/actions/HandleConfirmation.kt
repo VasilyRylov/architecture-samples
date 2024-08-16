@@ -12,7 +12,7 @@ internal class HandleConfirmation(private val confirmed: Boolean) : AuthFSMActio
         }
 
         override fun transform(state: ConfirmationRequested): AsyncWorkState.Registering {
-            return AsyncWorkState.Registering(mail = state.mail, password = state.password)
+            return AsyncWorkState.Registering(name = state.name, password = state.password)
         }
     }
 
@@ -22,7 +22,7 @@ internal class HandleConfirmation(private val confirmed: Boolean) : AuthFSMActio
         }
 
         override fun transform(state: ConfirmationRequested): Registration {
-            return Registration(mail = state.mail, password = state.password, repeatedPassword = state.password)
+            return Registration(name = state.name, password = state.password, repeatedPassword = state.password)
         }
     }
 }

@@ -14,14 +14,14 @@ class AuthAsyncWorker(private val authInteractor: AuthInteractor) : AsyncWorker<
         return when (state) {
             is AsyncWorkState.Authenticating -> {
                 AsyncWorkerTask.ExecuteAndCancelExist(state) {
-                    val result = authInteractor.check(state.mail, state.password)
+                    val result = authInteractor.check(state.name, state.password)
                     proceed(HandleAuthResult(result))
                 }
             }
 
             is AsyncWorkState.Registering -> {
                 AsyncWorkerTask.ExecuteIfNotExist(state) {
-                    val result = authInteractor.register(state.mail, state.password)
+                    val result = authInteractor.register(state.name, state.password)
                     proceed(HandleRegistrationResult(result))
                 }
             }

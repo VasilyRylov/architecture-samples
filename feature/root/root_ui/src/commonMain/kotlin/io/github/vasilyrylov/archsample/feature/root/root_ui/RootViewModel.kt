@@ -24,8 +24,8 @@ class RootViewModel(
         feature.observeState().onEach { state ->
             when (state) {
                 RootFSMState.AsyncWorkState.Initial -> Unit
-                RootFSMState.AuthState -> router.toAuth()
-                is RootFSMState.ToDoFlow -> router.toToDo(state.userId)
+                RootFSMState.AuthFlow -> router.toAuth()
+                is RootFSMState.ToDoFlow -> router.toToDo()
             }
 
         }.launchIn(coroutineScope)

@@ -14,7 +14,6 @@ import io.github.vasilyrylov.archsample.feature.auth.auth_domain.api.IAuthComple
 import io.github.vasilyrylov.archsample.feature.root.root_ui.api.IRootFlowRouter
 import io.github.vasilyrylov.archsample.feature.todo.todo_component.ToDoFlowComponent
 import io.github.vasilyrylov.archsample.feature.todo.todo_domain.api.ILogoutUseCase
-import io.github.vasilyrylov.archsample.feature.todo.todo_domain.api.IToDoRepository
 import kotlinx.serialization.Serializable
 import org.koin.core.scope.Scope
 
@@ -40,8 +39,6 @@ class RootFlowRouter(componentContext: ComponentContext, private val koinScope: 
 
             is Configuration.ToDo -> SlotChild.ToDo(
                 component = ToDoFlowComponent(componentContext, object : IToDoComponentDependencies {
-                    override val toDoRepository: IToDoRepository
-                        get() = koinScope.get()
                     override val authorizedUserRepository: IAuthorizedUserRepository
                         get() = koinScope.get()
                     override val logoutUseCase: ILogoutUseCase
@@ -62,14 +59,14 @@ class RootFlowRouter(componentContext: ComponentContext, private val koinScope: 
         data object Auth : Configuration()
 
         @Serializable
-        data class ToDo(val userId: String) : Configuration()
+        data object ToDo : Configuration()
     }
 
     override fun toAuth() {
         slotNavigation.activate(Configuration.Auth)
     }
 
-    override fun toToDo(userId: String) {
-        slotNavigation.activate(Configuration.ToDo(userId))
+    override fun toToDo() {
+        slotNavigation.activate(Configuration.ToDo)
     }
 }

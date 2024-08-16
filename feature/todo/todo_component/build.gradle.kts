@@ -19,6 +19,7 @@ kotlin {
         commonMain.dependencies {
             implementation(project(":feature:todo:todo_ui"))
             implementation(project(":feature:todo:todo_domain"))
+            implementation(project(":feature:todo:todo_data"))
 
             implementation(project(":common:common_component"))
             implementation(project(":common:common_domain"))

@@ -10,14 +10,14 @@ internal class ChangeFlow : AuthFSMAction() {
     @Edge("ToLogin")
     inner class RegisterToLogin : Transition<Registration, Login>() {
         override fun transform(state: Registration): Login {
-            return Login(mail = state.mail, password = "")
+            return Login(name = state.name, password = "")
         }
     }
 
     @Edge("ToRegistration")
     inner class LoginToRegistration : Transition<Login, Registration>() {
         override fun transform(state: Login): Registration {
-            return Registration(mail = state.mail, password = "", repeatedPassword = "")
+            return Registration(name = state.name, password = "", repeatedPassword = "")
         }
     }
 }

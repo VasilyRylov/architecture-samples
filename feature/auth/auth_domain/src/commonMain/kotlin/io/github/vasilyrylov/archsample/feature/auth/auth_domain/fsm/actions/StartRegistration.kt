@@ -12,7 +12,7 @@ internal class StartRegistration : AuthFSMAction() {
         }
 
         override fun transform(state: Registration): ConfirmationRequested {
-            return ConfirmationRequested(mail = state.mail, password = state.password)
+            return ConfirmationRequested(name = state.name, password = state.password)
         }
     }
 
@@ -23,7 +23,7 @@ internal class StartRegistration : AuthFSMAction() {
 
         override fun transform(state: Registration): Registration {
             return Registration(
-                mail = state.mail,
+                name = state.name,
                 password = state.password,
                 repeatedPassword = state.repeatedPassword,
                 errorMessage = "Password and repeated password must be equals and not empty"

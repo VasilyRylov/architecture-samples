@@ -15,9 +15,9 @@ internal class HandleRegistrationResult(private val result: RegistrationResult) 
 
         override fun transform(state: AsyncWorkState.Registering): Login {
             return Login(
-                mail = state.mail,
+                name = state.name,
                 password = state.password,
-                snackBarMessage = "${state.mail} registered"
+                snackBarMessage = "${state.name} registered"
             )
         }
     }
@@ -29,7 +29,7 @@ internal class HandleRegistrationResult(private val result: RegistrationResult) 
 
         override fun transform(state: AsyncWorkState.Registering): Registration {
             return Registration(
-                mail = state.mail,
+                name = state.name,
                 password = state.password,
                 repeatedPassword = state.password,
                 errorMessage = "User already registered"
@@ -44,7 +44,7 @@ internal class HandleRegistrationResult(private val result: RegistrationResult) 
 
         override fun transform(state: AsyncWorkState.Registering): Registration {
             return Registration(
-                mail = state.mail,
+                name = state.name,
                 password = state.password,
                 repeatedPassword = state.password,
                 errorMessage = "No internet"
