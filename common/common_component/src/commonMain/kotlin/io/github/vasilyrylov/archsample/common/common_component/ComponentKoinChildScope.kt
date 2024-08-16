@@ -1,23 +1,26 @@
 package io.github.vasilyrylov.archsample.common.common_component
 
 import com.arkivanov.essenty.instancekeeper.InstanceKeeper
-import org.koin.core.component.createScope
-import org.koin.core.component.KoinScopeComponent
 import org.koin.core.module.Module
+import org.koin.core.qualifier.StringQualifier
 import org.koin.core.scope.Scope
 
-class ComponentKoinChildScope : InstanceKeeper.Instance, KoinScopeComponent {
-    override val scope: Scope = createScope()
+class ComponentKoinChildScope : InstanceKeeper.Instance {
+    private var scope: Scope? = null
 
-    fun createAndLinkToParentScope(parentScope: Scope, modules: List<Module>): Scope {
-        scope.linkTo(parentScope)
-        scope.getKoin().loadModules(modules)
-        return scope
+    fun getOrCreateKoinChildScope(parentScope: Scope, modules: List<Module>, stateScopeId: String): Scope {
+        if (scope != null) return scope!!
+
+        val newScope = parentScope.getKoin().createScope(stateScopeId, StringQualifier(stateScopeId))
+        newScope.linkTo(parentScope)
+        newScope.getKoin().loadModules(modules)
+        scope = newScope
+        return newScope
     }
 
     override fun onDestroy() {
-        if (scope.isNotClosed()) {
-            scope.close()
+        if (scope?.isNotClosed() != null) {
+            scope!!.close()
         }
     }
 }
