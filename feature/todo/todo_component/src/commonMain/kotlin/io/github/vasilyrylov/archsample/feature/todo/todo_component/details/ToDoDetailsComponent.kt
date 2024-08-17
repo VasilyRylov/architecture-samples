@@ -1,4 +1,4 @@
-package io.github.vasilyrylov.archsample.feature.todo.todo_component.detail
+package io.github.vasilyrylov.archsample.feature.todo.todo_component.details
 
 import com.arkivanov.decompose.ComponentContext
 import io.github.vasilyrylov.archsample.common.common_component.createChildScope

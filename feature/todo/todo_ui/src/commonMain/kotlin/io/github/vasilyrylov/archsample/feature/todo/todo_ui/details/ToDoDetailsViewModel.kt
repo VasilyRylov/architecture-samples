@@ -1,38 +1,38 @@
 package io.github.vasilyrylov.archsample.feature.todo.todo_ui.details
 
-import io.github.vasilyrylov.archsample.common.common_ui.BaseViewModel
+import io.github.vasilyrylov.archsample.common.common_ui.BaseStateViewModel
 import io.github.vasilyrylov.archsample.common.common_ui.RouterHolder
 import io.github.vasilyrylov.archsample.feature.todo.todo_domain.model.ToDoItem
 import io.github.vasilyrylov.archsample.feature.todo.todo_domain.model.ToDoItemId
 import io.github.vasilyrylov.archsample.feature.todo.todo_domain.usecase.DeleteToDoUseCase
 import io.github.vasilyrylov.archsample.feature.todo.todo_domain.usecase.GetToDoDetailsUseCase
 import io.github.vasilyrylov.archsample.feature.todo.todo_domain.usecase.SaveToDoUseCase
+import io.github.vasilyrylov.archsample.feature.todo.todo_domain.usecase.ToDoCompletedChangeUseCase
 import io.github.vasilyrylov.archsample.feature.todo.todo_ui.api.IToDoFlowRouter
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import io.github.vasilyrylov.archsample.feature.todo.todo_ui.details.model.ToDoDetailsScreenViewState
 import kotlinx.coroutines.launch
 
 class ToDoDetailsViewModel(
-    private val toDoItemId: ToDoItemId,
+    private val itemId: ToDoItemId,
     private val routerHolder: RouterHolder<IToDoFlowRouter>,
     private val getToDoDetails: GetToDoDetailsUseCase,
     private val saveToDo: SaveToDoUseCase,
     private val deleteToDo: DeleteToDoUseCase,
-) : BaseViewModel() {
+    private val completedChange: ToDoCompletedChangeUseCase
+) : BaseStateViewModel<ToDoDetailsScreenViewState>() {
     private val router: IToDoFlowRouter
         get() = routerHolder.router!!
 
-    private val _state = MutableStateFlow(ToDoItem("", false))
-
-    val state = _state.asStateFlow()
-
     init {
-        initState()
+        updateState()
     }
 
-    private fun initState() {
+    private fun updateState() {
         coroutineScope.launch {
-            _state.value = getToDoDetails(toDoItemId)
+            val itemDetails = getToDoDetails(itemId)
+            setState {
+                currentState.copy(item = itemDetails)
+            }
         }
     }
 
@@ -46,27 +46,27 @@ class ToDoDetailsViewModel(
 
     fun onDeleteClick() {
         coroutineScope.launch {
-            deleteToDo(state.value.id)
+            deleteToDo(currentState.item.id)
             router.back()
         }
     }
 
     fun onCompletedChange() {
-        val currentToDoItem = state.value
-        val updatedToDoItem = currentToDoItem.copy(completed = !currentToDoItem.completed)
-        updateToDo(updatedToDoItem)
+        coroutineScope.launch {
+            completedChange(itemId)
+        }
+        updateState()
     }
 
     fun onEdited(text: String) {
-        val currentToDoItem = state.value
-        val updatedToDoItem = currentToDoItem.copy(text = text)
-        updateToDo(updatedToDoItem)
-    }
-
-    private fun updateToDo(toDoItem: ToDoItem) {
-        _state.value = toDoItem
+        val updatedItem = currentState.item.copy(text = text)
         coroutineScope.launch {
-            saveToDo(toDoItem)
+            saveToDo(updatedItem)
+            updateState()
         }
     }
+
+    override fun createInitialState() = ToDoDetailsScreenViewState(
+        item = ToDoItem("", false)
+    )
 }

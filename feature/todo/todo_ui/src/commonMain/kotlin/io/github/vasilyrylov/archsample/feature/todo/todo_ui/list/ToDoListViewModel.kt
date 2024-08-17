@@ -6,18 +6,18 @@ import io.github.vasilyrylov.archsample.feature.todo.todo_domain.model.ToDoItem
 import io.github.vasilyrylov.archsample.feature.todo.todo_domain.model.ToDoItemId
 import io.github.vasilyrylov.archsample.feature.todo.todo_domain.usecase.ObserveToDoListUseCase
 import io.github.vasilyrylov.archsample.feature.todo.todo_domain.usecase.SaveToDoUseCase
-import io.github.vasilyrylov.archsample.feature.todo.todo_domain.usecase.ToDoCompleteChangeUseCase
+import io.github.vasilyrylov.archsample.feature.todo.todo_domain.usecase.ToDoCompletedChangeUseCase
 import io.github.vasilyrylov.archsample.feature.todo.todo_ui.api.IToDoFlowRouter
-import io.github.vasilyrylov.archsample.feature.todo.todo_ui.list.model.ToDoListScreenData
+import io.github.vasilyrylov.archsample.feature.todo.todo_ui.list.model.ToDoListScreenViewState
 import io.github.vasilyrylov.archsample.feature.todo.todo_ui.list.model.ToDoListScreenDialog
 import kotlinx.coroutines.launch
 
 class ToDoListViewModel(
     private val observeToDoList: ObserveToDoListUseCase,
     private val routerHolder: RouterHolder<IToDoFlowRouter>,
-    private val completedChange: ToDoCompleteChangeUseCase,
+    private val completedChange: ToDoCompletedChangeUseCase,
     private val saveToDo: SaveToDoUseCase,
-) : BaseStateViewModel<ToDoListScreenData>() {
+) : BaseStateViewModel<ToDoListScreenViewState>() {
     private val router: IToDoFlowRouter
         get() = routerHolder.router!!
 
@@ -29,14 +29,14 @@ class ToDoListViewModel(
         setState { currentState.copy(dialog = ToDoListScreenDialog.AddToDo) }
     }
 
-    fun confirmAdd(newItem: ToDoItem) {
+    fun onConfirmAdd(newItem: ToDoItem) {
         coroutineScope.launch {
             saveToDo(newItem)
             setState { currentState.copy(dialog = ToDoListScreenDialog.None) }
         }
     }
 
-    fun cancelAdd() {
+    fun onCancelAdd() {
         setState { currentState.copy(dialog = ToDoListScreenDialog.None) }
     }
 
@@ -47,7 +47,7 @@ class ToDoListViewModel(
     }
 
     fun onToDoClick(toDoItemId: ToDoItemId) {
-        router.toDetailToDo(toDoId = toDoItemId.toString())
+        router.toDetailToDo(toDoId = toDoItemId.value.toString())
     }
 
     private fun initObservers() {
@@ -58,7 +58,7 @@ class ToDoListViewModel(
         }
     }
 
-    override fun createInitialState() = ToDoListScreenData(
+    override fun createInitialState() = ToDoListScreenViewState(
         todoItems = listOf(),
         dialog = ToDoListScreenDialog.None
     )

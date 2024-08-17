@@ -6,12 +6,11 @@ import com.arkivanov.decompose.extensions.compose.stack.Children
 import com.arkivanov.decompose.extensions.compose.stack.animation.slide
 import com.arkivanov.decompose.extensions.compose.stack.animation.stackAnimation
 import com.arkivanov.decompose.extensions.compose.subscribeAsState
-import io.github.vasilyrylov.archsample.feature.todo.todo_domain.model.ToDoItem
-import io.github.vasilyrylov.archsample.feature.todo.todo_ui.details.TodoDetailsScreenMain
-import io.github.vasilyrylov.archsample.feature.todo.todo_ui.list.TodoListScreen
+import io.github.vasilyrylov.archsample.feature.todo.todo_ui.details.TodoDetailsScreenContainer
+import io.github.vasilyrylov.archsample.feature.todo.todo_ui.list.TodoListScreenContainer
 
 @Composable
-fun ToDoFlowContainer(toDoFlowComponent: ToDoFlowComponent) {
+fun ToDoFlowScreenComponent(toDoFlowComponent: ToDoFlowComponent) {
     // Work in progress
     val childStack by toDoFlowComponent.router.childStack.subscribeAsState()
 
@@ -21,16 +20,11 @@ fun ToDoFlowContainer(toDoFlowComponent: ToDoFlowComponent) {
     ) {
         when (val child = it.instance) {
             is ToDoFlowRouter.Child.ToDoList -> {
-                TodoListScreen(child.component.viewModel)
+                TodoListScreenContainer(child.component.viewModel)
             }
 
             is ToDoFlowRouter.Child.ToDoDetail -> {
-                TodoDetailsScreenMain(
-                    todoItem = ToDoItem(text = "test", completed = false),
-                    onBackClick = { },
-                    onDeleteClick = { },
-                    onEditClick = { }
-                )
+                TodoDetailsScreenContainer(child.component.viewModel)
             }
         }
     }

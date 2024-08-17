@@ -8,7 +8,7 @@ import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.router.stack.pushNew
 import com.arkivanov.decompose.value.Value
 import com.benasher44.uuid.uuidFrom
-import io.github.vasilyrylov.archsample.feature.todo.todo_component.detail.ToDoDetailsComponent
+import io.github.vasilyrylov.archsample.feature.todo.todo_component.details.ToDoDetailsComponent
 import io.github.vasilyrylov.archsample.feature.todo.todo_component.list.ToDoListComponent
 import io.github.vasilyrylov.archsample.feature.todo.todo_domain.model.ToDoItemId
 import io.github.vasilyrylov.archsample.feature.todo.todo_ui.api.IToDoFlowRouter

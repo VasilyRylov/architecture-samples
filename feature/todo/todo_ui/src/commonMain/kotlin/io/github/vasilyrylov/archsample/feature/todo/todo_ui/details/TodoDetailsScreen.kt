@@ -15,12 +15,12 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import io.github.vasilyrylov.archsample.feature.todo.todo_domain.model.ToDoItem
+import io.github.vasilyrylov.archsample.feature.todo.todo_ui.details.model.ToDoDetailsScreenViewState
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TodoDetailsScreenMain(
-    todoItem: ToDoItem,
+fun TodoDetailsScreen(
+    viewState: ToDoDetailsScreenViewState,
     onBackClick: () -> Unit,
     onDeleteClick: () -> Unit,
     onEditClick: () -> Unit
@@ -56,7 +56,7 @@ fun TodoDetailsScreenMain(
             modifier = Modifier.consumeWindowInsets(innerPadding)
                 .padding(innerPadding),
         ) {
-            Text(todoItem.text)
+            Text(viewState.item.text)
         }
     }
 }
