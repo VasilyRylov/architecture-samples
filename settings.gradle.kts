@@ -33,6 +33,8 @@ dependencyResolutionManagement {
 include(":composeApp")
 include(":common:common_ui")
 include(":common:common_component")
+include(":common:common_domain")
+include(":common:common_data")
 
 include(":feature:root:root_domain")
 include(":feature:root:root_ui")
@@ -46,3 +48,4 @@ include(":feature:auth:auth_component")
 include(":feature:todo:todo_ui")
 include(":feature:todo:todo_domain")
 include(":feature:todo:todo_component")
+include(":feature:todo:todo_data")

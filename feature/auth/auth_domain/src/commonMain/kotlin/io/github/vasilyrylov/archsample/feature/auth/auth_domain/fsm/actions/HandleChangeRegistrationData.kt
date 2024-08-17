@@ -11,7 +11,7 @@ internal class HandleChangeRegistrationData(
 
     inner class ChangeRegistrationData : SelfTransition<AuthFSMState.Registration>() {
         override fun transform(state: AuthFSMState.Registration): AuthFSMState.Registration {
-            return AuthFSMState.Registration(mail = mail, password = password, repeatedPassword = repeatPassword)
+            return AuthFSMState.Registration(name = mail, password = password, repeatedPassword = repeatPassword)
         }
     }
 }

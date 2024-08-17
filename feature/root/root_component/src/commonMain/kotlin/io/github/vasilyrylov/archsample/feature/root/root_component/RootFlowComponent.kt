@@ -9,7 +9,7 @@ import io.github.vasilyrylov.archsample.feature.root.root_ui.RootViewModel
 import io.github.vasilyrylov.archsample.feature.root.root_domain.fsm.RootFeature
 import io.github.vasilyrylov.archsample.feature.root.root_domain.fsm.RootFSMState
 
-class RootComponent(
+class RootFlowComponent(
     componentContext: ComponentContext,
 ) : ComponentContext by componentContext {
 

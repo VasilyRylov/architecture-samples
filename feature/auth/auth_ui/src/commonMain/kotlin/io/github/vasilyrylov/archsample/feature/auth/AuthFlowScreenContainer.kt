@@ -12,7 +12,7 @@ import io.github.vasilyrylov.archsample.feature.auth.auth_ui.screen.Registration
 import io.github.vasilyrylov.archsample.feature.auth.auth_ui.screen.UserAuthorizedScreen
 
 @Composable
-fun AuthFlowScreen(authViewModel: AuthViewModel) {
+fun AuthFlowScreenContainer(authViewModel: AuthViewModel) {
 
     val state by authViewModel.state.collectAsState()
 

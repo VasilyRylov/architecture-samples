@@ -7,7 +7,7 @@ import io.github.vasilyrylov.archsample.feature.auth.auth_domain.fsm.AuthFSMStat
 internal class Authenticate : AuthFSMAction() {
     inner class AuthenticationStart : Transition<Login, AsyncWorkState.Authenticating>() {
         override fun transform(state: Login): AsyncWorkState.Authenticating {
-            return AsyncWorkState.Authenticating(mail = state.mail, password = state.password)
+            return AsyncWorkState.Authenticating(name = state.name, password = state.password)
         }
     }
 }

@@ -7,13 +7,13 @@ import com.arkivanov.decompose.DefaultComponentContext
 import com.arkivanov.essenty.lifecycle.LifecycleRegistry
 import java.awt.Dimension
 import io.github.vasilyrylov.archsample.App
-import io.github.vasilyrylov.archsample.feature.root.root_component.RootComponent
+import io.github.vasilyrylov.archsample.feature.root.root_component.RootFlowComponent
 
 fun main() {
     val lifecycle = LifecycleRegistry()
 
     application {
-        val rootComponent = remember { RootComponent(DefaultComponentContext(lifecycle = lifecycle)) }
+        val rootFlowComponent = remember { RootFlowComponent(DefaultComponentContext(lifecycle = lifecycle)) }
 
         Window(
             title = "ArchSample",
@@ -21,7 +21,7 @@ fun main() {
             onCloseRequest = ::exitApplication,
         ) {
             window.minimumSize = Dimension(350, 600)
-            App(rootComponent)
+            App(rootFlowComponent)
         }
     }
 }

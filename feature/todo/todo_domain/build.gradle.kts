@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.multiplatform)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.kotlinx.serialization)
 }
 
 // ===============
@@ -28,9 +29,11 @@ kotlin {
         // https://github.com/google/ksp/issues/965
         //all { kotlin.srcDir("build/generated/ksp/metadata/commonMain/kotlin") }
         commonMain.dependencies {
+            implementation(project(":common:common_domain"))
             implementation(libs.kotlinx.coroutines.core)
             api(libs.visualfsm.core)
             api(libs.uuid)
+            implementation(libs.kotlinx.serialization.json)
         }
 
         commonTest.dependencies {

@@ -11,17 +11,17 @@ data class Initialize(val userId: String?) : RootFSMAction() {
         }
 
         override fun transform(state: RootFSMState.AsyncWorkState.Initial): RootFSMState.ToDoFlow {
-            return RootFSMState.ToDoFlow(userId!!)
+            return RootFSMState.ToDoFlow
         }
     }
 
-    inner class UserNotAuthorized : Transition<RootFSMState.AsyncWorkState.Initial, RootFSMState.AuthState>() {
+    inner class UserNotAuthorized : Transition<RootFSMState.AsyncWorkState.Initial, RootFSMState.AuthFlow>() {
         override fun predicate(state: RootFSMState.AsyncWorkState.Initial): Boolean {
             return userId.isNullOrBlank()
         }
 
-        override fun transform(state: RootFSMState.AsyncWorkState.Initial): RootFSMState.AuthState {
-            return RootFSMState.AuthState
+        override fun transform(state: RootFSMState.AsyncWorkState.Initial): RootFSMState.AuthFlow {
+            return RootFSMState.AuthFlow
         }
     }
 }

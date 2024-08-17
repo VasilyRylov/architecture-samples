@@ -14,8 +14,8 @@ sealed class RootFSMState : State {
     }
 
     @Serializable
-    data class ToDoFlow(val userId: String) : RootFSMState()
+    data object ToDoFlow : RootFSMState()
 
     @Serializable
-    data object AuthState : RootFSMState()
+    data object AuthFlow : RootFSMState()
 }

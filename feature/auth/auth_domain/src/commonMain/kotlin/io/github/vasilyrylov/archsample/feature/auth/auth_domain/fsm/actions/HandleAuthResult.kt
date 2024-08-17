@@ -14,7 +14,7 @@ internal class HandleAuthResult(private val result: AuthResult) : AuthFSMAction(
         }
 
         override fun transform(state: AsyncWorkState.Authenticating): UserAuthorized {
-            return UserAuthorized(mail = state.mail)
+            return UserAuthorized(name = state.name)
         }
     }
 
@@ -24,7 +24,7 @@ internal class HandleAuthResult(private val result: AuthResult) : AuthFSMAction(
         }
 
         override fun transform(state: AsyncWorkState.Authenticating): Login {
-            return Login(mail = state.mail, password = state.password, errorMessage = "Bad credential")
+            return Login(name = state.name, password = state.password, errorMessage = "Bad credential")
         }
     }
 
@@ -34,7 +34,7 @@ internal class HandleAuthResult(private val result: AuthResult) : AuthFSMAction(
         }
 
         override fun transform(state: AsyncWorkState.Authenticating): Login {
-            return Login(mail = state.mail, password = state.password, errorMessage = "No internet")
+            return Login(name = state.name, password = state.password, errorMessage = "No internet")
         }
     }
 }

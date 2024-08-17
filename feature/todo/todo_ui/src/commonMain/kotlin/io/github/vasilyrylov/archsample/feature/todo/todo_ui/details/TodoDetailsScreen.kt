@@ -1,6 +1,5 @@
 package io.github.vasilyrylov.archsample.feature.todo.todo_ui.details
 
-import ToDoItemData
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.padding
@@ -16,14 +15,21 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import io.github.vasilyrylov.archsample.feature.todo.todo_domain.model.ToDoItem
+import io.github.vasilyrylov.archsample.feature.todo.todo_ui.details.model.ToDoDetailsScreenDialog
+import io.github.vasilyrylov.archsample.feature.todo.todo_ui.details.model.ToDoDetailsScreenViewState
+import io.github.vasilyrylov.archsample.feature.todo.todo_ui.list.EditToDoItemDialog
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TodoDetailsScreenMain(
-    todoItem: ToDoItemData,
+fun TodoDetailsScreen(
+    viewState: ToDoDetailsScreenViewState,
     onBackClick: () -> Unit,
     onDeleteClick: () -> Unit,
-    onEditClick: () -> Unit
+    onEditClick: () -> Unit,
+    onConfirmEdit: (ToDoItem) -> Unit,
+    onCancelEdit: () -> Unit
 ) {
     Scaffold(
         topBar = {
@@ -56,7 +62,19 @@ fun TodoDetailsScreenMain(
             modifier = Modifier.consumeWindowInsets(innerPadding)
                 .padding(innerPadding),
         ) {
-            Text(todoItem.text)
+            Box(modifier = Modifier.padding(16.dp)) {
+                Text(viewState.item.text)
+            }
         }
+    }
+
+    when (viewState.dialog) {
+        ToDoDetailsScreenDialog.EditToDo -> EditToDoItemDialog(
+            toDoItem = viewState.item,
+            onConfirm = onConfirmEdit,
+            onCancel = onCancelEdit,
+        )
+
+        ToDoDetailsScreenDialog.None -> Unit
     }
 }

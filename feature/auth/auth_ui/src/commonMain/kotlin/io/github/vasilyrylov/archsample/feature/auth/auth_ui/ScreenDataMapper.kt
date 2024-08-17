@@ -10,21 +10,21 @@ object ScreenDataMapper {
     fun map(state: AuthFSMState): AuthScreenData {
         return when (state) {
             is AuthFSMState.Login -> LoginScreenData(
-                mail = state.mail,
+                mail = state.name,
                 password = state.password,
                 errorMessage = state.errorMessage,
                 isAuthenticationInProgress = false,
                 snackBarMessage = state.snackBarMessage
             )
             is AuthFSMState.AsyncWorkState.Authenticating -> LoginScreenData(
-                mail = state.mail,
+                mail = state.name,
                 password = state.password,
                 errorMessage = null,
                 isAuthenticationInProgress = true,
                 snackBarMessage = null
             )
             is AuthFSMState.Registration -> RegistrationScreenData(
-                mail = state.mail,
+                mail = state.name,
                 password = state.password,
                 repeatedPassword = state.repeatedPassword,
                 errorMessage = state.errorMessage,
@@ -32,7 +32,7 @@ object ScreenDataMapper {
                 isConfirmationRequested = false
             )
             is AuthFSMState.AsyncWorkState.Registering -> RegistrationScreenData(
-                mail = state.mail,
+                mail = state.name,
                 password = state.password,
                 repeatedPassword = state.password,
                 errorMessage = null,
@@ -40,7 +40,7 @@ object ScreenDataMapper {
                 isConfirmationRequested = false
             )
             is AuthFSMState.ConfirmationRequested -> RegistrationScreenData(
-                mail = state.mail,
+                mail = state.name,
                 password = state.password,
                 repeatedPassword = state.password,
                 errorMessage = null,
@@ -48,7 +48,7 @@ object ScreenDataMapper {
                 isConfirmationRequested = true
             )
             is AuthFSMState.UserAuthorized -> UserAuthorizedScreenData(
-                mail = state.mail
+                mail = state.name
             )
         }
     }

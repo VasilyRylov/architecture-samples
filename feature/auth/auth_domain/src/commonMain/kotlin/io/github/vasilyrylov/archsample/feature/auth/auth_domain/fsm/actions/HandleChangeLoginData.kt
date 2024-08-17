@@ -10,7 +10,7 @@ internal class HandleChangeLoginData(
 
     inner class ChangeLoginData: Transition<AuthFSMState.Login, AuthFSMState.Login>() {
         override fun transform(state: AuthFSMState.Login): AuthFSMState.Login {
-            return AuthFSMState.Login(mail = mail, password = password)
+            return AuthFSMState.Login(name = mail, password = password)
         }
     }
 }

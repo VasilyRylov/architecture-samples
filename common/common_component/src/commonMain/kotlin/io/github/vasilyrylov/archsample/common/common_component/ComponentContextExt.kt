@@ -43,6 +43,12 @@ fun ComponentContext.createKoinScope(modules: List<Module>): Scope {
     }.getOrCreateKoinScope(modules)
 }
 
+fun ComponentContext.createChildScope(parentScope: Scope, modules: List<Module>): Scope {
+    return instanceKeeper.getOrCreate {
+        ComponentKoinChildScope()
+    }.getOrCreateKoinChildScope(parentScope, modules, this::class.qualifiedName!!)
+}
+
 fun <T> Scope.updateRouterInstance(router: T) {
     get<RouterHolder<T>>(RouterHolder::class).router = router
 }

@@ -1,8 +1,8 @@
 import androidx.compose.ui.window.ComposeUIViewController
 import io.github.vasilyrylov.archsample.App
-import io.github.vasilyrylov.archsample.feature.root.root_component.RootComponent
+import io.github.vasilyrylov.archsample.feature.root.root_component.RootFlowComponent
 import platform.UIKit.UIViewController
 
-fun MainViewController(root: RootComponent): UIViewController = ComposeUIViewController {
+fun MainViewController(root: RootFlowComponent): UIViewController = ComposeUIViewController {
     App(root)
 }
