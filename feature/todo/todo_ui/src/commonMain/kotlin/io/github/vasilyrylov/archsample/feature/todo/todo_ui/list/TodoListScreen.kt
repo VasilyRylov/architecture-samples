@@ -12,13 +12,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import io.github.vasilyrylov.archsample.feature.todo.todo_ui.list.model.ToDoListScreenDialog
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TodoListScreen(
     viewModel: ToDoListViewModel
 ) {
-    val state by viewModel.state.collectAsState()
+    val state by viewModel.viewState.collectAsState()
 
     Scaffold(
         topBar = {
@@ -35,10 +36,19 @@ fun TodoListScreen(
             modifier = Modifier.padding(innerPadding),
         ) {
             TodoListScreenContent(
-                todoItems = state,
+                todoItems = state.todoItems,
                 onCompletedChange = viewModel::onCompletedChange,
                 onTodoItemClick = viewModel::onToDoClick
             )
         }
+    }
+
+    when (state.dialog) {
+        ToDoListScreenDialog.AddToDo -> AddToDoDialog(
+            onConfirm = viewModel::confirmAdd,
+            onCancel = viewModel::cancelAdd
+        )
+
+        ToDoListScreenDialog.None -> Unit
     }
 }

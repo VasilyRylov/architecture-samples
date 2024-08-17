@@ -5,25 +5,38 @@ import io.github.vasilyrylov.archsample.feature.todo.todo_domain.api.IToDoReposi
 import io.github.vasilyrylov.archsample.feature.todo.todo_domain.model.ToDoItem
 import io.github.vasilyrylov.archsample.feature.todo.todo_domain.model.ToDoItemId
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.MutableSharedFlow
 
 class ToDoRepositoryDemo : IToDoRepository {
 
-    private val flow = MutableStateFlow<List<ToDoItem>>(listOf())
+    private val flow = MutableSharedFlow<List<ToDoItem>>()
+    private val todoList = mutableListOf<ToDoItem>()
 
     override fun observeToDoList(userId: UserId): Flow<List<ToDoItem>> {
         return flow
     }
 
     override suspend fun save(toDoItem: ToDoItem, userId: UserId) {
-        flow.value += toDoItem
+        val index = todoList.indexOfFirst { it.id == toDoItem.id }
+        if (index >= 0) {
+            todoList[index] = toDoItem
+        } else {
+            todoList.add(toDoItem)
+        }
+        flow.emit(todoList.toList())
     }
 
     override suspend fun getById(toDoItemId: ToDoItemId): ToDoItem {
-        return flow.value.find { it.id == toDoItemId } ?: throw IllegalStateException("ToDo item not found")
+        return todoList.find { it.id == toDoItemId } ?: throw IllegalStateException("ToDo item not found")
     }
 
     override suspend fun delete(toDoItemId: ToDoItemId) {
-        TODO()
+        val index = todoList.indexOfFirst { it.id == toDoItemId }
+        if (index >= 0) {
+            todoList.removeAt(index)
+            flow.emit(todoList.toList())
+        } else {
+            throw IllegalStateException("ToDo item not found")
+        }
     }
 }
