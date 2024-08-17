@@ -44,7 +44,7 @@ fun ToDoItemContent(
     Row(
         modifier = Modifier.fillMaxWidth()
             .clickable { onTodoItemClick(item.id) }
-            .padding(8.dp),
+            .padding(16.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {

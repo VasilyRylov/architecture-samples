@@ -27,7 +27,7 @@ class ToDoRepositoryDemo : IToDoRepository {
     }
 
     override suspend fun getById(toDoItemId: ToDoItemId): ToDoItem {
-        return todoList.find { it.id == toDoItemId } ?: throw IllegalStateException("ToDo item not found")
+        return todoList.find { it.id == toDoItemId } ?: error("ToDo item not found")
     }
 
     override suspend fun delete(toDoItemId: ToDoItemId) {
@@ -36,7 +36,7 @@ class ToDoRepositoryDemo : IToDoRepository {
             todoList.removeAt(index)
             flow.emit(todoList.toList())
         } else {
-            throw IllegalStateException("ToDo item not found")
+            error("ToDo item not found")
         }
     }
 }

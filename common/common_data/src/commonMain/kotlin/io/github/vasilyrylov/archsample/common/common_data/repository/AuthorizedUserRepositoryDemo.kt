@@ -17,6 +17,6 @@ class AuthorizedUserRepositoryDemo : IAuthorizedUserRepository {
     }
 
     override fun getAuthorizedUser(): User {
-        return authorizedUser ?: throw IllegalStateException("User is not authorized")
+        return authorizedUser ?: error("User is not authorized")
     }
 }
