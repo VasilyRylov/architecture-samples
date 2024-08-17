@@ -30,6 +30,7 @@ kotlin {
             implementation(project(":common:common_domain"))
             implementation(project(":common:common_ui"))
             implementation(project(":common:common_data"))
+            implementation(project(":database"))
 
             implementation(libs.decompose)
             implementation(libs.decompose.compose)

@@ -31,6 +31,7 @@ dependencyResolutionManagement {
     }
 }
 include(":composeApp")
+include(":database")
 include(":common:common_ui")
 include(":common:common_component")
 include(":common:common_domain")

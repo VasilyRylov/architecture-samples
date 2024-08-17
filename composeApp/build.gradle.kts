@@ -77,15 +77,15 @@ kotlin {
 
 android {
     namespace = "io.github.vasilyrylov.archsample"
-    compileSdk = 34
+    compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {
-        minSdk = 26
-        targetSdk = 34
+        minSdk = libs.versions.android.minSdk.get().toInt()
+        targetSdk = libs.versions.android.targetSdk.get().toInt()
 
         applicationId = "io.github.vasilyrylov.archsample.androidApp"
-        versionCode = 1
-        versionName = "1.0.0"
+        versionCode = libs.versions.app.versionCode.get().toInt()
+        versionName = libs.versions.app.versionName.get()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -113,7 +113,7 @@ compose.desktop {
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "io.github.vasilyrylov.archsample.desktopApp"
-            packageVersion = "1.0.0"
+            packageVersion = libs.versions.app.versionName.get()
         }
     }
 }

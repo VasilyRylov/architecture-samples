@@ -1,8 +1,13 @@
 [versions]
 
+app-versionCode = "1"
+app-versionName = "1.0.0"
 kotlin = "2.0.20-RC"
 compose = "1.7.0-alpha02"
 agp = "8.5.2"
+android-compileSdk = "34"
+android-minSdk = "24"
+android-targetSdk = "34"
 androidx-activityCompose = "1.9.1"
 androidx-uiTest = "1.6.8"
 decompose = "3.1.0"
@@ -13,11 +18,13 @@ kotlinx-datetime = "0.6.0"
 multiplatformSettings = "1.1.1"
 koin = "3.5.6"
 room = "2.7.0-alpha06"
+sqlite = "2.5.0-alpha06"
 ksp = "2.0.20-RC-1.0.24"
 visualfsm = "3.0.0"
 uuid = "0.8.4"
 essenty = "2.1.0"
 modulegraph = "0.10.0"
+
 
 [libraries]
 
@@ -38,6 +45,7 @@ multiplatformSettings = { module = "com.russhwolf:multiplatform-settings", versi
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "sqlite" }
 visualfsm-compiler = { module = "ru.kontur.mobile.visualfsm:visualfsm-compiler", version.ref = "visualfsm" }
 visualfsm-core = { module = "ru.kontur.mobile.visualfsm:visualfsm-core", version.ref = "visualfsm" }
 visualfsm-tools = { module = "ru.kontur.mobile.visualfsm:visualfsm-tools", version.ref = "visualfsm" }
