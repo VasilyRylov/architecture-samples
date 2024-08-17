@@ -14,5 +14,5 @@ private fun TodoDetailsScreenPreview() {
                 text = "One",
                 completed = false
             )
-        ), {}, {}, {})
+        ), {}, {}, {}, {}, {})
 }

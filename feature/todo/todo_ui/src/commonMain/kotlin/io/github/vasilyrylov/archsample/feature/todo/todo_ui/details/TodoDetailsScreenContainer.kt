@@ -16,5 +16,7 @@ fun TodoDetailsScreenContainer(
         onBackClick = viewModel::onBackClick,
         onDeleteClick = viewModel::onDeleteClick,
         onEditClick = viewModel::onEditClick,
+        onConfirmEdit = viewModel::onConfirmEdit,
+        onCancelEdit = viewModel::onCancelEdit
     )
 }

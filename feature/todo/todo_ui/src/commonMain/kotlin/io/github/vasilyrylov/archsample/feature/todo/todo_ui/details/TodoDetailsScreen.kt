@@ -15,7 +15,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import io.github.vasilyrylov.archsample.feature.todo.todo_domain.model.ToDoItem
+import io.github.vasilyrylov.archsample.feature.todo.todo_ui.details.model.ToDoDetailsScreenDialog
 import io.github.vasilyrylov.archsample.feature.todo.todo_ui.details.model.ToDoDetailsScreenViewState
+import io.github.vasilyrylov.archsample.feature.todo.todo_ui.list.EditToDoItemDialog
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -23,7 +26,9 @@ fun TodoDetailsScreen(
     viewState: ToDoDetailsScreenViewState,
     onBackClick: () -> Unit,
     onDeleteClick: () -> Unit,
-    onEditClick: () -> Unit
+    onEditClick: () -> Unit,
+    onConfirmEdit: (ToDoItem) -> Unit,
+    onCancelEdit: () -> Unit
 ) {
     Scaffold(
         topBar = {
@@ -58,5 +63,15 @@ fun TodoDetailsScreen(
         ) {
             Text(viewState.item.text)
         }
+    }
+
+    when (viewState.dialog) {
+        ToDoDetailsScreenDialog.EditToDo -> EditToDoItemDialog(
+            toDoItem = viewState.item,
+            onConfirm = onConfirmEdit,
+            onCancel = onCancelEdit,
+        )
+
+        ToDoDetailsScreenDialog.None -> Unit
     }
 }

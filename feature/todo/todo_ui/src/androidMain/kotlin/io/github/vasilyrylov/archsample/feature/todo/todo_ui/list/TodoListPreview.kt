@@ -13,7 +13,7 @@ private fun TodoListScreenContentPreview() {
 @Preview(showBackground = true)
 @Composable
 private fun AddToDoDialogPreview() {
-    AddToDoDialog({}, {})
+    EditToDoItemDialog(ToDoItem("test", false), {}, {})
 }
 
 

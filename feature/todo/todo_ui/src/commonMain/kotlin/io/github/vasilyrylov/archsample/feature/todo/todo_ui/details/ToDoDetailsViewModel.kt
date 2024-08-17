@@ -9,6 +9,7 @@ import io.github.vasilyrylov.archsample.feature.todo.todo_domain.usecase.GetToDo
 import io.github.vasilyrylov.archsample.feature.todo.todo_domain.usecase.SaveToDoUseCase
 import io.github.vasilyrylov.archsample.feature.todo.todo_domain.usecase.ToDoCompletedChangeUseCase
 import io.github.vasilyrylov.archsample.feature.todo.todo_ui.api.IToDoFlowRouter
+import io.github.vasilyrylov.archsample.feature.todo.todo_ui.details.model.ToDoDetailsScreenDialog
 import io.github.vasilyrylov.archsample.feature.todo.todo_ui.details.model.ToDoDetailsScreenViewState
 import kotlinx.coroutines.launch
 
@@ -24,10 +25,10 @@ class ToDoDetailsViewModel(
         get() = routerHolder.router!!
 
     init {
-        updateState()
+        updateItemDetails()
     }
 
-    private fun updateState() {
+    private fun updateItemDetails() {
         coroutineScope.launch {
             val itemDetails = getToDoDetails(itemId)
             setState {
@@ -41,7 +42,9 @@ class ToDoDetailsViewModel(
     }
 
     fun onEditClick() {
-
+        setState {
+            currentState.copy(dialog = ToDoDetailsScreenDialog.EditToDo)
+        }
     }
 
     fun onDeleteClick() {
@@ -55,14 +58,22 @@ class ToDoDetailsViewModel(
         coroutineScope.launch {
             completedChange(itemId)
         }
-        updateState()
+        updateItemDetails()
     }
 
-    fun onEdited(text: String) {
-        val updatedItem = currentState.item.copy(text = text)
+    fun onConfirmEdit(updatedItem: ToDoItem) {
         coroutineScope.launch {
             saveToDo(updatedItem)
-            updateState()
+            updateItemDetails()
+            setState {
+                currentState.copy(dialog = ToDoDetailsScreenDialog.None)
+            }
+        }
+    }
+
+    fun onCancelEdit() {
+        setState {
+            currentState.copy(dialog = ToDoDetailsScreenDialog.None)
         }
     }
 

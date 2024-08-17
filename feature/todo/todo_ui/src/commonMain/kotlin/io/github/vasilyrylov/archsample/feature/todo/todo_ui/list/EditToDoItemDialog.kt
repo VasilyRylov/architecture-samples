@@ -10,19 +10,22 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import io.github.vasilyrylov.archsample.feature.todo.todo_domain.model.ToDoItem
 
 
 @Composable
-fun AddToDoDialog(
+fun EditToDoItemDialog(
+    toDoItem: ToDoItem,
     onConfirm: (ToDoItem) -> Unit,
     onCancel: () -> Unit
 ) {
-    val todoState = remember { mutableStateOf(ToDoItem(text = "", completed = false)) }
+    var todoState by remember { mutableStateOf(toDoItem) }
 
     CustomDialog(
         header = "ToDo"
@@ -32,8 +35,8 @@ fun AddToDoDialog(
         ) {
             TextField(
                 modifier = Modifier.fillMaxWidth(),
-                value = todoState.value.text,
-                onValueChange = { todoState.value = todoState.value.copy(text = it) },
+                value = todoState.text,
+                onValueChange = { todoState = todoState.copy(text = it) },
             )
 
             Row(
@@ -43,9 +46,9 @@ fun AddToDoDialog(
             ) {
                 Button(
                     modifier = Modifier.padding(4.dp),
-                    onClick = { onConfirm(todoState.value) }
+                    onClick = { onConfirm(todoState) }
                 ) {
-                    Text("Add")
+                    Text("Save")
                 }
                 Button(
                     modifier = Modifier.padding(4.dp),

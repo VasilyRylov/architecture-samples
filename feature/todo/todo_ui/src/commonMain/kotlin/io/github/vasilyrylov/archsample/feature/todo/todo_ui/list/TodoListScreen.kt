@@ -48,7 +48,8 @@ fun TodoListScreen(
     }
 
     when (viewState.dialog) {
-        ToDoListScreenDialog.AddToDo -> AddToDoDialog(
+        ToDoListScreenDialog.AddToDo -> EditToDoItemDialog(
+            toDoItem = ToDoItem("", false),
             onConfirm = onConfirmAdd,
             onCancel = onCancelAdd
         )
