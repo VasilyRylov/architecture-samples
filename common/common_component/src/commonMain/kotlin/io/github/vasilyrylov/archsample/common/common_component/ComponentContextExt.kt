@@ -3,8 +3,8 @@ package io.github.vasilyrylov.archsample.common.common_component
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.essenty.instancekeeper.InstanceKeeper
 import com.arkivanov.essenty.instancekeeper.getOrCreate
-import io.github.vasilyrylov.archsample.common.common_ui.BaseViewModel
-import io.github.vasilyrylov.archsample.common.common_ui.RouterHolder
+import io.github.vasilyrylov.archsample.common.common_ui.base.BaseViewModel
+import io.github.vasilyrylov.archsample.common.common_ui.navigation.RouterHolder
 import kotlinx.serialization.DeserializationStrategy
 import kotlinx.serialization.SerializationStrategy
 import org.koin.core.module.Module

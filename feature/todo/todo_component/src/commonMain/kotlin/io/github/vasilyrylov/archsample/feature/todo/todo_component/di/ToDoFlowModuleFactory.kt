@@ -1,6 +1,6 @@
 package io.github.vasilyrylov.archsample.feature.todo.todo_component.di
 
-import io.github.vasilyrylov.archsample.common.common_ui.RouterHolder
+import io.github.vasilyrylov.archsample.common.common_ui.navigation.RouterHolder
 import io.github.vasilyrylov.archsample.feature.todo.todo_component.api.IToDoComponentDependencies
 import io.github.vasilyrylov.archsample.feature.todo.todo_domain.api.IToDoRepository
 import io.github.vasilyrylov.archsample.feature.todo.todo_domain.usecase.SaveToDoUseCase
