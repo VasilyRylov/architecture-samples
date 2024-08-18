@@ -49,3 +49,6 @@ include(":feature:todo:todo_ui")
 include(":feature:todo:todo_domain")
 include(":feature:todo:todo_component")
 include(":feature:todo:todo_data")
+
+include(":feature:tab:tab_component")
+include(":feature:tab:tab_ui")
