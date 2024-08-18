@@ -8,7 +8,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import io.github.vasilyrylov.archsample.feature.auth.auth_ui.component.LoginScreenContent
+import io.github.vasilyrylov.archsample.feature.auth.auth_ui.element.LoginScreenContent
 import io.github.vasilyrylov.archsample.feature.auth.auth_ui.data.LoginScreenData
 
 @Composable
@@ -18,12 +18,12 @@ fun LoginScreen(
     startAuthenticating: () -> Unit,
     toRegistration: () -> Unit,
 ) {
-    Scaffold { padding ->
+    Scaffold { paddingValues ->
         Box(
             modifier = Modifier
-                .verticalScroll(rememberScrollState())
+                .verticalScroll(state = rememberScrollState())
                 .fillMaxSize()
-                .padding(padding)
+                .padding(paddingValues = paddingValues)
         ) {
             LoginScreenContent(data = data,
                 onNameChange = { name ->

@@ -2,31 +2,19 @@ package io.github.vasilyrylov.archsample.common.common_ui.ui_theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.compositionLocalOf
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 
 @Composable
 fun AppTheme(
+    useDarkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
-    val systemIsDark = isSystemInDarkTheme()
-    val isDarkState = remember { mutableStateOf(systemIsDark) }
+    SystemAppearance(useDarkTheme = useDarkTheme)
 
-    CompositionLocalProvider(LocalThemeIsDark provides isDarkState) {
-        val isDark by isDarkState
+    val colorScheme = appColorScheme(useDarkTheme = useDarkTheme)
 
-        SystemAppearance(!isDark)
-
-        MaterialTheme(
-            colorScheme = if (isDark) DarkColorScheme else LightColorScheme,
-            content = { Surface(content = content) }
-        )
-    }
+    MaterialTheme(
+        colorScheme = colorScheme,
+        content = content
+    )
 }
-
-internal val LocalThemeIsDark = compositionLocalOf { mutableStateOf(true) }

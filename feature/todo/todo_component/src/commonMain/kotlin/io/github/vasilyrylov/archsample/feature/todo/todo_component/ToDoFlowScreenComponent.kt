@@ -6,8 +6,8 @@ import com.arkivanov.decompose.extensions.compose.stack.Children
 import com.arkivanov.decompose.extensions.compose.stack.animation.slide
 import com.arkivanov.decompose.extensions.compose.stack.animation.stackAnimation
 import com.arkivanov.decompose.extensions.compose.subscribeAsState
-import io.github.vasilyrylov.archsample.feature.todo.todo_ui.details.TodoDetailsScreenContainer
-import io.github.vasilyrylov.archsample.feature.todo.todo_ui.list.TodoListScreenContainer
+import io.github.vasilyrylov.archsample.feature.todo.todo_ui.screen.details.TodoDetailsScreenContainer
+import io.github.vasilyrylov.archsample.feature.todo.todo_ui.screen.list.TodoListScreenContainer
 
 @Composable
 fun ToDoFlowScreenComponent(toDoFlowComponent: ToDoFlowComponent) {

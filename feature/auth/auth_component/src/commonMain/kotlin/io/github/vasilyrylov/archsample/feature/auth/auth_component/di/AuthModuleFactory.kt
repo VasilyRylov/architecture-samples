@@ -18,13 +18,6 @@ internal fun createAuthModule(
     singleOf(::AuthViewModel)
     singleOf(::AuthAsyncWorker)
     factoryOf(::AuthInteractor)
-    factory<IAuthCompletionUseCase> {
-        dependencies.authCompletionUseCase
-    }
-    single {
-        AuthFeature(
-            initialState,
-            get(),
-        )
-    }
+    factory<IAuthCompletionUseCase> { dependencies.authCompletionUseCase }
+    single { AuthFeature(initialState = initialState, asyncWorker = get()) }
 }

@@ -26,7 +26,7 @@ fun AuthFlowScreenContainer(authViewModel: AuthViewModel) {
 
         is RegistrationScreenData -> RegistrationScreen(
             data = data,
-            onBack = authViewModel::toLogin,
+            onBackClick = authViewModel::toLogin,
             handleChangeRegistrationData = authViewModel::handleChangeRegistrationData,
             startRegistration = authViewModel::startRegistration,
             declineRegistrationData = authViewModel::declineRegistrationData,

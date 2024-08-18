@@ -32,6 +32,12 @@ kotlin {
     }
 }
 
+compose.resources {
+    publicResClass = true
+    packageOfResClass = "io.github.vasilyrylov.archsample.resources"
+    generateResClass = always
+}
+
 android {
     namespace = "io.github.vasilyrylov.archsample.common.common_ui"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
