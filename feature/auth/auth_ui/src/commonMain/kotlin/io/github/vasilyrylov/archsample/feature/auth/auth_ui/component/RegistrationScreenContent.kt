@@ -19,7 +19,7 @@ import io.github.vasilyrylov.archsample.feature.auth.auth_ui.data.RegistrationSc
 @Composable
 fun RegistrationScreenContent(
     data: RegistrationScreenData,
-    onMailChange: (String) -> Unit,
+    onNameChange: (String) -> Unit,
     onPasswordChange: (String) -> Unit,
     onRepeatedPasswordChange: (String) -> Unit,
     onRegistrationClick: () -> Unit,
@@ -33,8 +33,8 @@ fun RegistrationScreenContent(
         Spacer(modifier = Modifier.height(64.dp))
         NameInputField(
             modifier = Modifier.fillMaxWidth(),
-            value = data.mail,
-            onValueChange = onMailChange
+            value = data.name,
+            onValueChange = onNameChange
         )
         Spacer(modifier = Modifier.height(16.dp))
         PasswordInputField(

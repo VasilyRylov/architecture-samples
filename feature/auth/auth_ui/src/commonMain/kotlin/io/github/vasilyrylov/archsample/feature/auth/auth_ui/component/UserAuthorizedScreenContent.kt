@@ -32,7 +32,7 @@ fun UserAuthorizedScreenContent(
             fontSize = 26.sp,
         )
         Text(
-            text = state.mail,
+            text = state.name,
             fontSize = 18.sp,
         )
         Spacer(modifier = Modifier.height(32.dp))

@@ -5,6 +5,7 @@ import io.github.vasilyrylov.archsample.common.common_component.createKoinScope
 import io.github.vasilyrylov.archsample.common.common_component.createViewModel
 import io.github.vasilyrylov.archsample.common.common_component.registerAndGetSavedState
 import io.github.vasilyrylov.archsample.common.common_component.updateRouterInstance
+import io.github.vasilyrylov.archsample.feature.root.root_component.di.createRootModule
 import io.github.vasilyrylov.archsample.feature.root.root_ui.RootViewModel
 import io.github.vasilyrylov.archsample.feature.root.root_domain.fsm.RootFeature
 import io.github.vasilyrylov.archsample.feature.root.root_domain.fsm.RootFSMState

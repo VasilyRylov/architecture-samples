@@ -1,4 +1,4 @@
-package io.github.vasilyrylov.archsample.feature.root.root_component
+package io.github.vasilyrylov.archsample.feature.root.root_component.di
 
 import io.github.vasilyrylov.archsample.common.common_data.repository.AuthorizedUserRepositoryDemo
 import io.github.vasilyrylov.archsample.common.common_domain.api.IAuthorizedUserRepository

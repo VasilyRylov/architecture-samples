@@ -36,9 +36,9 @@ kotlin {
 
 android {
     namespace = "io.github.vasilyrylov.archsample.feature.auth.auth_ui"
-    compileSdk = 34
+    compileSdk = libs.versions.android.compileSdk.get().toInt()
     defaultConfig {
-        minSdk = 26
+        minSdk = libs.versions.android.minSdk.get().toInt()
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17

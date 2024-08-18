@@ -1,4 +1,4 @@
-package io.github.vasilyrylov.archsample.feature.todo.todo_component.list
+package io.github.vasilyrylov.archsample.feature.todo.todo_component.list.di
 
 import io.github.vasilyrylov.archsample.feature.todo.todo_domain.usecase.ObserveToDoListUseCase
 import org.koin.dsl.module

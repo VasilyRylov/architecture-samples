@@ -35,10 +35,10 @@ kotlin {
 }
 
 android {
-    namespace = "io.github.vasilyrylov.archsample.feature.todo.todo_list.ui"
-    compileSdk = 34
+    namespace = "io.github.vasilyrylov.archsample.feature.root.root_ui"
+    compileSdk = libs.versions.android.compileSdk.get().toInt()
     defaultConfig {
-        minSdk = 26
+        minSdk = libs.versions.android.minSdk.get().toInt()
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17

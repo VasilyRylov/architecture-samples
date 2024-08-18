@@ -1,4 +1,4 @@
-package io.github.vasilyrylov.archsample.feature.auth.auth_component
+package io.github.vasilyrylov.archsample.feature.auth.auth_component.di
 
 import io.github.vasilyrylov.archsample.feature.auth.auth_component.api.IAuthComponentDependencies
 import io.github.vasilyrylov.archsample.feature.auth.auth_domain.api.IAuthCompletionUseCase

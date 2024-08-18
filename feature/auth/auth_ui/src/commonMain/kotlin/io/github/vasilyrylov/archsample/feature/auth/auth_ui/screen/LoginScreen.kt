@@ -26,11 +26,11 @@ fun LoginScreen(
                 .padding(padding)
         ) {
             LoginScreenContent(data = data,
-                onMailChange = { mail ->
-                    onChangeLoginData(mail, data.password)
+                onNameChange = { name ->
+                    onChangeLoginData(name, data.password)
                 },
                 onPasswordChange = { password ->
-                    onChangeLoginData(data.mail, password)
+                    onChangeLoginData(data.name, password)
                 },
                 onSignInClick = { startAuthenticating() },
                 onSignUpClick = { toRegistration() })

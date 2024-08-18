@@ -50,12 +50,12 @@ class AuthFeature(
         proceed(StartRegistration())
     }
 
-    fun handleChangeRegistrationData(mail: String, password: String, repeatPassword: String) {
-        proceed(HandleChangeRegistrationData(mail, password, repeatPassword))
+    fun handleChangeRegistrationData(name: String, password: String, repeatPassword: String) {
+        proceed(HandleChangeRegistrationData(name, password, repeatPassword))
     }
 
-    fun handleChangeLoginData(mail: String, password: String) {
-        proceed(HandleChangeLoginData(mail, password))
+    fun handleChangeLoginData(name: String, password: String) {
+        proceed(HandleChangeLoginData(name, password))
     }
 
     fun handleSnackBarShowed() {

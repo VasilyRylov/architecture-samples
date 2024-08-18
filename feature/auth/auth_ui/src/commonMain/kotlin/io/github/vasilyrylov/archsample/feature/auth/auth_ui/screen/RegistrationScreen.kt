@@ -24,7 +24,7 @@ import io.github.vasilyrylov.archsample.feature.auth.auth_ui.common.ConfirmDialo
 fun RegistrationScreen(
     data: RegistrationScreenData,
     onBack: () -> Unit,
-    handleChangeRegistrationData: (String, String, String) -> Unit,
+    handleChangeRegistrationData: (name: String, password: String, repeatedPassword: String) -> Unit,
     startRegistration: () -> Unit,
     declineRegistrationData: () -> Unit,
     confirmRegistrationData: () -> Unit
@@ -47,21 +47,21 @@ fun RegistrationScreen(
                 .padding(padding)
         ) {
             RegistrationScreenContent(data = data,
-                onMailChange = { mail ->
+                onNameChange = { name ->
                     handleChangeRegistrationData(
-                        mail,
+                        name,
                         data.password, data.repeatedPassword
                     )
                 },
                 onPasswordChange = { password ->
                     handleChangeRegistrationData(
-                        data.mail,
+                        data.name,
                         password, data.repeatedPassword
                     )
                 },
                 onRepeatedPasswordChange = { repeatedPassword ->
                     handleChangeRegistrationData(
-                        data.mail,
+                        data.name,
                         data.password,
                         repeatedPassword
                     )

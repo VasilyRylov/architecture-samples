@@ -4,6 +4,7 @@ import com.arkivanov.decompose.ComponentContext
 import io.github.vasilyrylov.archsample.common.common_component.createKoinScope
 import io.github.vasilyrylov.archsample.common.common_component.updateRouterInstance
 import io.github.vasilyrylov.archsample.feature.todo.todo_component.api.IToDoComponentDependencies
+import io.github.vasilyrylov.archsample.feature.todo.todo_component.di.createToDoFlowModule
 
 class ToDoFlowComponent(
     componentContext: ComponentContext,

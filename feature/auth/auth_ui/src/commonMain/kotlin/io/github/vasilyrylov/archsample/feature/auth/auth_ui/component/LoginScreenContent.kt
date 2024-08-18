@@ -22,7 +22,7 @@ import io.github.vasilyrylov.archsample.feature.auth.auth_ui.data.LoginScreenDat
 @Composable
 fun LoginScreenContent(
     data: LoginScreenData,
-    onMailChange: (String) -> Unit,
+    onNameChange: (String) -> Unit,
     onPasswordChange: (String) -> Unit,
     onSignInClick: () -> Unit,
     onSignUpClick: () -> Unit,
@@ -40,8 +40,8 @@ fun LoginScreenContent(
         Spacer(modifier = Modifier.height(64.dp))
         NameInputField(
             modifier = Modifier.fillMaxWidth(),
-            value = data.mail,
-            onValueChange = onMailChange
+            value = data.name,
+            onValueChange = onNameChange
         )
         Spacer(modifier = Modifier.height(16.dp))
         PasswordInputField(

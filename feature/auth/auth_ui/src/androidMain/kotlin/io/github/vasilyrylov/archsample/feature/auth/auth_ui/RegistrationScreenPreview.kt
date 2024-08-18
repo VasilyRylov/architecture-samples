@@ -13,7 +13,7 @@ private fun RegistrationScreenPreview() {
 
     RegistrationScreen(
         data = RegistrationScreenData(
-            mail = "",
+            name = "",
             password = "",
             repeatedPassword = "",
             errorMessage = null,
@@ -33,7 +33,7 @@ private fun LoginScreenPreview() {
 
     LoginScreen(
         data = LoginScreenData(
-            mail = "",
+            name = "",
             password = "",
             errorMessage = null,
             isAuthenticationInProgress = false,

@@ -53,12 +53,12 @@ class AuthViewModel(
         authFeature.startRegistration()
     }
 
-    fun handleChangeRegistrationData(mail: String, password: String, repeatPassword: String) {
-        authFeature.handleChangeRegistrationData(mail, password, repeatPassword)
+    fun handleChangeRegistrationData(name: String, password: String, repeatPassword: String) {
+        authFeature.handleChangeRegistrationData(name, password, repeatPassword)
     }
 
-    fun handleChangeLoginData(mail: String, password: String) {
-        authFeature.handleChangeLoginData(mail, password)
+    fun handleChangeLoginData(name: String, password: String) {
+        authFeature.handleChangeLoginData(name, password)
     }
 
     override fun onCleared() {

@@ -1,4 +1,4 @@
-package io.github.vasilyrylov.archsample.feature.todo.todo_component.details
+package io.github.vasilyrylov.archsample.feature.todo.todo_component.details.di
 
 import io.github.vasilyrylov.archsample.feature.todo.todo_domain.model.ToDoItemId
 import io.github.vasilyrylov.archsample.feature.todo.todo_domain.usecase.DeleteToDoUseCase

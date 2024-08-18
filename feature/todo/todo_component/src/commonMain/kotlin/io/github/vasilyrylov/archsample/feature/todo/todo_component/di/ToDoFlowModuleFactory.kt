@@ -1,4 +1,4 @@
-package io.github.vasilyrylov.archsample.feature.todo.todo_component
+package io.github.vasilyrylov.archsample.feature.todo.todo_component.di
 
 import io.github.vasilyrylov.archsample.common.common_ui.RouterHolder
 import io.github.vasilyrylov.archsample.feature.todo.todo_component.api.IToDoComponentDependencies

@@ -1,7 +1,7 @@
 package io.github.vasilyrylov.archsample.feature.auth.auth_ui.data
 
 data class RegistrationScreenData(
-    val mail: String,
+    val name: String,
     val password: String,
     val repeatedPassword: String,
     val errorMessage: String?,

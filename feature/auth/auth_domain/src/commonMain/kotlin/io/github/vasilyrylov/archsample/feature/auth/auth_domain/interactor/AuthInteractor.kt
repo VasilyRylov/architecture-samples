@@ -5,13 +5,13 @@ import io.github.vasilyrylov.archsample.feature.auth.auth_domain.data.AuthResult
 import io.github.vasilyrylov.archsample.feature.auth.auth_domain.data.RegistrationResult
 
 class AuthInteractor {
-    private var registeredMail: String = ""
+    private var registeredName: String = ""
     private var registeredPassword: String = ""
 
-    suspend fun check(mail: String, password: String): AuthResult {
+    suspend fun check(name: String, password: String): AuthResult {
         delay(1500)
-        return if (registeredMail == mail && registeredPassword == password
-            && mail.isNotBlank() && password.isNotBlank()
+        return if (registeredName == name && registeredPassword == password
+            && name.isNotBlank() && password.isNotBlank()
         ) {
             AuthResult.SUCCESS
         } else {
@@ -19,12 +19,12 @@ class AuthInteractor {
         }
     }
 
-    suspend fun register(mail: String, password: String): RegistrationResult {
+    suspend fun register(name: String, password: String): RegistrationResult {
         delay(1500)
-        return if (registeredMail == mail) {
+        return if (registeredName == name) {
             RegistrationResult.USER_ALREADY_REGISTERED
         } else {
-            registeredMail = mail
+            registeredName = name
             registeredPassword = password
             RegistrationResult.SUCCESS
         }
