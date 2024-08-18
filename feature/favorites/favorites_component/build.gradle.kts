@@ -14,12 +14,7 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(project(":feature:favorites:favorites_component"))
-
-            implementation(project(":feature:todo:todo_component"))
-            implementation(project(":feature:todo:todo_domain"))
-
-            implementation(project(":feature:tab:tab_ui"))
+            implementation(project(":feature:favorites:favorites_ui"))
 
             implementation(project(":common:common_component"))
             implementation(project(":common:common_domain"))

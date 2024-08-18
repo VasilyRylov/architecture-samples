@@ -7,6 +7,7 @@ import com.arkivanov.decompose.router.stack.bringToFront
 import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.value.Value
 import io.github.vasilyrylov.archsample.common.common_domain.api.IAuthorizedUserRepository
+import io.github.vasilyrylov.archsample.feature.favorites.favorites_component.FavoritesFlowComponent
 import io.github.vasilyrylov.archsample.feature.tab.tab_component.api.ITabComponentDependencies
 import io.github.vasilyrylov.archsample.feature.tab.tab_ui.ITabFlowRouter
 import io.github.vasilyrylov.archsample.feature.todo.todo_component.ToDoFlowComponent
@@ -42,13 +43,17 @@ class TabFlowRouter(
                 )
             )
 
-            is Configuration.Favorites -> Child.Favorites
+            is Configuration.Favorites -> Child.Favorites(
+                component = FavoritesFlowComponent(
+                    componentContext = componentContext
+                ),
+            )
         }
     }
 
     internal sealed interface Child {
         class ToDoList(val component: ToDoFlowComponent) : Child
-        data object Favorites : Child
+        class Favorites(val component: FavoritesFlowComponent) : Child
     }
 
     @Serializable

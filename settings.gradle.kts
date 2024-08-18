@@ -52,3 +52,6 @@ include(":feature:todo:todo_data")
 
 include(":feature:tab:tab_component")
 include(":feature:tab:tab_ui")
+
+include(":feature:favorites:favorites_component")
+include(":feature:favorites:favorites_ui")

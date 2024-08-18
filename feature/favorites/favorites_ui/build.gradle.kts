@@ -1,11 +1,13 @@
 plugins {
     alias(libs.plugins.multiplatform)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.compose)
-    alias(libs.plugins.kotlinx.serialization)
 }
 
 kotlin {
+    androidTarget()
+
     jvm()
 
     iosX64()
@@ -14,20 +16,7 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(project(":feature:favorites:favorites_component"))
-
-            implementation(project(":feature:todo:todo_component"))
-            implementation(project(":feature:todo:todo_domain"))
-
-            implementation(project(":feature:tab:tab_ui"))
-
-            implementation(project(":common:common_component"))
-            implementation(project(":common:common_domain"))
             implementation(project(":common:common_ui"))
-
-            implementation(libs.decompose)
-            implementation(libs.decompose.compose)
-            implementation(libs.koin.core)
 
             implementation(compose.runtime)
             implementation(compose.foundation)
@@ -37,5 +26,21 @@ kotlin {
         commonTest.dependencies {
             // implementation(libs.kotlin.test)
         }
+        androidMain.dependencies {
+            implementation(compose.preview)
+            implementation(compose.uiTooling)
+        }
+    }
+}
+
+android {
+    namespace = "io.github.vasilyrylov.archsample.feature.favorites.favorites_ui"
+    compileSdk = libs.versions.android.compileSdk.get().toInt()
+    defaultConfig {
+        minSdk = libs.versions.android.minSdk.get().toInt()
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 }

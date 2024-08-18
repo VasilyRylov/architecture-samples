@@ -8,13 +8,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import com.arkivanov.decompose.extensions.compose.stack.Children
 import com.arkivanov.decompose.extensions.compose.subscribeAsState
+import io.github.vasilyrylov.archsample.feature.favorites.favorites_component.FavoritesScreenComponent
 import io.github.vasilyrylov.archsample.feature.tab.tab_component.TabFlowComponent
 import io.github.vasilyrylov.archsample.feature.tab.tab_component.TabFlowRouter
 import io.github.vasilyrylov.archsample.feature.todo.todo_component.ToDoFlowScreenComponent
 
 @Composable
 fun TabFlowScreenComponent(tabFlowComponent: TabFlowComponent) {
-    // Work in progress
     val childStack by tabFlowComponent.router.childStack.subscribeAsState()
     val childInstance = childStack.active.instance
     val onTabClick: ((NavigationTab) -> Unit) = remember(tabFlowComponent) {
@@ -49,7 +49,7 @@ fun TabFlowScreenComponent(tabFlowComponent: TabFlowComponent) {
                 }
 
                 is TabFlowRouter.Child.Favorites -> {
-                    Unit
+                    FavoritesScreenComponent(child.component)
                 }
             }
         }
