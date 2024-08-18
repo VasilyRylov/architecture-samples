@@ -20,7 +20,7 @@ private fun RegistrationScreenPreview() {
             isRegistrationInProgress = false,
             isConfirmationRequested = false,
         ),
-        onBack = { },
+        onBackClick = { },
         handleChangeRegistrationData = { _, _, _ -> },
         startRegistration = { },
         declineRegistrationData = { }) {

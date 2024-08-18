@@ -15,66 +15,59 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import io.github.vasilyrylov.archsample.feature.auth.auth_ui.component.RegistrationScreenContent
+import io.github.vasilyrylov.archsample.feature.auth.auth_ui.element.RegistrationScreenContent
 import io.github.vasilyrylov.archsample.feature.auth.auth_ui.data.RegistrationScreenData
-import io.github.vasilyrylov.archsample.feature.auth.auth_ui.common.ConfirmDialog
+import io.github.vasilyrylov.archsample.feature.auth.auth_ui.element.dialog.ConfirmDialog
+import io.github.vasilyrylov.archsample.resources.Res
+import io.github.vasilyrylov.archsample.resources.back
+import io.github.vasilyrylov.archsample.resources.confirm_registration_dialog_description
+import io.github.vasilyrylov.archsample.resources.confirm_registration_dialog_title
+import io.github.vasilyrylov.archsample.resources.registration
+import org.jetbrains.compose.resources.stringResource
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RegistrationScreen(
     data: RegistrationScreenData,
-    onBack: () -> Unit,
+    onBackClick: () -> Unit,
     handleChangeRegistrationData: (name: String, password: String, repeatedPassword: String) -> Unit,
     startRegistration: () -> Unit,
     declineRegistrationData: () -> Unit,
     confirmRegistrationData: () -> Unit
 ) {
     Scaffold(topBar = {
-        TopAppBar(title = { Text("Registration") },
+        TopAppBar(title = { Text(text = stringResource(Res.string.registration)) },
             navigationIcon = {
-                IconButton(onClick = onBack) {
-                    Icon(
-                        Icons.AutoMirrored.Filled.ArrowBack,
-                        contentDescription = "Back"
-                    )
+                IconButton(onClick = onBackClick) {
+                    Icon(imageVector = Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(Res.string.back))
                 }
-            })
-    }) { padding ->
+            }
+        )
+    }) { paddingValues ->
         Box(
             modifier = Modifier
-                .verticalScroll(rememberScrollState())
+                .verticalScroll(state = rememberScrollState())
                 .fillMaxSize()
-                .padding(padding)
+                .padding(paddingValues = paddingValues)
         ) {
             RegistrationScreenContent(data = data,
                 onNameChange = { name ->
-                    handleChangeRegistrationData(
-                        name,
-                        data.password, data.repeatedPassword
-                    )
+                    handleChangeRegistrationData(name, data.password, data.repeatedPassword)
                 },
                 onPasswordChange = { password ->
-                    handleChangeRegistrationData(
-                        data.name,
-                        password, data.repeatedPassword
-                    )
+                    handleChangeRegistrationData(data.name, password, data.repeatedPassword)
                 },
                 onRepeatedPasswordChange = { repeatedPassword ->
-                    handleChangeRegistrationData(
-                        data.name,
-                        data.password,
-                        repeatedPassword
-                    )
+                    handleChangeRegistrationData(data.name, data.password, repeatedPassword)
                 },
                 onRegistrationClick = { startRegistration() })
         }
         if (data.isConfirmationRequested) {
             ConfirmDialog(
-                title = "Confirm registration",
-                description = "Continue with current data?",
-                onDismiss = { declineRegistrationData() },
-                onConfirm = { confirmRegistrationData() },
-                onCancel = { declineRegistrationData() },
+                title = stringResource(Res.string.confirm_registration_dialog_title),
+                description = stringResource(Res.string.confirm_registration_dialog_description),
+                onConfirmClick = { confirmRegistrationData() },
+                onCancelClick = { declineRegistrationData() },
             )
         }
     }

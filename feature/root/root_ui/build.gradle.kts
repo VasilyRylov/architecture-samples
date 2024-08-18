@@ -34,6 +34,10 @@ kotlin {
     }
 }
 
+compose.resources {
+    generateResClass = never
+}
+
 android {
     namespace = "io.github.vasilyrylov.archsample.feature.root.root_ui"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
