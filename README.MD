@@ -3,14 +3,14 @@
 
 ### Frameworks and libraries
 
-- Compose Multiplatform
-- Decompose
-- VisualFSM
-- Koin DI
-- Room Multiplatform
+- [Compose Multiplatform](https://github.com/JetBrains/compose-multiplatform)
+- [Decompose](https://github.com/arkivanov/Decompose)
+- [VisualFSM](https://github.com/Kontur-Mobile/VisualFSM)
+- [Koin DI](https://github.com/InsertKoinIO/koin)
+- [Room Multiplatform](https://developer.android.com/kotlin/multiplatform/room)
 
 ### Key concepts
-- FSM based
+- FSM based MVI
 - Navigation is abstracted from Decompose
 - Decompose components are separated into own modules
 - Business logic and UI modules do not depend on Component modules
@@ -70,6 +70,13 @@ graph TB
   :feature:root:root_component --> :common:common_component
   :feature:root:root_component --> :common:common_ui
 ```
+
+### Variants and ready status
+|     Sample     | Description | Ready status |
+| ------------- | ------------- | ------------- |
+| [fsm-mvi-and-mvvm-plus](https://github.com/VasilyRylov/architecture-samples/tree/main) | Fsm-based MVI and MVVM+(Todo Feature) | Working on inmemory repositories, Room Multiplatform WIP in branch room-multiplatform |
+| [fsm-mvi](https://github.com/VasilyRylov/architecture-samples/tree/main/fsm-mvi) | Fsm-based MVI with parent and child relation FSMs | Work in progress |
+| [fsm-mvi-extendable-state](https://github.com/VasilyRylov/architecture-samples/tree/main/fsm-mvi-extendable-state) | Fsm-based MVI with extendable parent state | Work in progress |
 
 ### Root module FSM
 
