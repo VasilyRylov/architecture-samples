@@ -1,7 +1,7 @@
 package io.github.vasilyrylov.archsample.feature.todo.todo_ui.details
 
-import io.github.vasilyrylov.archsample.common.common_ui.BaseStateViewModel
-import io.github.vasilyrylov.archsample.common.common_ui.RouterHolder
+import io.github.vasilyrylov.archsample.common.common_ui.base.BaseStateViewModel
+import io.github.vasilyrylov.archsample.common.common_ui.navigation.RouterHolder
 import io.github.vasilyrylov.archsample.feature.todo.todo_domain.model.ToDoItem
 import io.github.vasilyrylov.archsample.feature.todo.todo_domain.model.ToDoItemId
 import io.github.vasilyrylov.archsample.feature.todo.todo_domain.usecase.DeleteToDoUseCase

@@ -1,7 +1,7 @@
 package io.github.vasilyrylov.archsample.feature.root.root_ui
 
-import io.github.vasilyrylov.archsample.common.common_ui.BaseViewModel
-import io.github.vasilyrylov.archsample.common.common_ui.RouterHolder
+import io.github.vasilyrylov.archsample.common.common_ui.base.BaseViewModel
+import io.github.vasilyrylov.archsample.common.common_ui.navigation.RouterHolder
 import io.github.vasilyrylov.archsample.feature.root.root_domain.fsm.RootFeature
 import io.github.vasilyrylov.archsample.feature.root.root_domain.fsm.RootFSMState
 import io.github.vasilyrylov.archsample.feature.root.root_ui.api.IRootFlowRouter

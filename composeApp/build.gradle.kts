@@ -6,8 +6,6 @@ plugins {
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.compose)
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlinx.serialization)
-    alias(libs.plugins.ksp)
 }
 
 kotlin {
@@ -32,19 +30,12 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(project(":feature:root:root_component"))
+            implementation(project(":common:common_ui"))
 
             implementation(compose.runtime)
-            implementation(compose.foundation)
-            implementation(compose.material3)
-            implementation(compose.components.resources)
+
             implementation(libs.decompose)
             implementation(libs.decompose.compose)
-            implementation(libs.kermit)
-            implementation(libs.kotlinx.coroutines.core)
-            implementation(libs.kotlinx.serialization.json)
-            implementation(libs.kotlinx.datetime)
-            implementation(libs.multiplatformSettings)
-            implementation(libs.koin.core)
         }
 
         commonTest.dependencies {
@@ -55,7 +46,6 @@ kotlin {
         }
 
         androidMain.dependencies {
-            implementation(compose.uiTooling)
             implementation(libs.androidx.activityCompose)
             implementation(libs.kotlinx.coroutines.android)
         }
@@ -115,17 +105,3 @@ compose.desktop {
         }
     }
 }
-
-//room {
-//    schemaDirectory("$projectDir/schemas")
-//}
-//
-//dependencies {
-//    with(libs.room.compiler) {
-//        add("kspAndroid", this)
-//        add("kspJvm", this)
-//        add("kspIosX64", this)
-//        add("kspIosArm64", this)
-//        add("kspIosSimulatorArm64", this)
-//    }
-//}

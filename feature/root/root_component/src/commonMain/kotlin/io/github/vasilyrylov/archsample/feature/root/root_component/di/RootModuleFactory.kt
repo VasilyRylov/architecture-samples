@@ -2,7 +2,7 @@ package io.github.vasilyrylov.archsample.feature.root.root_component.di
 
 import io.github.vasilyrylov.archsample.common.common_data.repository.AuthorizedUserRepositoryDemo
 import io.github.vasilyrylov.archsample.common.common_domain.api.IAuthorizedUserRepository
-import io.github.vasilyrylov.archsample.common.common_ui.RouterHolder
+import io.github.vasilyrylov.archsample.common.common_ui.navigation.RouterHolder
 import io.github.vasilyrylov.archsample.feature.auth.auth_domain.api.IAuthCompletionUseCase
 import io.github.vasilyrylov.archsample.feature.root.root_ui.api.IRootFlowRouter
 import org.koin.core.module.dsl.factoryOf

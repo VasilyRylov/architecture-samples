@@ -25,6 +25,7 @@ kotlin {
             // implementation(libs.kotlin.test)
         }
         androidMain.dependencies {
+            implementation(libs.androidx.activityCompose)
             implementation(compose.preview)
             implementation(compose.uiTooling)
         }

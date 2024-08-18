@@ -1,6 +1,6 @@
 package io.github.vasilyrylov.archsample.feature.auth.auth_ui
 
-import io.github.vasilyrylov.archsample.common.common_ui.BaseViewModel
+import io.github.vasilyrylov.archsample.common.common_ui.base.BaseViewModel
 import io.github.vasilyrylov.archsample.feature.auth.auth_domain.api.IAuthCompletionUseCase
 import io.github.vasilyrylov.archsample.feature.auth.auth_domain.fsm.AuthFSMState
 import io.github.vasilyrylov.archsample.feature.auth.auth_domain.fsm.AuthFeature

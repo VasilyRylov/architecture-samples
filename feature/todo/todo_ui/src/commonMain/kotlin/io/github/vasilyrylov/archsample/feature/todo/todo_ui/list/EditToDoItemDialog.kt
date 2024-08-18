@@ -1,6 +1,5 @@
 package io.github.vasilyrylov.archsample.feature.todo.todo_ui.list
 
-import io.github.vasilyrylov.archsample.common.common_ui.CustomDialog
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -16,8 +15,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import io.github.vasilyrylov.archsample.common.common_ui.element.CustomDialog
 import io.github.vasilyrylov.archsample.feature.todo.todo_domain.model.ToDoItem
-
 
 @Composable
 fun EditToDoItemDialog(
