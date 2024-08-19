@@ -1,0 +1,29 @@
+<resources>
+    <string name="todo">ToDo</string>
+    <string name="welcome">Welcome!</string>
+
+    <string name="login">Login</string>
+    <string name="registration">Registration</string>
+    <string name="sign_in">Sign in</string>
+    <string name="sign_up">Sign up</string>
+    <string name="logout">Logout</string>
+
+    <string name="name">Name</string>
+    <string name="password">Password</string>
+    <string name="repeat_password">Repeat password</string>
+    <string name="input_password">Input password</string>
+    <string name="input_name">Input name</string>
+
+    <string name="confirm_registration_dialog_title">Confirm registration</string>
+    <string name="confirm_registration_dialog_description">Continue with current data?</string>
+
+    <string name="todo_list">ToDo list</string>
+
+    <string name="back">Back</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">Ok</string>
+    <string name="save">Save</string>
+    <string name="add">Add</string>
+</resources>

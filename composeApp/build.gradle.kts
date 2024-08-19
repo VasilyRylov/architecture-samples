@@ -6,9 +6,6 @@ plugins {
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.compose)
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlinx.serialization)
-    //alias(libs.plugins.room)
-    alias(libs.plugins.ksp)
 }
 
 kotlin {
@@ -24,7 +21,7 @@ kotlin {
         it.binaries.framework {
             baseName = "ComposeApp"
             isStatic = true
-            export(project(":feature:root:root_component"))
+            export(project(":feature:root:root-component"))
             export(libs.decompose)
             export(libs.essenty.lifecycle)
         }
@@ -32,21 +29,13 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(project(":feature:root:root_component"))
+            implementation(project(":feature:root:root-component"))
+            implementation(project(":common:common-ui"))
 
             implementation(compose.runtime)
-            implementation(compose.foundation)
-            implementation(compose.material3)
-            implementation(compose.components.resources)
+
             implementation(libs.decompose)
             implementation(libs.decompose.compose)
-            implementation(libs.kermit)
-            implementation(libs.kotlinx.coroutines.core)
-            implementation(libs.kotlinx.serialization.json)
-            implementation(libs.kotlinx.datetime)
-            implementation(libs.multiplatformSettings)
-            implementation(libs.koin.core)
-            implementation(libs.room.runtime)
         }
 
         commonTest.dependencies {
@@ -57,7 +46,6 @@ kotlin {
         }
 
         androidMain.dependencies {
-            implementation(compose.uiTooling)
             implementation(libs.androidx.activityCompose)
             implementation(libs.kotlinx.coroutines.android)
         }
@@ -68,7 +56,7 @@ kotlin {
         }
 
         iosMain.dependencies {
-            api(project(":feature:root:root_component"))
+            api(project(":feature:root:root-component"))
             api(libs.decompose)
             api(libs.essenty.lifecycle)
         }
@@ -108,7 +96,7 @@ android {
 
 compose.desktop {
     application {
-        mainClass = "MainKt"
+        mainClass = "io.github.vasilyrylov.archsample.MainKt"
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
@@ -117,17 +105,3 @@ compose.desktop {
         }
     }
 }
-
-//room {
-//    schemaDirectory("$projectDir/schemas")
-//}
-//
-//dependencies {
-//    with(libs.room.compiler) {
-//        add("kspAndroid", this)
-//        add("kspJvm", this)
-//        add("kspIosX64", this)
-//        add("kspIosArm64", this)
-//        add("kspIosSimulatorArm64", this)
-//    }
-//}
