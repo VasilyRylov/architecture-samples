@@ -8,7 +8,7 @@ import io.github.vasilyrylov.archsample.feature.todo.todo_domain.usecase.Observe
 import io.github.vasilyrylov.archsample.feature.todo.todo_domain.usecase.SaveToDoUseCase
 import io.github.vasilyrylov.archsample.feature.todo.todo_domain.usecase.ToDoCompletedChangeUseCase
 import io.github.vasilyrylov.archsample.feature.todo.todo_ui.api.IToDoFlowRouter
-import io.github.vasilyrylov.archsample.feature.todo.todo_ui.screen.list.model.ToDoListScreenViewState
+import io.github.vasilyrylov.archsample.feature.todo.todo_ui.screen.list.model.ToDoListViewState
 import io.github.vasilyrylov.archsample.feature.todo.todo_ui.screen.list.model.ToDoListScreenDialog
 import kotlinx.coroutines.launch
 
@@ -17,7 +17,7 @@ class ToDoListViewModel(
     private val routerHolder: RouterHolder<IToDoFlowRouter>,
     private val completedChange: ToDoCompletedChangeUseCase,
     private val saveToDo: SaveToDoUseCase,
-) : BaseStateViewModel<ToDoListScreenViewState>() {
+) : BaseStateViewModel<ToDoListViewState>() {
 
     private val router: IToDoFlowRouter
         get() = routerHolder.router
@@ -59,7 +59,7 @@ class ToDoListViewModel(
         }
     }
 
-    override fun createInitialState() = ToDoListScreenViewState(
+    override fun createInitialState() = ToDoListViewState(
         todoItems = listOf(),
         dialog = ToDoListScreenDialog.None
     )

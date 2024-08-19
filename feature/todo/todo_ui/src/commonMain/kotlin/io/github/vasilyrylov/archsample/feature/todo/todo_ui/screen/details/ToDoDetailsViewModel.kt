@@ -10,7 +10,7 @@ import io.github.vasilyrylov.archsample.feature.todo.todo_domain.usecase.SaveToD
 import io.github.vasilyrylov.archsample.feature.todo.todo_domain.usecase.ToDoCompletedChangeUseCase
 import io.github.vasilyrylov.archsample.feature.todo.todo_ui.api.IToDoFlowRouter
 import io.github.vasilyrylov.archsample.feature.todo.todo_ui.screen.details.model.ToDoDetailsScreenDialog
-import io.github.vasilyrylov.archsample.feature.todo.todo_ui.screen.details.model.ToDoDetailsScreenViewState
+import io.github.vasilyrylov.archsample.feature.todo.todo_ui.screen.details.model.ToDoDetailsViewState
 import kotlinx.coroutines.launch
 
 class ToDoDetailsViewModel(
@@ -20,12 +20,12 @@ class ToDoDetailsViewModel(
     private val saveToDo: SaveToDoUseCase,
     private val deleteToDo: DeleteToDoUseCase,
     private val completedChange: ToDoCompletedChangeUseCase
-) : BaseStateViewModel<ToDoDetailsScreenViewState>() {
+) : BaseStateViewModel<ToDoDetailsViewState>() {
 
     private val router: IToDoFlowRouter
         get() = routerHolder.router
 
-    override fun createInitialState() = ToDoDetailsScreenViewState(
+    override fun createInitialState() = ToDoDetailsViewState(
         item = ToDoItem(text = "", completed = false)
     )
 

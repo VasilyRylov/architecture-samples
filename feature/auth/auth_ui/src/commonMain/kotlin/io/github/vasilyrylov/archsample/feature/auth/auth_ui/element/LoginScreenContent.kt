@@ -17,7 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import io.github.vasilyrylov.archsample.feature.auth.auth_ui.data.LoginScreenData
+import io.github.vasilyrylov.archsample.feature.auth.auth_ui.data.LoginViewState
 import io.github.vasilyrylov.archsample.feature.auth.auth_ui.element.input_field.NameInputField
 import io.github.vasilyrylov.archsample.feature.auth.auth_ui.element.input_field.PasswordInputField
 import io.github.vasilyrylov.archsample.resources.Res
@@ -29,7 +29,7 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun LoginScreenContent(
-    data: LoginScreenData,
+    data: LoginViewState,
     onNameChange: (String) -> Unit,
     onPasswordChange: (String) -> Unit,
     onSignInClick: () -> Unit,

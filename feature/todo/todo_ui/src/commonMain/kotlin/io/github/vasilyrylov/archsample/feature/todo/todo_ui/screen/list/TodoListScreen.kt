@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.dp
 import io.github.vasilyrylov.archsample.feature.todo.todo_domain.model.ToDoItem
 import io.github.vasilyrylov.archsample.feature.todo.todo_domain.model.ToDoItemId
 import io.github.vasilyrylov.archsample.feature.todo.todo_ui.element.dialog.EditToDoItemDialog
-import io.github.vasilyrylov.archsample.feature.todo.todo_ui.screen.list.model.ToDoListScreenViewState
+import io.github.vasilyrylov.archsample.feature.todo.todo_ui.screen.list.model.ToDoListViewState
 import io.github.vasilyrylov.archsample.feature.todo.todo_ui.screen.list.model.ToDoListScreenDialog
 import io.github.vasilyrylov.archsample.resources.Res
 import io.github.vasilyrylov.archsample.resources.add
@@ -31,7 +31,7 @@ import org.jetbrains.compose.resources.stringResource
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TodoListScreen(
-    viewState: ToDoListScreenViewState,
+    viewState: ToDoListViewState,
     onAddClick: () -> Unit,
     onCompletedChange: (ToDoItemId) -> Unit,
     onToDoClick: (ToDoItemId) -> Unit,

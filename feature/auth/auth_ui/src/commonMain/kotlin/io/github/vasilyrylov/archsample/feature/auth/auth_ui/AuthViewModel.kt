@@ -14,11 +14,11 @@ class AuthViewModel(
     private val authCompletion: IAuthCompletionUseCase
 ) : BaseViewModel() {
 
-    val state = authFeature.observeState().map(ScreenDataMapper::map)
+    val state = authFeature.observeState().map(ViewStateMapper::map)
         .stateIn(
             scope = coroutineScope,
             started = SharingStarted.Eagerly,
-            initialValue = ScreenDataMapper.map(authFeature.getCurrentState())
+            initialValue = ViewStateMapper.map(authFeature.getCurrentState())
         )
 
     init {
@@ -31,10 +31,6 @@ class AuthViewModel(
 
     fun toLogin() {
         authFeature.toLogin()
-    }
-
-    fun logout() {
-        authFeature.logout()
     }
 
     fun confirmRegistrationData() {

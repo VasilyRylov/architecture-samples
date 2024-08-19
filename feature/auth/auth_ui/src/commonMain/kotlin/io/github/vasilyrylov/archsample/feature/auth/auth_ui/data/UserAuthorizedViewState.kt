@@ -1,5 +1,5 @@
 package io.github.vasilyrylov.archsample.feature.auth.auth_ui.data
 
-data class UserAuthorizedScreenData(
+data class UserAuthorizedViewState(
     val name: String,
-) : AuthScreenData()
+) : AuthViewState()

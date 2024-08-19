@@ -14,7 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import io.github.vasilyrylov.archsample.feature.auth.auth_ui.data.RegistrationScreenData
+import io.github.vasilyrylov.archsample.feature.auth.auth_ui.data.RegistrationViewState
 import io.github.vasilyrylov.archsample.feature.auth.auth_ui.element.input_field.NameInputField
 import io.github.vasilyrylov.archsample.feature.auth.auth_ui.element.input_field.PasswordInputField
 import io.github.vasilyrylov.archsample.resources.Res
@@ -25,7 +25,7 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun RegistrationScreenContent(
-    data: RegistrationScreenData,
+    data: RegistrationViewState,
     onNameChange: (String) -> Unit,
     onPasswordChange: (String) -> Unit,
     onRepeatedPasswordChange: (String) -> Unit,
