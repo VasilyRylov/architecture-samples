@@ -16,8 +16,8 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(project(":common:common_ui"))
-            implementation(project(":feature:todo:todo_domain"))
+            implementation(project(":common:common-ui"))
+            implementation(project(":feature:root:root-domain"))
 
             implementation(compose.runtime)
             implementation(compose.foundation)
@@ -39,7 +39,7 @@ compose.resources {
 }
 
 android {
-    namespace = "io.github.vasilyrylov.archsample.feature.todo.todo_ui"
+    namespace = "io.github.vasilyrylov.archsample.feature.root.root_ui"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
     defaultConfig {
         minSdk = libs.versions.android.minSdk.get().toInt()

@@ -31,46 +31,46 @@
 
 graph TB
   subgraph :common
-    :common:common_ui["common_ui"]
-    :common:common_component["common_component"]
+    :common:common-ui["common_ui"]
+    :common:common-component["common_component"]
   end
   subgraph :feature:auth
-    :feature:auth:auth_domain["auth_domain"]
-    :feature:auth:auth_ui["auth_ui"]
-    :feature:auth:auth_component["auth_component"]
+    :feature:auth:auth-domain["auth_domain"]
+    :feature:auth:auth-ui["auth_ui"]
+    :feature:auth:auth-component["auth_component"]
   end
   subgraph :feature:root
-    :feature:root:root_domain["root_domain"]
-    :feature:root:root_component["root_component"]
-    :feature:root:root_ui["root_ui"]
+    :feature:root:root-domain["root_domain"]
+    :feature:root:root-component["root_component"]
+    :feature:root:root-ui["root_ui"]
   end
   subgraph :feature:todo
-    :feature:todo:todo_component["todo_component"]
-    :feature:todo:todo_ui["todo_ui"]
-    :feature:todo:todo_domain["todo_domain"]
+    :feature:todo:todo-component["todo_component"]
+    :feature:todo:todo-ui["todo_ui"]
+    :feature:todo:todo-domain["todo_domain"]
   end
-  :feature:root:root_domain --> :feature:auth:auth_domain
-  :feature:auth:auth_ui --> :common:common_ui
-  :feature:auth:auth_ui --> :feature:auth:auth_domain
-  :composeApp --> :feature:root:root_component
-  :feature:root:root_ui --> :common:common_ui
-  :feature:root:root_ui --> :feature:root:root_domain
-  :feature:auth:auth_component --> :feature:auth:auth_ui
-  :feature:auth:auth_component --> :feature:auth:auth_domain
-  :feature:auth:auth_component --> :common:common_component
-  :feature:auth:auth_component --> :common:common_ui
-  :feature:todo:todo_component --> :feature:todo:todo_ui
-  :feature:todo:todo_component --> :feature:todo:todo_domain
-  :feature:todo:todo_ui --> :common:common_ui
-  :feature:todo:todo_ui --> :feature:todo:todo_domain
-  :common:common_component --> :common:common_ui
-  :feature:root:root_component --> :feature:root:root_ui
-  :feature:root:root_component --> :feature:root:root_domain
-  :feature:root:root_component --> :feature:auth:auth_domain
-  :feature:root:root_component --> :feature:auth:auth_component
-  :feature:root:root_component --> :feature:todo:todo_component
-  :feature:root:root_component --> :common:common_component
-  :feature:root:root_component --> :common:common_ui
+  :feature:root:root-domain --> :feature:auth:auth-domain
+  :feature:auth:auth-ui --> :common:common-ui
+  :feature:auth:auth-ui --> :feature:auth:auth-domain
+  :composeApp --> :feature:root:root-component
+  :feature:root:root-ui --> :common:common-ui
+  :feature:root:root-ui --> :feature:root:root-domain
+  :feature:auth:auth-component --> :feature:auth:auth-ui
+  :feature:auth:auth-component --> :feature:auth:auth-domain
+  :feature:auth:auth-component --> :common:common-component
+  :feature:auth:auth-component --> :common:common-ui
+  :feature:todo:todo-component --> :feature:todo:todo-ui
+  :feature:todo:todo-component --> :feature:todo:todo-domain
+  :feature:todo:todo-ui --> :common:common-ui
+  :feature:todo:todo-ui --> :feature:todo:todo-domain
+  :common:common-component --> :common:common-ui
+  :feature:root:root-component --> :feature:root:root-ui
+  :feature:root:root-component --> :feature:root:root-domain
+  :feature:root:root-component --> :feature:auth:auth-domain
+  :feature:root:root-component --> :feature:auth:auth-component
+  :feature:root:root-component --> :feature:todo:todo-component
+  :feature:root:root-component --> :common:common-component
+  :feature:root:root-component --> :common:common-ui
 ```
 
 ### Variants and ready status

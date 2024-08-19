@@ -16,13 +16,13 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(project(":common:common_ui"))
-            implementation(project(":feature:root:root_domain"))
-
+            implementation(project(":common:common-ui"))
+            implementation(project(":feature:auth:auth-domain"))
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material3)
             implementation(compose.components.resources)
+            //put your multiplatform dependencies here
         }
         commonTest.dependencies {
             // implementation(libs.kotlin.test)
@@ -39,7 +39,7 @@ compose.resources {
 }
 
 android {
-    namespace = "io.github.vasilyrylov.archsample.feature.root.root_ui"
+    namespace = "io.github.vasilyrylov.archsample.feature.auth.auth_ui"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
     defaultConfig {
         minSdk = libs.versions.android.minSdk.get().toInt()

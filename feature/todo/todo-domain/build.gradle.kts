@@ -29,23 +29,15 @@ kotlin {
         // https://github.com/google/ksp/issues/965
         //all { kotlin.srcDir("build/generated/ksp/metadata/commonMain/kotlin") }
         commonMain.dependencies {
-            implementation(project(":common:common_domain"))
-            implementation(project(":feature:auth:auth_domain"))
-            implementation(project(":feature:todo:todo_domain"))
-
+            implementation(project(":common:common-domain"))
             implementation(libs.kotlinx.coroutines.core)
-            implementation(libs.kotlinx.serialization.json)
-
             api(libs.visualfsm.core)
             api(libs.uuid)
+            implementation(libs.kotlinx.serialization.json)
         }
 
         commonTest.dependencies {
             implementation(kotlin("test"))
-        }
-
-        jvmTest.dependencies {
-            implementation(libs.visualfsm.tools)
         }
     }
 

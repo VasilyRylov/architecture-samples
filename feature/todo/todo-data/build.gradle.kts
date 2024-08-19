@@ -28,8 +28,8 @@ kotlin {
         // https://github.com/google/ksp/issues/965
         //all { kotlin.srcDir("build/generated/ksp/metadata/commonMain/kotlin") }
         commonMain.dependencies {
-            implementation(project(":feature:todo:todo_domain"))
-            implementation(project(":common:common_domain"))
+            implementation(project(":feature:todo:todo-domain"))
+            implementation(project(":common:common-domain"))
             implementation(libs.kotlinx.coroutines.core)
             api(libs.uuid)
         }
