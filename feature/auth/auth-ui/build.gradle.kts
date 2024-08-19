@@ -39,7 +39,7 @@ compose.resources {
 }
 
 android {
-    namespace = "io.github.vasilyrylov.archsample.feature.auth.auth_ui"
+    namespace = "io.github.vasilyrylov.archsample.feature.auth.ui"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
     defaultConfig {
         minSdk = libs.versions.android.minSdk.get().toInt()

@@ -39,7 +39,7 @@ compose.resources {
 }
 
 android {
-    namespace = "io.github.vasilyrylov.archsample.feature.root.root_ui"
+    namespace = "io.github.vasilyrylov.archsample.feature.root.ui"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
     defaultConfig {
         minSdk = libs.versions.android.minSdk.get().toInt()
