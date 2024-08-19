@@ -12,7 +12,7 @@ import io.github.vasilyrylov.archsample.feature.auth.ui.screen.RegistrationScree
 @Composable
 fun AuthFlowScreenContainer(viewModel: AuthViewModel) {
 
-    val viewState by viewModel.state.collectAsState()
+    val viewState by viewModel.viewState.collectAsState()
 
     when (val authViewState = viewState) {
         is LoginViewState -> LoginScreen(

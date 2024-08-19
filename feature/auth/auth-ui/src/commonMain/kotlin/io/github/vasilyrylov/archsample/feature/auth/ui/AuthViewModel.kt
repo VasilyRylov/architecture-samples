@@ -14,7 +14,7 @@ class AuthViewModel(
     private val authCompletion: IAuthCompletionUseCase
 ) : BaseViewModel() {
 
-    val state = authFeature.observeState().map(ViewStateMapper::map)
+    val viewState = authFeature.observeState().map(ViewStateMapper::map)
         .stateIn(
             scope = coroutineScope,
             started = SharingStarted.Eagerly,
