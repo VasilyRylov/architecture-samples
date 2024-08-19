@@ -23,7 +23,7 @@ class ToDoDetailsViewModel(
 ) : BaseStateViewModel<ToDoDetailsScreenViewState>() {
 
     private val router: IToDoFlowRouter
-        get() = routerHolder.router!!
+        get() = routerHolder.router
 
     override fun createInitialState() = ToDoDetailsScreenViewState(
         item = ToDoItem(text = "", completed = false)

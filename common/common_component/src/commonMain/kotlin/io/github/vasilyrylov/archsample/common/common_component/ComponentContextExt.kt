@@ -50,5 +50,5 @@ fun ComponentContext.createChildScope(parentScope: Scope, modules: List<Module>)
 }
 
 fun <T> Scope.updateRouterInstance(router: T) {
-    get<RouterHolder<T>>(RouterHolder::class).router = router
+    get<RouterHolder<T>>(RouterHolder::class).updateInstance(router)
 }

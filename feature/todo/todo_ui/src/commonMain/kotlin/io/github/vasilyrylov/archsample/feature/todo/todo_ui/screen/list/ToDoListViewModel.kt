@@ -20,7 +20,7 @@ class ToDoListViewModel(
 ) : BaseStateViewModel<ToDoListScreenViewState>() {
 
     private val router: IToDoFlowRouter
-        get() = routerHolder.router!!
+        get() = routerHolder.router
 
     init {
         initObservers()
