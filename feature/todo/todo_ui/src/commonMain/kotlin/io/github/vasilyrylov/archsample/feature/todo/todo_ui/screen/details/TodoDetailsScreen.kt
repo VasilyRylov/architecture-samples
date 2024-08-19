@@ -18,7 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import io.github.vasilyrylov.archsample.feature.todo.todo_domain.model.ToDoItem
 import io.github.vasilyrylov.archsample.feature.todo.todo_ui.screen.details.model.ToDoDetailsScreenDialog
-import io.github.vasilyrylov.archsample.feature.todo.todo_ui.screen.details.model.ToDoDetailsScreenViewState
+import io.github.vasilyrylov.archsample.feature.todo.todo_ui.screen.details.model.ToDoDetailsViewState
 import io.github.vasilyrylov.archsample.feature.todo.todo_ui.element.dialog.EditToDoItemDialog
 import io.github.vasilyrylov.archsample.resources.Res
 import io.github.vasilyrylov.archsample.resources.back
@@ -30,7 +30,7 @@ import org.jetbrains.compose.resources.stringResource
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TodoDetailsScreen(
-    viewState: ToDoDetailsScreenViewState,
+    viewState: ToDoDetailsViewState,
     onBackClick: () -> Unit,
     onDeleteClick: () -> Unit,
     onEditClick: () -> Unit,

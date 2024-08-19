@@ -7,7 +7,6 @@ import io.github.vasilyrylov.archsample.feature.auth.auth_domain.fsm.actions.Han
 import io.github.vasilyrylov.archsample.feature.auth.auth_domain.fsm.actions.HandleChangeRegistrationData
 import io.github.vasilyrylov.archsample.feature.auth.auth_domain.fsm.actions.HandleConfirmation
 import io.github.vasilyrylov.archsample.feature.auth.auth_domain.fsm.actions.HandleSnackBarShowed
-import io.github.vasilyrylov.archsample.feature.auth.auth_domain.fsm.actions.Logout
 import io.github.vasilyrylov.archsample.feature.auth.auth_domain.fsm.actions.StartRegistration
 import ru.kontur.mobile.visualfsm.Feature
 import ru.kontur.mobile.visualfsm.GenerateTransitionsFactory
@@ -28,10 +27,6 @@ class AuthFeature(
 
     fun toLogin() {
         proceed(ChangeFlow())
-    }
-
-    fun logout() {
-        proceed(Logout())
     }
 
     fun confirmRegistrationData() {

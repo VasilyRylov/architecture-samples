@@ -4,38 +4,34 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import io.github.vasilyrylov.archsample.feature.auth.auth_ui.AuthViewModel
-import io.github.vasilyrylov.archsample.feature.auth.auth_ui.data.LoginScreenData
-import io.github.vasilyrylov.archsample.feature.auth.auth_ui.data.RegistrationScreenData
-import io.github.vasilyrylov.archsample.feature.auth.auth_ui.data.UserAuthorizedScreenData
+import io.github.vasilyrylov.archsample.feature.auth.auth_ui.data.LoginViewState
+import io.github.vasilyrylov.archsample.feature.auth.auth_ui.data.RegistrationViewState
+import io.github.vasilyrylov.archsample.feature.auth.auth_ui.data.UserAuthorizedViewState
 import io.github.vasilyrylov.archsample.feature.auth.auth_ui.screen.LoginScreen
 import io.github.vasilyrylov.archsample.feature.auth.auth_ui.screen.RegistrationScreen
-import io.github.vasilyrylov.archsample.feature.auth.auth_ui.screen.UserAuthorizedScreen
 
 @Composable
-fun AuthFlowScreenContainer(authViewModel: AuthViewModel) {
+fun AuthFlowScreenContainer(viewModel: AuthViewModel) {
 
-    val state by authViewModel.state.collectAsState()
+    val viewState by viewModel.state.collectAsState()
 
-    when (val data = state) {
-        is LoginScreenData -> LoginScreen(
-            data = data,
-            onChangeLoginData = authViewModel::handleChangeLoginData,
-            startAuthenticating = authViewModel::startAuthenticating,
-            toRegistration = authViewModel::toRegistration
+    when (val authViewState = viewState) {
+        is LoginViewState -> LoginScreen(
+            viewState = authViewState,
+            onChangeLoginData = viewModel::handleChangeLoginData,
+            startAuthenticating = viewModel::startAuthenticating,
+            toRegistration = viewModel::toRegistration
         )
 
-        is RegistrationScreenData -> RegistrationScreen(
-            data = data,
-            onBackClick = authViewModel::toLogin,
-            handleChangeRegistrationData = authViewModel::handleChangeRegistrationData,
-            startRegistration = authViewModel::startRegistration,
-            declineRegistrationData = authViewModel::declineRegistrationData,
-            confirmRegistrationData = authViewModel::confirmRegistrationData
+        is RegistrationViewState -> RegistrationScreen(
+            viewState = authViewState,
+            onBackClick = viewModel::toLogin,
+            handleChangeRegistrationData = viewModel::handleChangeRegistrationData,
+            startRegistration = viewModel::startRegistration,
+            declineRegistrationData = viewModel::declineRegistrationData,
+            confirmRegistrationData = viewModel::confirmRegistrationData
         )
 
-        is UserAuthorizedScreenData -> UserAuthorizedScreen(
-            data = data,
-            logout = authViewModel::logout
-        )
+        is UserAuthorizedViewState -> Unit
     }
 }

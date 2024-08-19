@@ -16,7 +16,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import io.github.vasilyrylov.archsample.feature.auth.auth_ui.element.RegistrationScreenContent
-import io.github.vasilyrylov.archsample.feature.auth.auth_ui.data.RegistrationScreenData
+import io.github.vasilyrylov.archsample.feature.auth.auth_ui.data.RegistrationViewState
 import io.github.vasilyrylov.archsample.feature.auth.auth_ui.element.dialog.ConfirmDialog
 import io.github.vasilyrylov.archsample.resources.Res
 import io.github.vasilyrylov.archsample.resources.back
@@ -28,7 +28,7 @@ import org.jetbrains.compose.resources.stringResource
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RegistrationScreen(
-    data: RegistrationScreenData,
+    viewState: RegistrationViewState,
     onBackClick: () -> Unit,
     handleChangeRegistrationData: (name: String, password: String, repeatedPassword: String) -> Unit,
     startRegistration: () -> Unit,
@@ -50,19 +50,19 @@ fun RegistrationScreen(
                 .fillMaxSize()
                 .padding(paddingValues = paddingValues)
         ) {
-            RegistrationScreenContent(data = data,
+            RegistrationScreenContent(data = viewState,
                 onNameChange = { name ->
-                    handleChangeRegistrationData(name, data.password, data.repeatedPassword)
+                    handleChangeRegistrationData(name, viewState.password, viewState.repeatedPassword)
                 },
                 onPasswordChange = { password ->
-                    handleChangeRegistrationData(data.name, password, data.repeatedPassword)
+                    handleChangeRegistrationData(viewState.name, password, viewState.repeatedPassword)
                 },
                 onRepeatedPasswordChange = { repeatedPassword ->
-                    handleChangeRegistrationData(data.name, data.password, repeatedPassword)
+                    handleChangeRegistrationData(viewState.name, viewState.password, repeatedPassword)
                 },
                 onRegistrationClick = { startRegistration() })
         }
-        if (data.isConfirmationRequested) {
+        if (viewState.isConfirmationRequested) {
             ConfirmDialog(
                 title = stringResource(Res.string.confirm_registration_dialog_title),
                 description = stringResource(Res.string.confirm_registration_dialog_description),

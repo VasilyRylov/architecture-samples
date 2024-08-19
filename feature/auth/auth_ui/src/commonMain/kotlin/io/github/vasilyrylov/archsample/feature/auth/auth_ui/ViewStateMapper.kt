@@ -1,29 +1,29 @@
 package io.github.vasilyrylov.archsample.feature.auth.auth_ui
 
 import io.github.vasilyrylov.archsample.feature.auth.auth_domain.fsm.AuthFSMState
-import io.github.vasilyrylov.archsample.feature.auth.auth_ui.data.AuthScreenData
-import io.github.vasilyrylov.archsample.feature.auth.auth_ui.data.LoginScreenData
-import io.github.vasilyrylov.archsample.feature.auth.auth_ui.data.RegistrationScreenData
-import io.github.vasilyrylov.archsample.feature.auth.auth_ui.data.UserAuthorizedScreenData
+import io.github.vasilyrylov.archsample.feature.auth.auth_ui.data.AuthViewState
+import io.github.vasilyrylov.archsample.feature.auth.auth_ui.data.LoginViewState
+import io.github.vasilyrylov.archsample.feature.auth.auth_ui.data.RegistrationViewState
+import io.github.vasilyrylov.archsample.feature.auth.auth_ui.data.UserAuthorizedViewState
 
-object ScreenDataMapper {
-    fun map(state: AuthFSMState): AuthScreenData {
+object ViewStateMapper {
+    fun map(state: AuthFSMState): AuthViewState {
         return when (state) {
-            is AuthFSMState.Login -> LoginScreenData(
+            is AuthFSMState.Login -> LoginViewState(
                 name = state.name,
                 password = state.password,
                 errorMessage = state.errorMessage,
                 isAuthenticationInProgress = false,
                 snackBarMessage = state.snackBarMessage
             )
-            is AuthFSMState.AsyncWorkState.Authenticating -> LoginScreenData(
+            is AuthFSMState.AsyncWorkState.Authenticating -> LoginViewState(
                 name = state.name,
                 password = state.password,
                 errorMessage = null,
                 isAuthenticationInProgress = true,
                 snackBarMessage = null
             )
-            is AuthFSMState.Registration -> RegistrationScreenData(
+            is AuthFSMState.Registration -> RegistrationViewState(
                 name = state.name,
                 password = state.password,
                 repeatedPassword = state.repeatedPassword,
@@ -31,7 +31,7 @@ object ScreenDataMapper {
                 isRegistrationInProgress = false,
                 isConfirmationRequested = false
             )
-            is AuthFSMState.AsyncWorkState.Registering -> RegistrationScreenData(
+            is AuthFSMState.AsyncWorkState.Registering -> RegistrationViewState(
                 name = state.name,
                 password = state.password,
                 repeatedPassword = state.password,
@@ -39,7 +39,7 @@ object ScreenDataMapper {
                 isRegistrationInProgress = true,
                 isConfirmationRequested = false
             )
-            is AuthFSMState.ConfirmationRequested -> RegistrationScreenData(
+            is AuthFSMState.ConfirmationRequested -> RegistrationViewState(
                 name = state.name,
                 password = state.password,
                 repeatedPassword = state.password,
@@ -47,7 +47,7 @@ object ScreenDataMapper {
                 isRegistrationInProgress = false,
                 isConfirmationRequested = true
             )
-            is AuthFSMState.UserAuthorized -> UserAuthorizedScreenData(
+            is AuthFSMState.UserAuthorized -> UserAuthorizedViewState(
                 name = state.name
             )
         }

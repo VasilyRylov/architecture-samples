@@ -14,7 +14,7 @@ class RootViewModel(
 ) : BaseViewModel() {
 
     private val router: IRootFlowRouter
-        get() = routerHolder.router!!
+        get() = routerHolder.router
 
     init {
         observeState()

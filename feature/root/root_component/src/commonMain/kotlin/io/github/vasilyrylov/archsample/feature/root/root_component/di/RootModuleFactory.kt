@@ -16,6 +16,7 @@ import io.github.vasilyrylov.archsample.feature.root.root_domain.usecase.AuthCom
 import io.github.vasilyrylov.archsample.feature.root.root_domain.usecase.LogoutUseCase
 import io.github.vasilyrylov.archsample.feature.todo.todo_domain.api.ILogoutUseCase
 import org.koin.core.module.dsl.singleOf
+import org.koin.dsl.bind
 
 internal fun createRootModule(initialState: RootFSMState) = module {
     singleOf(::RootViewModel)
@@ -25,14 +26,11 @@ internal fun createRootModule(initialState: RootFSMState) = module {
     single { RouterHolder<IRootFlowRouter>(null) }
     single {
         RootFeature(
-            initialState,
-            get(),
+            initialState = initialState,
+            asyncWorker = get(),
         )
     }
-    factory<ILogoutUseCase> {
-        LogoutUseCase(get())
-    }
-    factory<IAuthCompletionUseCase> {
-        AuthCompletionUseCase(get(), get())
-    }
+    factoryOf(::LogoutUseCase) bind ILogoutUseCase::class
+
+    factoryOf(::AuthCompletionUseCase) bind IAuthCompletionUseCase::class
 }

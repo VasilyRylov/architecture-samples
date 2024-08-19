@@ -9,11 +9,11 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import io.github.vasilyrylov.archsample.feature.auth.auth_ui.element.LoginScreenContent
-import io.github.vasilyrylov.archsample.feature.auth.auth_ui.data.LoginScreenData
+import io.github.vasilyrylov.archsample.feature.auth.auth_ui.data.LoginViewState
 
 @Composable
 fun LoginScreen(
-    data: LoginScreenData,
+    viewState: LoginViewState,
     onChangeLoginData: (String, String) -> Unit,
     startAuthenticating: () -> Unit,
     toRegistration: () -> Unit,
@@ -25,12 +25,12 @@ fun LoginScreen(
                 .fillMaxSize()
                 .padding(paddingValues = paddingValues)
         ) {
-            LoginScreenContent(data = data,
+            LoginScreenContent(data = viewState,
                 onNameChange = { name ->
-                    onChangeLoginData(name, data.password)
+                    onChangeLoginData(name, viewState.password)
                 },
                 onPasswordChange = { password ->
-                    onChangeLoginData(data.name, password)
+                    onChangeLoginData(viewState.name, password)
                 },
                 onSignInClick = { startAuthenticating() },
                 onSignUpClick = { toRegistration() })

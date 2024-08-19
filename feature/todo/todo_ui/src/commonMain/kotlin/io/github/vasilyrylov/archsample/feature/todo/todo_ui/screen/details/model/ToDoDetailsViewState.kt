@@ -2,7 +2,7 @@ package io.github.vasilyrylov.archsample.feature.todo.todo_ui.screen.details.mod
 
 import io.github.vasilyrylov.archsample.feature.todo.todo_domain.model.ToDoItem
 
-data class ToDoDetailsScreenViewState(
+data class ToDoDetailsViewState(
     val item: ToDoItem,
     val dialog: ToDoDetailsScreenDialog = ToDoDetailsScreenDialog.None
 )
