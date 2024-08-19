@@ -21,7 +21,7 @@ kotlin {
         it.binaries.framework {
             baseName = "ComposeApp"
             isStatic = true
-            export(project(":feature:root:root_component"))
+            export(project(":feature:root:root-component"))
             export(libs.decompose)
             export(libs.essenty.lifecycle)
         }
@@ -29,8 +29,8 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(project(":feature:root:root_component"))
-            implementation(project(":common:common_ui"))
+            implementation(project(":feature:root:root-component"))
+            implementation(project(":common:common-ui"))
 
             implementation(compose.runtime)
 
@@ -56,7 +56,7 @@ kotlin {
         }
 
         iosMain.dependencies {
-            api(project(":feature:root:root_component"))
+            api(project(":feature:root:root-component"))
             api(libs.decompose)
             api(libs.essenty.lifecycle)
         }
@@ -96,7 +96,7 @@ android {
 
 compose.desktop {
     application {
-        mainClass = "MainKt"
+        mainClass = "io.github.vasilyrylov.archsample.MainKt"
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)

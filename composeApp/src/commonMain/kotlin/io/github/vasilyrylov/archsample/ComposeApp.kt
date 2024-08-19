@@ -1,9 +1,9 @@
 package io.github.vasilyrylov.archsample
 
 import androidx.compose.runtime.Composable
-import io.github.vasilyrylov.archsample.common.common_ui.ui_theme.AppTheme
-import io.github.vasilyrylov.archsample.feature.root.root_component.RootFlowComponent
-import io.github.vasilyrylov.archsample.feature.root.root_component.RootFlowScreenComponent
+import io.github.vasilyrylov.archsample.common.ui.theme.AppTheme
+import io.github.vasilyrylov.archsample.feature.root.component.RootFlowComponent
+import io.github.vasilyrylov.archsample.feature.root.component.RootFlowScreenComponent
 
 @Composable
 internal fun ComposeApp(rootFlowComponent: RootFlowComponent) {

@@ -31,21 +31,21 @@ dependencyResolutionManagement {
     }
 }
 include(":composeApp")
-include(":common:common_ui")
-include(":common:common_component")
-include(":common:common_domain")
-include(":common:common_data")
+include(":common:common-ui")
+include(":common:common-component")
+include(":common:common-domain")
+include(":common:common-data")
 
-include(":feature:root:root_domain")
-include(":feature:root:root_ui")
-include(":feature:root:root_component")
+include(":feature:root:root-domain")
+include(":feature:root:root-ui")
+include(":feature:root:root-component")
 
-include(":feature:auth:auth_domain")
-include(":feature:auth:auth_ui")
-include(":feature:auth:auth_component")
+include(":feature:auth:auth-domain")
+include(":feature:auth:auth-ui")
+include(":feature:auth:auth-component")
 
 
-include(":feature:todo:todo_ui")
-include(":feature:todo:todo_domain")
-include(":feature:todo:todo_component")
-include(":feature:todo:todo_data")
+include(":feature:todo:todo-ui")
+include(":feature:todo:todo-domain")
+include(":feature:todo:todo-component")
+include(":feature:todo:todo-data")
