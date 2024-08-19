@@ -24,7 +24,7 @@ class RootFlowRouter(componentContext: ComponentContext, private val koinScope: 
     internal val childSlot: Value<ChildSlot<*, SlotChild>> = componentContext.childSlot(
         source = slotNavigation,
         serializer = Configuration.serializer(),
-        handleBackButton = true,
+        handleBackButton = false,
         childFactory = ::slotChild
     )
 
