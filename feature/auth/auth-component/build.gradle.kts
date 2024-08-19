@@ -14,11 +14,11 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(project(":feature:auth:auth-ui"))
-            implementation(project(":feature:auth:auth-domain"))
+            implementation(projects.feature.auth.authUi)
+            implementation(projects.feature.auth.authDomain)
 
-            implementation(project(":common:common-component"))
-            implementation(project(":common:common-ui"))
+            implementation(projects.common.commonComponent)
+            implementation(projects.common.commonUi)
 
             implementation(libs.decompose)
             implementation(libs.koin.core)
