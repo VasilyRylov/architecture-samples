@@ -7,7 +7,9 @@ import androidx.room.RoomDatabaseConstructor
 import io.github.vasilyrylov.archsample.database.entity.TodoEntity
 
 @Database(entities = [TodoEntity::class], version = 1, exportSchema = true)
-@ConstructedBy(ArchSampleDatabaseCtor::class)
+@ConstructedBy(ArchSampleDatabaseConstructor::class)
 abstract class ArchSampleDatabase : RoomDatabase()
 
-expect object ArchSampleDatabaseCtor : RoomDatabaseConstructor<ArchSampleDatabase>
+expect object ArchSampleDatabaseConstructor : RoomDatabaseConstructor<ArchSampleDatabase> {
+    override fun initialize(): ArchSampleDatabase
+}
