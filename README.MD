@@ -1,4 +1,5 @@
 # Work in progress
+
 ## Compose Multiplatform Application architecture sample
 
 ### Frameworks and libraries
@@ -10,6 +11,7 @@
 - [Room Multiplatform](https://developer.android.com/kotlin/multiplatform/room)
 
 ### Key concepts
+
 - FSM based MVI
 - Navigation is abstracted from Decompose
 - Decompose components are separated into own modules
@@ -72,11 +74,12 @@ graph TB
 ```
 
 ### Variants and ready status
-|     Sample     | Description | Ready status |
-| ------------- | ------------- | ------------- |
-| [fsm-mvi-and-mvvm-plus](https://github.com/VasilyRylov/architecture-samples/tree/main) | Fsm-based MVI and MVVM+(Todo Feature) | Working on inmemory repositories, Room Multiplatform WIP in branch room-multiplatform |
-| [fsm-mvi](https://github.com/VasilyRylov/architecture-samples/tree/main/fsm-mvi) | Fsm-based MVI with parent and child relation FSMs | Work in progress |
-| [fsm-mvi-extendable-state](https://github.com/VasilyRylov/architecture-samples/tree/main/fsm-mvi-extendable-state) | Fsm-based MVI with extendable parent state | Work in progress |
+
+| Sample                                                                                                             | Description                                       | Ready status                                                                           |
+|--------------------------------------------------------------------------------------------------------------------|---------------------------------------------------|----------------------------------------------------------------------------------------|
+| [fsm-mvi-and-mvvm-plus](https://github.com/VasilyRylov/architecture-samples/tree/main)                             | Fsm-based MVI and MVVM+(Todo Feature)             | Working on in-memory repositories, Room Multiplatform WIP in branch room-multiplatform |
+| [fsm-mvi](https://github.com/VasilyRylov/architecture-samples/tree/main/fsm-mvi)                                   | Fsm-based MVI with parent and child relation FSMs | Work in progress                                                                       |
+| [fsm-mvi-extendable-state](https://github.com/VasilyRylov/architecture-samples/tree/main/fsm-mvi-extendable-state) | Fsm-based MVI with extendable parent state        | Work in progress                                                                       |
 
 ### Root module FSM
 
@@ -106,5 +109,7 @@ Run the desktop application: `./gradlew :composeApp:run`
 To run the application on iPhone device/simulator:
 
 - Open `iosApp/iosApp.xcproject` in Xcode and run standard configuration
-- Or use [Kotlin Multiplatform Mobile plugin](https://plugins.jetbrains.com/plugin/14936-kotlin-multiplatform-mobile) for Android Studio
+- Or
+  use [Kotlin Multiplatform Mobile plugin](https://plugins.jetbrains.com/plugin/14936-kotlin-multiplatform-mobile)
+  for Android Studio
   Run iOS simulator UI tests: `./gradlew :composeApp:iosSimulatorArm64Test`
