@@ -29,9 +29,9 @@ kotlin {
         // https://github.com/google/ksp/issues/965
         //all { kotlin.srcDir("build/generated/ksp/metadata/commonMain/kotlin") }
         commonMain.dependencies {
-            implementation(project(":common:common-domain"))
-            implementation(project(":feature:auth:auth-domain"))
-            implementation(project(":feature:todo:todo-domain"))
+            implementation(projects.common.commonDomain)
+            implementation(projects.feature.auth.authDomain)
+            implementation(projects.feature.todo.todoDomain)
 
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.kotlinx.serialization.json)

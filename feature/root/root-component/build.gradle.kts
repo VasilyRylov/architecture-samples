@@ -14,19 +14,19 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(project(":feature:root:root-ui"))
-            implementation(project(":feature:root:root-domain"))
+            implementation(projects.feature.root.rootUi)
+            implementation(projects.feature.root.rootDomain)
+            
+            implementation(projects.feature.auth.authComponent)
+            implementation(projects.feature.auth.authDomain)
 
-            implementation(project(":feature:auth:auth-component"))
-            implementation(project(":feature:auth:auth-domain"))
+            implementation(projects.feature.todo.todoComponent)
+            implementation(projects.feature.todo.todoDomain)
 
-            implementation(project(":feature:todo:todo-component"))
-            implementation(project(":feature:todo:todo-domain"))
-
-            implementation(project(":common:common-component"))
-            implementation(project(":common:common-domain"))
-            implementation(project(":common:common-ui"))
-            implementation(project(":common:common-data"))
+            implementation(projects.common.commonComponent)
+            implementation(projects.common.commonDomain)
+            implementation(projects.common.commonUi)
+            implementation(projects.common.commonData)
 
             implementation(libs.decompose)
             implementation(libs.decompose.compose)

@@ -28,7 +28,7 @@ kotlin {
         // https://github.com/google/ksp/issues/965
         //all { kotlin.srcDir("build/generated/ksp/metadata/commonMain/kotlin") }
         commonMain.dependencies {
-            implementation(project(":common:common-domain"))
+            implementation(projects.common.commonDomain)
             implementation(libs.kotlinx.coroutines.core)
             api(libs.uuid)
         }

@@ -11,7 +11,7 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(project(":common:common-ui"))
+            implementation(projects.common.commonUi)
 
             implementation(libs.decompose)
             implementation(libs.koin.core)
