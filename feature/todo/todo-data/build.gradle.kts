@@ -3,18 +3,6 @@ plugins {
     alias(libs.plugins.ksp)
 }
 
-// ===============
-// https://github.com/google/ksp/issues/567
-// https://github.com/google/ksp/issues/965
-dependencies {
-    add("kspCommonMainMetadata", libs.visualfsm.compiler)
-}
-
-kotlin.sourceSets.commonMain {
-    kotlin.srcDir("build/generated/ksp/metadata/commonMain/kotlin")
-}
-// ===============
-
 kotlin {
     jvm()
 
@@ -23,10 +11,6 @@ kotlin {
     iosSimulatorArm64()
 
     sourceSets {
-        // ===============
-        // https://github.com/google/ksp/issues/567
-        // https://github.com/google/ksp/issues/965
-        //all { kotlin.srcDir("build/generated/ksp/metadata/commonMain/kotlin") }
         commonMain.dependencies {
             implementation(projects.feature.todo.todoDomain)
             implementation(projects.common.commonDomain)
@@ -38,17 +22,4 @@ kotlin {
             implementation(kotlin("test"))
         }
     }
-
-    // AS Iguana run on rebuild project :ui_common:testClasses but task not found
-    task("testClasses")
 }
-
-// ===============
-// https://github.com/google/ksp/issues/567
-// https://github.com/google/ksp/issues/965
-tasks.withType<org.jetbrains.kotlin.gradle.dsl.KotlinCompile<*>>().configureEach {
-    if (name != "kspCommonMainKotlinMetadata") {
-        dependsOn("kspCommonMainKotlinMetadata")
-    }
-}
-
