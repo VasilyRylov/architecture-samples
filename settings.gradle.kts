@@ -1,3 +1,5 @@
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
 rootProject.name = "ArchSample"
 
 pluginManagement {
@@ -16,6 +18,7 @@ pluginManagement {
 }
 
 dependencyResolutionManagement {
+    @Suppress("UnstableApiUsage")
     repositories {
         google {
             content { 
@@ -44,7 +47,6 @@ include(":feature:root:root-component")
 include(":feature:auth:auth-domain")
 include(":feature:auth:auth-ui")
 include(":feature:auth:auth-component")
-
 
 include(":feature:todo:todo-ui")
 include(":feature:todo:todo-domain")

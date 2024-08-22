@@ -21,7 +21,7 @@ kotlin {
         it.binaries.framework {
             baseName = "ComposeApp"
             isStatic = true
-            export(project(":feature:root:root-component"))
+            export(projects.feature.root.rootComponent)
             export(libs.decompose)
             export(libs.essenty.lifecycle)
         }
@@ -29,8 +29,8 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(project(":feature:root:root-component"))
-            implementation(project(":common:common-ui"))
+            implementation(projects.feature.root.rootComponent)
+            implementation(projects.common.commonUi)
 
             implementation(compose.runtime)
 
@@ -56,7 +56,7 @@ kotlin {
         }
 
         iosMain.dependencies {
-            api(project(":feature:root:root-component"))
+            api(projects.feature.root.rootComponent)
             api(libs.decompose)
             api(libs.essenty.lifecycle)
         }
