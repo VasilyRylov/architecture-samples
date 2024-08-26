@@ -34,7 +34,8 @@ dependencyResolutionManagement {
     }
 }
 include(":composeApp")
-include(":database")
+include(":data:database")
+include(":data:preferences")
 include(":common:common-ui")
 include(":common:common-component")
 include(":common:common-domain")
