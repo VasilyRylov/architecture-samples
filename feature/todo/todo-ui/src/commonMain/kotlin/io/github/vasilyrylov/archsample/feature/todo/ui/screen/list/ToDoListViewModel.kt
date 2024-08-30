@@ -2,8 +2,8 @@ package io.github.vasilyrylov.archsample.feature.todo.ui.screen.list
 
 import io.github.vasilyrylov.archsample.common.ui.base.BaseStateViewModel
 import io.github.vasilyrylov.archsample.common.ui.navigation.RouterHolder
-import io.github.vasilyrylov.archsample.feature.todo.domain.model.ToDoItem
-import io.github.vasilyrylov.archsample.feature.todo.domain.model.ToDoItemId
+import io.github.vasilyrylov.archsample.common.domain.model.ToDoItem
+import io.github.vasilyrylov.archsample.common.domain.model.ToDoItemId
 import io.github.vasilyrylov.archsample.feature.todo.domain.usecase.ObserveToDoListUseCase
 import io.github.vasilyrylov.archsample.feature.todo.domain.usecase.SaveToDoUseCase
 import io.github.vasilyrylov.archsample.feature.todo.domain.usecase.ToDoCompletedChangeUseCase

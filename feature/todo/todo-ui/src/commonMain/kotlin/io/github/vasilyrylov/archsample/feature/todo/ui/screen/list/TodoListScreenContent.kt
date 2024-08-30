@@ -13,8 +13,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import io.github.vasilyrylov.archsample.feature.todo.domain.model.ToDoItem
-import io.github.vasilyrylov.archsample.feature.todo.domain.model.ToDoItemId
+import io.github.vasilyrylov.archsample.common.domain.model.ToDoItem
+import io.github.vasilyrylov.archsample.common.domain.model.ToDoItemId
 
 @Composable
 fun TodoListScreenContent(

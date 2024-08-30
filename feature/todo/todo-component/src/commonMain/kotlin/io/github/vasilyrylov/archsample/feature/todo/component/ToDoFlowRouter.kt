@@ -10,7 +10,7 @@ import com.arkivanov.decompose.value.Value
 import com.benasher44.uuid.uuidFrom
 import io.github.vasilyrylov.archsample.feature.todo.component.details.ToDoDetailsComponent
 import io.github.vasilyrylov.archsample.feature.todo.component.list.ToDoListComponent
-import io.github.vasilyrylov.archsample.feature.todo.domain.model.ToDoItemId
+import io.github.vasilyrylov.archsample.common.domain.model.ToDoItemId
 import io.github.vasilyrylov.archsample.feature.todo.ui.api.IToDoFlowRouter
 import kotlinx.serialization.Serializable
 import org.koin.core.scope.Scope

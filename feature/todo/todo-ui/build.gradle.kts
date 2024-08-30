@@ -17,7 +17,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(projects.common.commonUi)
-            implementation(projects.feature.todo.todoDomain)
+            implementation(projects.common.commonDomain)
             implementation(projects.feature.todo.todoDomain)
 
             implementation(compose.runtime)

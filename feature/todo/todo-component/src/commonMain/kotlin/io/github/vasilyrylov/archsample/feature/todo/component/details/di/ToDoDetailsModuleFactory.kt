@@ -1,6 +1,6 @@
 package io.github.vasilyrylov.archsample.feature.todo.component.details.di
 
-import io.github.vasilyrylov.archsample.feature.todo.domain.model.ToDoItemId
+import io.github.vasilyrylov.archsample.common.domain.model.ToDoItemId
 import io.github.vasilyrylov.archsample.feature.todo.domain.usecase.DeleteToDoUseCase
 import io.github.vasilyrylov.archsample.feature.todo.domain.usecase.GetToDoDetailsUseCase
 import org.koin.dsl.module

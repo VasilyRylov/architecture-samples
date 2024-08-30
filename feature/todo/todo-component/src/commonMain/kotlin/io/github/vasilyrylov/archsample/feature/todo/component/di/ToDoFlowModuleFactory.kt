@@ -2,7 +2,7 @@ package io.github.vasilyrylov.archsample.feature.todo.component.di
 
 import io.github.vasilyrylov.archsample.common.ui.navigation.RouterHolder
 import io.github.vasilyrylov.archsample.feature.todo.component.api.IToDoComponentDependencies
-import io.github.vasilyrylov.archsample.feature.todo.domain.api.IToDoRepository
+import io.github.vasilyrylov.archsample.common.domain.interfaces.IToDoRepository
 import io.github.vasilyrylov.archsample.feature.todo.domain.usecase.SaveToDoUseCase
 import io.github.vasilyrylov.archsample.feature.todo.domain.usecase.ToDoCompletedChangeUseCase
 import org.koin.dsl.module

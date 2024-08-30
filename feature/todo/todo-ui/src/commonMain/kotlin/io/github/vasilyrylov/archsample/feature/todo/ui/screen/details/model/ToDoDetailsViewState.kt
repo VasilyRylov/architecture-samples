@@ -1,6 +1,6 @@
 package io.github.vasilyrylov.archsample.feature.todo.ui.screen.details.model
 
-import io.github.vasilyrylov.archsample.feature.todo.domain.model.ToDoItem
+import io.github.vasilyrylov.archsample.common.domain.model.ToDoItem
 
 data class ToDoDetailsViewState(
     val item: ToDoItem,
