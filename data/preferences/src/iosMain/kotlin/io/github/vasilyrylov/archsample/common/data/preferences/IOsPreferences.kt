@@ -1,7 +1,5 @@
 package io.github.vasilyrylov.archsample.common.data.preferences
 
-import io.github.vasilyrylov.archsample.common.data.IPreferences
-
 class IOsPreferences() : IPreferences {
     override fun putInt(key: String, value: Int) {
         // TODO("Not yet implemented")
