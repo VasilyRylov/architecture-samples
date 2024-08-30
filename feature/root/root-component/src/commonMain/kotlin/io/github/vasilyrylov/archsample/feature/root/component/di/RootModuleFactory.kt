@@ -1,9 +1,12 @@
 package io.github.vasilyrylov.archsample.feature.root.component.di
 
+import io.github.vasilyrylov.archsample.common.data.preferences.IPreferences
 import io.github.vasilyrylov.archsample.common.data.repository.AuthorizedUserRepository
 import io.github.vasilyrylov.archsample.common.domain.interfaces.IAuthorizedUserRepository
 import io.github.vasilyrylov.archsample.common.ui.navigation.RouterHolder
+import io.github.vasilyrylov.archsample.data.database.ArchSampleDatabase
 import io.github.vasilyrylov.archsample.feature.auth.domain.api.IAuthCompletionUseCase
+import io.github.vasilyrylov.archsample.feature.root.component.api.IRootComponentDependencies
 import io.github.vasilyrylov.archsample.feature.root.ui.api.IRootFlowRouter
 import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.module
@@ -18,7 +21,10 @@ import io.github.vasilyrylov.archsample.feature.todo.domain.api.ILogoutUseCase
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.bind
 
-internal fun createRootModule(initialState: RootFSMState) =
+internal fun createRootModule(
+    initialState: RootFSMState,
+    dependencies: IRootComponentDependencies
+) =
     module {
         singleOf(::RootViewModel)
         factoryOf(::GetCurrentLoggedInUserUseCase)
@@ -34,4 +40,6 @@ internal fun createRootModule(initialState: RootFSMState) =
         factoryOf(::LogoutUseCase) bind ILogoutUseCase::class
 
         factoryOf(::AuthCompletionUseCase) bind IAuthCompletionUseCase::class
+        factory<IPreferences> { dependencies.preferences }
+        factory<ArchSampleDatabase> { dependencies.database }
     }

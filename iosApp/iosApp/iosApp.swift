@@ -4,14 +4,12 @@ import ComposeApp
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    lazy var rootFlowComponent: RootFlowComponent = RootFlowComponent(
-        componentContext: DefaultComponentContext(
+    lazy var componentContext: ComponentContext = DefaultComponentContext(
             lifecycle: ApplicationLifecycle(),
             stateKeeper: nil,
             instanceKeeper: nil,
             backHandler: nil
         )
-    )
     
     var window: UIWindow?
     
@@ -21,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         if let window = window {
-            window.rootViewController = MainKt.MainViewController(root: rootFlowComponent)
+            window.rootViewController = MainKt.MainViewController(context: componentContext)
             window.makeKeyAndVisible()
         }
         return true

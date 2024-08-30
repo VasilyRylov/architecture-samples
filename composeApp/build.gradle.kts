@@ -31,6 +31,7 @@ kotlin {
         commonMain.dependencies {
             implementation(projects.feature.root.rootComponent)
             implementation(projects.common.commonUi)
+            implementation(projects.common.commonData)
 
             implementation(compose.runtime)
 
