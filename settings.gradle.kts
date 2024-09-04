@@ -48,6 +48,7 @@ include(":feature:root:root-component")
 include(":feature:auth:auth-domain")
 include(":feature:auth:auth-ui")
 include(":feature:auth:auth-component")
+include(":feature:auth:auth-data")
 
 include(":feature:todo:todo-ui")
 include(":feature:todo:todo-domain")

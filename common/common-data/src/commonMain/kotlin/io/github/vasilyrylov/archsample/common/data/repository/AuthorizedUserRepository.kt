@@ -5,27 +5,36 @@ import io.github.vasilyrylov.archsample.common.data.preferences.IPreferences
 import io.github.vasilyrylov.archsample.common.domain.interfaces.IAuthorizedUserRepository
 import io.github.vasilyrylov.archsample.common.domain.model.User
 import io.github.vasilyrylov.archsample.data.database.ArchSampleDatabase
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
+import kotlinx.coroutines.withContext
 
 class AuthorizedUserRepository(
     private val preferences: IPreferences,
     private val database: ArchSampleDatabase,
 ) : IAuthorizedUserRepository {
     override suspend fun isUserAuthorized(): Boolean {
-        val userId = preferences.getString(AUTHORIZED_USER_ID, "")
-        val user = database.getUserDao().getUserById(userId)
+        val user = withContext(Dispatchers.IO) {
+            val userId = preferences.getString(AUTHORIZED_USER_ID, "")
+            database.getUserDao().getUserById(userId)
+        }
         return user != null
     }
 
     override suspend fun saveAuthorizedUser(user: User) {
-        val userId = user.id.value.toString()
-        val userFromDatabase = database.getUserDao().getUserById(userId)
-        requireNotNull(userFromDatabase)
-        preferences.putString(AUTHORIZED_USER_ID, userId)
+        withContext(Dispatchers.IO) {
+            val userId = user.id.value.toString()
+            val userFromDatabase = database.getUserDao().getUserById(userId)
+            requireNotNull(userFromDatabase)
+            preferences.putString(AUTHORIZED_USER_ID, userId)
+        }
     }
 
     override suspend fun getAuthorizedUser(): User {
-        val userId = preferences.getString(AUTHORIZED_USER_ID, "")
-        val user = database.getUserDao().getUserById(userId) ?: error("Authorized user not found")
+        val user = withContext(Dispatchers.IO) {
+            val userId = preferences.getString(AUTHORIZED_USER_ID, "")
+            database.getUserDao().getUserById(userId) ?: error("Authorized user not found")
+        }
         return UserMapper.fromDatabase(user)
     }
 
