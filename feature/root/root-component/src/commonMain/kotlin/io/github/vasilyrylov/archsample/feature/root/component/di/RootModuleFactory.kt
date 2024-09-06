@@ -5,7 +5,7 @@ import io.github.vasilyrylov.archsample.common.data.repository.AuthorizedUserRep
 import io.github.vasilyrylov.archsample.common.domain.interfaces.IAuthorizedUserRepository
 import io.github.vasilyrylov.archsample.common.ui.navigation.RouterHolder
 import io.github.vasilyrylov.archsample.data.database.ArchSampleDatabase
-import io.github.vasilyrylov.archsample.feature.auth.domain.api.IAuthCompletionUseCase
+import io.github.vasilyrylov.archsample.feature.auth.domain.interfaces.IAuthCompletionUseCase
 import io.github.vasilyrylov.archsample.feature.root.component.api.IRootComponentDependencies
 import io.github.vasilyrylov.archsample.feature.root.ui.api.IRootFlowRouter
 import org.koin.core.module.dsl.factoryOf

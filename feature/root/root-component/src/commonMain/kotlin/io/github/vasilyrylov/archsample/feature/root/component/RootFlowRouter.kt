@@ -7,10 +7,11 @@ import com.arkivanov.decompose.router.slot.activate
 import com.arkivanov.decompose.router.slot.childSlot
 import com.arkivanov.decompose.value.Value
 import io.github.vasilyrylov.archsample.common.domain.interfaces.IAuthorizedUserRepository
+import io.github.vasilyrylov.archsample.data.database.ArchSampleDatabase
 import io.github.vasilyrylov.archsample.feature.auth.component.AuthComponent
 import io.github.vasilyrylov.archsample.feature.auth.component.api.IAuthComponentDependencies
 import io.github.vasilyrylov.archsample.feature.todo.component.api.IToDoComponentDependencies
-import io.github.vasilyrylov.archsample.feature.auth.domain.api.IAuthCompletionUseCase
+import io.github.vasilyrylov.archsample.feature.auth.domain.interfaces.IAuthCompletionUseCase
 import io.github.vasilyrylov.archsample.feature.root.ui.api.IRootFlowRouter
 import io.github.vasilyrylov.archsample.feature.todo.component.ToDoFlowComponent
 import io.github.vasilyrylov.archsample.feature.todo.domain.api.ILogoutUseCase
@@ -33,6 +34,10 @@ class RootFlowRouter(componentContext: ComponentContext, private val koinScope: 
             Configuration.Auth -> SlotChild.Auth(
                 component = AuthComponent(componentContext, object : IAuthComponentDependencies {
                     override val authCompletionUseCase: IAuthCompletionUseCase
+                        get() = koinScope.get()
+                    override val authorizedUserRepository: IAuthorizedUserRepository
+                        get() = koinScope.get()
+                    override val database: ArchSampleDatabase
                         get() = koinScope.get()
                 })
             )

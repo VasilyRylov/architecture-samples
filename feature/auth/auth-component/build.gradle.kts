@@ -16,9 +16,12 @@ kotlin {
         commonMain.dependencies {
             implementation(projects.feature.auth.authUi)
             implementation(projects.feature.auth.authDomain)
+            implementation(projects.feature.auth.authData)
 
             implementation(projects.common.commonComponent)
             implementation(projects.common.commonUi)
+            implementation(projects.common.commonDomain)
+            implementation(projects.common.commonData)
 
             implementation(libs.decompose)
             implementation(libs.koin.core)
