@@ -16,5 +16,6 @@ fun TodoListScreenContainer(viewModel: ToDoListViewModel) {
         onToDoClick = viewModel::onToDoClick,
         onConfirmAddClick = viewModel::onConfirmAdd,
         onCancelAddClick = viewModel::onCancelAdd,
+        onLogoutClick = viewModel::onLogoutClick,
     )
 }

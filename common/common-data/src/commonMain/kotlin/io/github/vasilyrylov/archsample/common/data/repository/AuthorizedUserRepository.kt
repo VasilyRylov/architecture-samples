@@ -37,6 +37,10 @@ class AuthorizedUserRepository(
         return UserMapper.fromDatabase(user).id
     }
 
+    override fun logout() {
+        preferences.putString(AUTHORIZED_USER_ID, "")
+    }
+
     companion object {
         private const val AUTHORIZED_USER_ID = "AUTHORIZED_USER_ID"
     }

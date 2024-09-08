@@ -6,4 +6,5 @@ interface IAuthorizedUserRepository {
     suspend fun isUserAuthorized(): Boolean
     suspend fun saveAuthorizedUserId(id: UserId)
     suspend fun getAuthorizedUserId(): UserId
+    fun logout()
 }

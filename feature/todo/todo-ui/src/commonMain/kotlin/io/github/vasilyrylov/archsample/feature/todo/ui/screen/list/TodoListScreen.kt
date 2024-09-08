@@ -6,11 +6,13 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.Logout
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.FabPosition
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -25,6 +27,7 @@ import io.github.vasilyrylov.archsample.feature.todo.ui.screen.list.model.ToDoLi
 import io.github.vasilyrylov.archsample.feature.todo.ui.screen.list.model.ToDoListScreenDialog
 import io.github.vasilyrylov.archsample.resources.Res
 import io.github.vasilyrylov.archsample.resources.add
+import io.github.vasilyrylov.archsample.resources.logout
 import io.github.vasilyrylov.archsample.resources.todo_list
 import org.jetbrains.compose.resources.stringResource
 
@@ -37,12 +40,18 @@ fun TodoListScreen(
     onToDoClick: (ToDoItemId) -> Unit,
     onConfirmAddClick: (ToDoItem) -> Unit,
     onCancelAddClick: () -> Unit,
+    onLogoutClick: () -> Unit,
 ) {
     Scaffold(
         topBar = {
             TopAppBar(
                 title = {
                     Text(text = stringResource(Res.string.todo_list))
+                },
+                actions = {
+                    IconButton(onClick = onLogoutClick) {
+                        Icon(imageVector = Icons.AutoMirrored.Filled.Logout, contentDescription = stringResource(Res.string.logout))
+                    }
                 }
             )
         },

@@ -4,6 +4,7 @@ import io.github.vasilyrylov.archsample.common.ui.base.BaseStateViewModel
 import io.github.vasilyrylov.archsample.common.ui.navigation.RouterHolder
 import io.github.vasilyrylov.archsample.common.domain.model.ToDoItem
 import io.github.vasilyrylov.archsample.common.domain.model.ToDoItemId
+import io.github.vasilyrylov.archsample.feature.todo.domain.api.ILogoutUseCase
 import io.github.vasilyrylov.archsample.feature.todo.domain.usecase.ObserveToDoListUseCase
 import io.github.vasilyrylov.archsample.feature.todo.domain.usecase.SaveToDoUseCase
 import io.github.vasilyrylov.archsample.feature.todo.domain.usecase.ToDoCompletedChangeUseCase
@@ -17,6 +18,7 @@ class ToDoListViewModel(
     private val routerHolder: RouterHolder<IToDoFlowRouter>,
     private val completedChange: ToDoCompletedChangeUseCase,
     private val saveToDo: SaveToDoUseCase,
+    private val logout: ILogoutUseCase,
 ) : BaseStateViewModel<ToDoListViewState>() {
 
     private val router: IToDoFlowRouter
@@ -49,6 +51,10 @@ class ToDoListViewModel(
 
     fun onToDoClick(toDoItemId: ToDoItemId) {
         router.toDetailToDo(toDoId = toDoItemId.value.toString())
+    }
+
+    fun onLogoutClick() {
+        logout()
     }
 
     private fun initObservers() {
