@@ -9,6 +9,6 @@ class SaveToDoUseCase(
     private val authorizedUserRepository: IAuthorizedUserRepository,
 ) {
     suspend operator fun invoke(toDoItem: ToDoItem) {
-        return todoRepository.save(toDoItem, authorizedUserRepository.getAuthorizedUser().id)
+        return todoRepository.save(toDoItem, authorizedUserRepository.getAuthorizedUserId())
     }
 }

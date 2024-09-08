@@ -1,9 +1,9 @@
 package io.github.vasilyrylov.archsample.common.domain.interfaces
 
-import io.github.vasilyrylov.archsample.common.domain.model.User
+import io.github.vasilyrylov.archsample.common.domain.model.UserId
 
 interface IAuthorizedUserRepository {
     suspend fun isUserAuthorized(): Boolean
-    suspend fun saveAuthorizedUser(name: String)
-    suspend fun getAuthorizedUser(): User
+    suspend fun saveAuthorizedUserId(id: UserId)
+    suspend fun getAuthorizedUserId(): UserId
 }

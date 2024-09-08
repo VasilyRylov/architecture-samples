@@ -12,7 +12,7 @@ import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.module
 import io.github.vasilyrylov.archsample.feature.root.domain.fsm.RootFeature
 import io.github.vasilyrylov.archsample.feature.root.ui.RootViewModel
-import io.github.vasilyrylov.archsample.feature.root.domain.fsm.GetCurrentLoggedInUserUseCase
+import io.github.vasilyrylov.archsample.feature.root.domain.usecase.GetCurrentLoggedInUserUseCase
 import io.github.vasilyrylov.archsample.feature.root.domain.fsm.RootAsyncWorker
 import io.github.vasilyrylov.archsample.feature.root.domain.fsm.RootFSMState
 import io.github.vasilyrylov.archsample.feature.root.domain.usecase.AuthCompletionUseCase

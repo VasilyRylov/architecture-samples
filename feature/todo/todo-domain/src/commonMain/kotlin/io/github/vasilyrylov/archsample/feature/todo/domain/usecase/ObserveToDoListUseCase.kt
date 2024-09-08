@@ -12,7 +12,7 @@ class ObserveToDoListUseCase(
     private val authorizedUserRepository: IAuthorizedUserRepository
 ) {
     operator fun invoke(): Flow<List<ToDoItem>> = flow {
-        val userId = authorizedUserRepository.getAuthorizedUser().id
+        val userId = authorizedUserRepository.getAuthorizedUserId()
         emitAll(todoRepository.observeToDoList(userId))
     }
 }

@@ -11,6 +11,6 @@ class ToDoCompletedChangeUseCase(
     suspend operator fun invoke(id: ToDoItemId) {
         val oldValue = todoRepository.getById(toDoItemId = id)
         val newValue = oldValue.copy(completed = !oldValue.completed)
-        todoRepository.save(toDoItem = newValue, userId = authorizedUserRepository.getAuthorizedUser().id)
+        todoRepository.save(toDoItem = newValue, userId = authorizedUserRepository.getAuthorizedUserId())
     }
 }

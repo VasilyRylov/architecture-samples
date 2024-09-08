@@ -2,6 +2,7 @@ package io.github.vasilyrylov.archsample.feature.root.domain.fsm
 
 import io.github.vasilyrylov.archsample.feature.root.domain.fsm.action.Initialize
 import io.github.vasilyrylov.archsample.feature.root.domain.fsm.action.RootFSMAction
+import io.github.vasilyrylov.archsample.feature.root.domain.usecase.GetCurrentLoggedInUserUseCase
 import ru.kontur.mobile.visualfsm.AsyncWorker
 import ru.kontur.mobile.visualfsm.AsyncWorkerTask
 

@@ -12,7 +12,7 @@ class AuthorizeUseCase(
         val user = userRepository.getUserByName(name)
         val existUserPassword = user?.let { userRepository.getUserPasswordByName(user.name) }
         val authResult = if (password == existUserPassword) {
-            authorizedIUserRepository.saveAuthorizedUser(name)
+            authorizedIUserRepository.saveAuthorizedUserId(user.id)
             AuthResult.SUCCESS
         } else {
             AuthResult.BAD_CREDENTIAL
