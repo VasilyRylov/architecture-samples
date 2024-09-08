@@ -1,6 +1,6 @@
 package io.github.vasilyrylov.archsample.common.data.preferences
 
-class JVMPreferences() : IPreferences {
+class JVMPreferences : IPreferences {
     override fun putInt(key: String, value: Int) {
         // TODO("Not yet implemented")
     }

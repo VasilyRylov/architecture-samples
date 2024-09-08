@@ -314,11 +314,13 @@ naming:
   ClassNaming:
     active: true
     classPattern: '[A-Z][a-zA-Z0-9]*'
+    excludes: [ '**/generated/ksp/**', '**/kspCaches/**' ]
   ConstructorParameterNaming:
     active: true
     parameterPattern: '[a-z][A-Za-z0-9]*'
     privateParameterPattern: '[a-z][A-Za-z0-9]*'
     excludeClassPattern: '$^'
+    excludes: [ '**/generated/ksp/**', '**/kspCaches/**' ]
   EnumNaming:
     active: true
     enumEntryPattern: '[A-Z][_a-zA-Z0-9]*'
