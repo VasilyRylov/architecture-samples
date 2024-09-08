@@ -21,12 +21,11 @@ class AuthorizedUserRepository(
         return user != null
     }
 
-    override suspend fun saveAuthorizedUser(user: User) {
+    override suspend fun saveAuthorizedUser(name: String) {
         withContext(Dispatchers.IO) {
-            val userId = user.id.value.toString()
-            val userFromDatabase = database.getUserDao().getUserById(userId)
+            val userFromDatabase = database.getUserDao().getUserByName(name)
             requireNotNull(userFromDatabase)
-            preferences.putString(AUTHORIZED_USER_ID, userId)
+            preferences.putString(AUTHORIZED_USER_ID, userFromDatabase.id)
         }
     }
 
