@@ -15,6 +15,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(projects.common.commonDomain)
+            implementation(libs.multiplatformSettings)
         }
 
         commonTest.dependencies {

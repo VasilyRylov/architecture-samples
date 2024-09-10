@@ -1,39 +1,46 @@
 package io.github.vasilyrylov.archsample.common.data.preferences
 
+import com.russhwolf.settings.PreferencesSettings
+import com.russhwolf.settings.Settings
+import java.util.prefs.Preferences
+
 class JVMPreferences : IPreferences {
+
+    private val settings: Settings = PreferencesSettings(Preferences.userRoot())
+
     override fun putInt(key: String, value: Int) {
-        // TODO("Not yet implemented")
+        settings.putInt(key, value)
     }
 
-    override fun getInt(key: String, defValue: Int): Int {
-        return defValue
+    override fun getInt(key: String, defaultValue: Int): Int {
+        return settings.getInt(key, defaultValue)
     }
 
     override fun putLong(key: String, value: Long) {
-        // TODO("Not yet implemented")
+        settings.putLong(key, value)
     }
 
-    override fun getLong(key: String, defValue: Long): Long {
-        return defValue
+    override fun getLong(key: String, defaultValue: Long): Long {
+        return settings.getLong(key, defaultValue)
     }
 
     override fun putString(key: String, value: String) {
-        // TODO("Not yet implemented")
+        settings.putString(key, value)
     }
 
-    override fun getString(key: String, defValue: String): String {
-        return defValue
+    override fun getString(key: String, defaultValue: String): String {
+        return settings.getString(key, defaultValue)
     }
 
     override fun putBoolean(key: String, value: Boolean) {
-        // TODO("Not yet implemented")
+        settings.putBoolean(key, value)
     }
 
-    override fun getBoolean(key: String, defValue: Boolean): Boolean {
-        return defValue
+    override fun getBoolean(key: String, defaultValue: Boolean): Boolean {
+        return settings.getBoolean(key, defaultValue)
     }
 
     override fun clear() {
-        // TODO("Not yet implemented")
+        settings.clear()
     }
 }

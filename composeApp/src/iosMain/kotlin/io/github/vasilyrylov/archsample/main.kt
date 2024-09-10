@@ -6,13 +6,14 @@ import io.github.vasilyrylov.archsample.common.data.preferences.IOsPreferences
 import io.github.vasilyrylov.archsample.data.database.getRoomDatabase
 import io.github.vasilyrylov.archsample.feature.root.component.RootFlowComponent
 import io.github.vasilyrylov.archsample.feature.root.component.api.IRootComponentDependencies
+import platform.Foundation.NSUserDefaults
 import platform.UIKit.UIViewController
 
 fun MainViewController(context: ComponentContext): UIViewController {
 
     val database = getRoomDatabase()
 
-    val preferences = IOsPreferences()
+    val preferences = IOsPreferences(NSUserDefaults.standardUserDefaults)
 
     val rootComponentDependencies = object : IRootComponentDependencies {
         override val preferences = preferences
