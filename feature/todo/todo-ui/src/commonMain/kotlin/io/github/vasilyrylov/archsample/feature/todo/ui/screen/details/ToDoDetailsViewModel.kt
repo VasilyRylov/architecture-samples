@@ -2,8 +2,8 @@ package io.github.vasilyrylov.archsample.feature.todo.ui.screen.details
 
 import io.github.vasilyrylov.archsample.common.ui.base.BaseStateViewModel
 import io.github.vasilyrylov.archsample.common.ui.navigation.RouterHolder
-import io.github.vasilyrylov.archsample.common.domain.model.ToDoItem
-import io.github.vasilyrylov.archsample.common.domain.model.ToDoItemId
+import io.github.vasilyrylov.archsample.common.domain.model.TodoItem
+import io.github.vasilyrylov.archsample.common.domain.model.TodoItemId
 import io.github.vasilyrylov.archsample.feature.todo.domain.usecase.DeleteToDoUseCase
 import io.github.vasilyrylov.archsample.feature.todo.domain.usecase.GetToDoDetailsUseCase
 import io.github.vasilyrylov.archsample.feature.todo.domain.usecase.SaveToDoUseCase
@@ -14,7 +14,7 @@ import io.github.vasilyrylov.archsample.feature.todo.ui.screen.details.model.ToD
 import kotlinx.coroutines.launch
 
 class ToDoDetailsViewModel(
-    private val itemId: ToDoItemId,
+    private val itemId: TodoItemId,
     private val routerHolder: RouterHolder<IToDoFlowRouter>,
     private val getToDoDetails: GetToDoDetailsUseCase,
     private val saveToDo: SaveToDoUseCase,
@@ -26,7 +26,7 @@ class ToDoDetailsViewModel(
         get() = routerHolder.router
 
     override fun createInitialState() = ToDoDetailsViewState(
-        item = ToDoItem(text = "", completed = false)
+        item = TodoItem(text = "", completed = false)
     )
 
     init {
@@ -62,7 +62,7 @@ class ToDoDetailsViewModel(
         updateItemDetails()
     }
 
-    fun onConfirmEdit(updatedItem: ToDoItem) {
+    fun onConfirmEdit(updatedItem: TodoItem) {
         coroutineScope.launch {
             saveToDo(updatedItem)
             updateItemDetails()

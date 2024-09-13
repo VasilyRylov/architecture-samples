@@ -10,7 +10,7 @@ import io.github.vasilyrylov.archsample.feature.todo.ui.screen.details.TodoDetai
 import io.github.vasilyrylov.archsample.feature.todo.ui.screen.list.TodoListScreenContainer
 
 @Composable
-fun ToDoFlowScreenComponent(toDoFlowComponent: ToDoFlowComponent) {
+fun ToDoFlowScreenComponent(toDoFlowComponent: TodoFlowComponent) {
     // Work in progress
     val childStack by toDoFlowComponent.router.childStack.subscribeAsState()
 

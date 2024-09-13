@@ -2,8 +2,8 @@ package io.github.vasilyrylov.archsample.feature.todo.ui.screen.list
 
 import io.github.vasilyrylov.archsample.common.ui.base.BaseStateViewModel
 import io.github.vasilyrylov.archsample.common.ui.navigation.RouterHolder
-import io.github.vasilyrylov.archsample.common.domain.model.ToDoItem
-import io.github.vasilyrylov.archsample.common.domain.model.ToDoItemId
+import io.github.vasilyrylov.archsample.common.domain.model.TodoItem
+import io.github.vasilyrylov.archsample.common.domain.model.TodoItemId
 import io.github.vasilyrylov.archsample.feature.todo.domain.api.ILogoutUseCase
 import io.github.vasilyrylov.archsample.feature.todo.domain.usecase.ObserveToDoListUseCase
 import io.github.vasilyrylov.archsample.feature.todo.domain.usecase.SaveToDoUseCase
@@ -32,7 +32,7 @@ class ToDoListViewModel(
         setState { copy(dialog = ToDoListScreenDialog.AddToDo) }
     }
 
-    fun onConfirmAdd(newItem: ToDoItem) {
+    fun onConfirmAdd(newItem: TodoItem) {
         coroutineScope.launch {
             saveToDo(newItem)
             setState { copy(dialog = ToDoListScreenDialog.None) }
@@ -43,13 +43,13 @@ class ToDoListViewModel(
         setState { copy(dialog = ToDoListScreenDialog.None) }
     }
 
-    fun onCompletedChange(id: ToDoItemId) {
+    fun onCompletedChange(id: TodoItemId) {
         coroutineScope.launch {
             completedChange(id = id)
         }
     }
 
-    fun onToDoClick(toDoItemId: ToDoItemId) {
+    fun onToDoClick(toDoItemId: TodoItemId) {
         router.toDetailToDo(toDoId = toDoItemId.value.toString())
     }
 

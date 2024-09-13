@@ -1,16 +1,16 @@
 package io.github.vasilyrylov.archsample.feature.todo.domain.usecase
 
 import io.github.vasilyrylov.archsample.common.domain.interfaces.IAuthorizedUserRepository
-import io.github.vasilyrylov.archsample.common.domain.interfaces.IToDoRepository
-import io.github.vasilyrylov.archsample.common.domain.model.ToDoItemId
+import io.github.vasilyrylov.archsample.common.domain.interfaces.ITodoRepository
+import io.github.vasilyrylov.archsample.common.domain.model.TodoItemId
 
 class ToDoCompletedChangeUseCase(
-    private val todoRepository: IToDoRepository,
+    private val todoRepository: ITodoRepository,
     private val authorizedUserRepository: IAuthorizedUserRepository
 ) {
-    suspend operator fun invoke(id: ToDoItemId) {
-        val oldValue = todoRepository.getById(toDoItemId = id)
+    suspend operator fun invoke(id: TodoItemId) {
+        val oldValue = todoRepository.getById(todoItemId = id)
         val newValue = oldValue.copy(completed = !oldValue.completed)
-        todoRepository.save(toDoItem = newValue, userId = authorizedUserRepository.getAuthorizedUserId())
+        todoRepository.save(todoItem = newValue, userId = authorizedUserRepository.getAuthorizedUserId())
     }
 }

@@ -16,7 +16,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import io.github.vasilyrylov.archsample.common.domain.model.ToDoItem
+import io.github.vasilyrylov.archsample.common.domain.model.TodoItem
 import io.github.vasilyrylov.archsample.feature.todo.ui.screen.details.model.ToDoDetailsScreenDialog
 import io.github.vasilyrylov.archsample.feature.todo.ui.screen.details.model.ToDoDetailsViewState
 import io.github.vasilyrylov.archsample.feature.todo.ui.element.dialog.EditToDoItemDialog
@@ -34,7 +34,7 @@ fun TodoDetailsScreen(
     onBackClick: () -> Unit,
     onDeleteClick: () -> Unit,
     onEditClick: () -> Unit,
-    onConfirmEdit: (ToDoItem) -> Unit,
+    onConfirmEdit: (TodoItem) -> Unit,
     onCancelEdit: () -> Unit
 ) {
     Scaffold(

@@ -3,16 +3,16 @@ package io.github.vasilyrylov.archsample.feature.todo.component
 import com.arkivanov.decompose.ComponentContext
 import io.github.vasilyrylov.archsample.common.component.createKoinScope
 import io.github.vasilyrylov.archsample.common.component.updateRouterInstance
-import io.github.vasilyrylov.archsample.feature.todo.component.api.IToDoComponentDependencies
-import io.github.vasilyrylov.archsample.feature.todo.component.di.createToDoFlowModule
+import io.github.vasilyrylov.archsample.feature.todo.component.api.ITodoComponentDependencies
+import io.github.vasilyrylov.archsample.feature.todo.component.di.createTodoFlowModule
 
-class ToDoFlowComponent(
+class TodoFlowComponent(
     componentContext: ComponentContext,
-    componentDependencies: IToDoComponentDependencies
+    componentDependencies: ITodoComponentDependencies
 ) : ComponentContext by componentContext {
     // Work in progress
 
-    private val koinScope = createKoinScope(listOf(createToDoFlowModule(componentDependencies)))
+    private val koinScope = createKoinScope(listOf(createTodoFlowModule(componentDependencies)))
 
     val router = ToDoFlowRouter(componentContext, koinScope)
 

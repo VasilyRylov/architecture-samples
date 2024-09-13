@@ -10,10 +10,10 @@ import io.github.vasilyrylov.archsample.common.domain.interfaces.IAuthorizedUser
 import io.github.vasilyrylov.archsample.data.database.ArchSampleDatabase
 import io.github.vasilyrylov.archsample.feature.auth.component.AuthComponent
 import io.github.vasilyrylov.archsample.feature.auth.component.api.IAuthComponentDependencies
-import io.github.vasilyrylov.archsample.feature.todo.component.api.IToDoComponentDependencies
+import io.github.vasilyrylov.archsample.feature.todo.component.api.ITodoComponentDependencies
 import io.github.vasilyrylov.archsample.feature.auth.domain.interfaces.IAuthCompletionUseCase
 import io.github.vasilyrylov.archsample.feature.root.ui.api.IRootFlowRouter
-import io.github.vasilyrylov.archsample.feature.todo.component.ToDoFlowComponent
+import io.github.vasilyrylov.archsample.feature.todo.component.TodoFlowComponent
 import io.github.vasilyrylov.archsample.feature.todo.domain.api.ILogoutUseCase
 import kotlinx.serialization.Serializable
 import org.koin.core.scope.Scope
@@ -43,10 +43,12 @@ class RootFlowRouter(componentContext: ComponentContext, private val koinScope: 
             )
 
             is Configuration.ToDo -> SlotChild.ToDo(
-                component = ToDoFlowComponent(componentContext, object : IToDoComponentDependencies {
+                component = TodoFlowComponent(componentContext, object : ITodoComponentDependencies {
                     override val authorizedUserRepository: IAuthorizedUserRepository
                         get() = koinScope.get()
                     override val logoutUseCase: ILogoutUseCase
+                        get() = koinScope.get()
+                    override val database: ArchSampleDatabase
                         get() = koinScope.get()
                 })
             )
@@ -55,7 +57,7 @@ class RootFlowRouter(componentContext: ComponentContext, private val koinScope: 
 
     internal sealed interface SlotChild {
         data class Auth(val component: AuthComponent) : SlotChild
-        data class ToDo(val component: ToDoFlowComponent) : SlotChild
+        data class ToDo(val component: TodoFlowComponent) : SlotChild
     }
 
     @Serializable

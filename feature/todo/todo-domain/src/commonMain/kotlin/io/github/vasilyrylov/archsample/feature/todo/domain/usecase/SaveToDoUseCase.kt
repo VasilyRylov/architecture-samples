@@ -1,14 +1,14 @@
 package io.github.vasilyrylov.archsample.feature.todo.domain.usecase
 
 import io.github.vasilyrylov.archsample.common.domain.interfaces.IAuthorizedUserRepository
-import io.github.vasilyrylov.archsample.common.domain.interfaces.IToDoRepository
-import io.github.vasilyrylov.archsample.common.domain.model.ToDoItem
+import io.github.vasilyrylov.archsample.common.domain.interfaces.ITodoRepository
+import io.github.vasilyrylov.archsample.common.domain.model.TodoItem
 
 class SaveToDoUseCase(
-    private val todoRepository: IToDoRepository,
+    private val todoRepository: ITodoRepository,
     private val authorizedUserRepository: IAuthorizedUserRepository,
 ) {
-    suspend operator fun invoke(toDoItem: ToDoItem) {
+    suspend operator fun invoke(toDoItem: TodoItem) {
         return todoRepository.save(toDoItem, authorizedUserRepository.getAuthorizedUserId())
     }
 }

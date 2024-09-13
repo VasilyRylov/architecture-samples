@@ -14,6 +14,7 @@ kotlin {
         commonMain.dependencies {
             implementation(projects.feature.todo.todoDomain)
             implementation(projects.common.commonDomain)
+            implementation(projects.common.commonData)
             implementation(libs.kotlinx.coroutines.core)
             api(libs.uuid)
         }

@@ -20,8 +20,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import io.github.vasilyrylov.archsample.common.domain.model.ToDoItem
-import io.github.vasilyrylov.archsample.common.domain.model.ToDoItemId
+import io.github.vasilyrylov.archsample.common.domain.model.TodoItem
+import io.github.vasilyrylov.archsample.common.domain.model.TodoItemId
 import io.github.vasilyrylov.archsample.feature.todo.ui.element.dialog.EditToDoItemDialog
 import io.github.vasilyrylov.archsample.feature.todo.ui.screen.list.model.ToDoListViewState
 import io.github.vasilyrylov.archsample.feature.todo.ui.screen.list.model.ToDoListScreenDialog
@@ -36,9 +36,9 @@ import org.jetbrains.compose.resources.stringResource
 fun TodoListScreen(
     viewState: ToDoListViewState,
     onAddClick: () -> Unit,
-    onCompletedChange: (ToDoItemId) -> Unit,
-    onToDoClick: (ToDoItemId) -> Unit,
-    onConfirmAddClick: (ToDoItem) -> Unit,
+    onCompletedChange: (TodoItemId) -> Unit,
+    onToDoClick: (TodoItemId) -> Unit,
+    onConfirmAddClick: (TodoItem) -> Unit,
     onCancelAddClick: () -> Unit,
     onLogoutClick: () -> Unit,
 ) {
@@ -79,7 +79,7 @@ fun TodoListScreen(
         ToDoListScreenDialog.None -> Unit
 
         ToDoListScreenDialog.AddToDo -> EditToDoItemDialog(
-            toDoItem = ToDoItem(text = "", completed = false),
+            toDoItem = TodoItem(text = "", completed = false),
             onConfirmClick = onConfirmAddClick,
             onCancelClick = onCancelAddClick
         )

@@ -11,7 +11,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import io.github.vasilyrylov.archsample.common.domain.model.ToDoItem
+import io.github.vasilyrylov.archsample.common.domain.model.TodoItem
 import io.github.vasilyrylov.archsample.resources.Res
 import io.github.vasilyrylov.archsample.resources.cancel
 import io.github.vasilyrylov.archsample.resources.save
@@ -20,9 +20,9 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun EditToDoItemDialog(
-    toDoItem: ToDoItem,
+    toDoItem: TodoItem,
     onCancelClick: () -> Unit,
-    onConfirmClick: (ToDoItem) -> Unit
+    onConfirmClick: (TodoItem) -> Unit
 ) {
     var todoState by remember { mutableStateOf(toDoItem) }
 
