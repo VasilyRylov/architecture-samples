@@ -63,6 +63,7 @@ graph TB
   :feature:todo:todo-component --> :common:common-component
   :feature:todo:todo-component --> :common:common-domain
   :feature:todo:todo-component --> :common:common-ui
+  :feature:todo:todo-component --> :common:common-data
   :feature:auth:auth-ui --> :common:common-ui
   :feature:auth:auth-ui --> :feature:auth:auth-domain
   :feature:root:root-domain --> :common:common-domain
@@ -93,6 +94,7 @@ graph TB
   :common:common-data --> :common:common-domain
   :feature:todo:todo-data --> :feature:todo:todo-domain
   :feature:todo:todo-data --> :common:common-domain
+  :feature:todo:todo-data --> :common:common-data
   :feature:todo:todo-domain --> :common:common-domain
   :feature:root:root-component --> :feature:root:root-ui
   :feature:root:root-component --> :feature:root:root-domain
