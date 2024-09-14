@@ -4,7 +4,8 @@ import io.github.vasilyrylov.archsample.common.data.preferences.IPreferences
 import io.github.vasilyrylov.archsample.common.data.repository.AuthorizedUserRepository
 import io.github.vasilyrylov.archsample.common.domain.interfaces.IAuthorizedUserRepository
 import io.github.vasilyrylov.archsample.common.ui.navigation.RouterHolder
-import io.github.vasilyrylov.archsample.data.database.ArchSampleDatabase
+import io.github.vasilyrylov.archsample.data.database.dao.TodoDao
+import io.github.vasilyrylov.archsample.data.database.dao.UserDao
 import io.github.vasilyrylov.archsample.feature.auth.domain.interfaces.IAuthCompletionUseCase
 import io.github.vasilyrylov.archsample.feature.root.component.api.IRootComponentDependencies
 import io.github.vasilyrylov.archsample.feature.root.ui.api.IRootFlowRouter
@@ -41,5 +42,6 @@ internal fun createRootModule(
 
         factoryOf(::AuthCompletionUseCase) bind IAuthCompletionUseCase::class
         factory<IPreferences> { dependencies.preferences }
-        factory<ArchSampleDatabase> { dependencies.database }
+        factory<UserDao> { dependencies.userDao }
+        factory<TodoDao> { dependencies.todoDao }
     }

@@ -7,7 +7,8 @@ import com.arkivanov.decompose.router.slot.activate
 import com.arkivanov.decompose.router.slot.childSlot
 import com.arkivanov.decompose.value.Value
 import io.github.vasilyrylov.archsample.common.domain.interfaces.IAuthorizedUserRepository
-import io.github.vasilyrylov.archsample.data.database.ArchSampleDatabase
+import io.github.vasilyrylov.archsample.data.database.dao.TodoDao
+import io.github.vasilyrylov.archsample.data.database.dao.UserDao
 import io.github.vasilyrylov.archsample.feature.auth.component.AuthFlowComponent
 import io.github.vasilyrylov.archsample.feature.auth.component.api.IAuthComponentDependencies
 import io.github.vasilyrylov.archsample.feature.todo.component.api.ITodoComponentDependencies
@@ -37,7 +38,7 @@ class RootFlowRouter(componentContext: ComponentContext, private val koinScope: 
                         get() = koinScope.get()
                     override val authorizedUserRepository: IAuthorizedUserRepository
                         get() = koinScope.get()
-                    override val database: ArchSampleDatabase
+                    override val userDao: UserDao
                         get() = koinScope.get()
                 })
             )
@@ -48,7 +49,7 @@ class RootFlowRouter(componentContext: ComponentContext, private val koinScope: 
                         get() = koinScope.get()
                     override val logoutUseCase: ILogoutUseCase
                         get() = koinScope.get()
-                    override val database: ArchSampleDatabase
+                    override val todoDao: TodoDao
                         get() = koinScope.get()
                 })
             )

@@ -26,7 +26,8 @@ class AppActivity : ComponentActivity() {
 
         val rootComponentDependencies = object : IRootComponentDependencies {
             override val preferences = preferences
-            override val database = database
+            override val userDao = database.getUserDao()
+            override val todoDao = database.getTodoDao()
         }
 
         val rootFlowComponent = RootFlowComponent(

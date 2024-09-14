@@ -2,7 +2,7 @@ package io.github.vasilyrylov.archsample.feature.auth.component.di
 
 import io.github.vasilyrylov.archsample.auth.data.repository.UserRepository
 import io.github.vasilyrylov.archsample.common.domain.interfaces.IAuthorizedUserRepository
-import io.github.vasilyrylov.archsample.data.database.ArchSampleDatabase
+import io.github.vasilyrylov.archsample.data.database.dao.UserDao
 import io.github.vasilyrylov.archsample.feature.auth.component.api.IAuthComponentDependencies
 import io.github.vasilyrylov.archsample.feature.auth.domain.interfaces.IAuthCompletionUseCase
 import io.github.vasilyrylov.archsample.feature.auth.domain.fsm.AuthFSMState
@@ -28,6 +28,6 @@ internal fun createAuthModule(
     singleOf(::UserRepository) bind IUserRepository::class
     factory<IAuthCompletionUseCase> { dependencies.authCompletionUseCase }
     factory<IAuthorizedUserRepository> { dependencies.authorizedUserRepository }
-    factory<ArchSampleDatabase> { dependencies.database }
+    factory<UserDao> { dependencies.userDao }
     single { AuthFeature(initialState = initialState, asyncWorker = get()) }
 }

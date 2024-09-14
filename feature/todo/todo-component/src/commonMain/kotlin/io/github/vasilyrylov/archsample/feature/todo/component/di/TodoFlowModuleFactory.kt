@@ -27,6 +27,6 @@ internal fun createTodoFlowModule(
         componentDependencies.authorizedUserRepository
     }
     factory {
-        componentDependencies.database
+        componentDependencies.todoDao
     }
 }
