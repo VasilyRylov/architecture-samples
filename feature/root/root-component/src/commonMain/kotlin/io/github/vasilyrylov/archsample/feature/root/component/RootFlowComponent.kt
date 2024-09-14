@@ -32,12 +32,12 @@ class RootFlowComponent(
 
     val router = RootFlowRouter(componentContext, koinScope)
 
-    @Suppress("UNUSED")
-    val viewModel = createViewModel<RootViewModel>(koinScope)
-
     init {
         koinScope.updateRouterInstance(router)
     }
+
+    @Suppress("UNUSED")
+    val viewModel = createViewModel<RootViewModel>(koinScope)
 
     companion object {
         private const val ROOT_FSM_SAVED_STATE = "ROOT_FSM_SAVED_STATE"
