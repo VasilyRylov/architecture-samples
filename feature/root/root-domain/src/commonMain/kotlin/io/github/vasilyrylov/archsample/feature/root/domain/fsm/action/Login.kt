@@ -7,9 +7,9 @@ import ru.kontur.mobile.visualfsm.Transition
 class Login : RootFSMAction() {
 
     @Edge("Login")
-    inner class OnLogin : Transition<RootFSMState.AuthFlow, RootFSMState.ToDoFlow>() {
-        override fun transform(state: RootFSMState.AuthFlow): RootFSMState.ToDoFlow {
-            return RootFSMState.ToDoFlow
+    inner class OnLogin : Transition<RootFSMState.AuthFlow, RootFSMState.TodoFlow>() {
+        override fun transform(state: RootFSMState.AuthFlow): RootFSMState.TodoFlow {
+            return RootFSMState.TodoFlow
         }
     }
 }

@@ -6,7 +6,7 @@ import io.github.vasilyrylov.archsample.common.domain.model.UserId
 import kotlinx.coroutines.flow.Flow
 
 interface ITodoRepository {
-    fun observeToDoList(userId: UserId): Flow<List<TodoItem>>
+    fun observeTodoList(userId: UserId): Flow<List<TodoItem>>
     suspend fun save(todoItem: TodoItem, userId: UserId)
     suspend fun getById(todoItemId: TodoItemId): TodoItem
     suspend fun delete(todoItemId: TodoItemId)

@@ -14,7 +14,7 @@ class TodoFlowComponent(
 
     private val koinScope = createKoinScope(listOf(createTodoFlowModule(componentDependencies)))
 
-    val router = ToDoFlowRouter(componentContext, koinScope)
+    val router = TodoFlowRouter(componentContext, koinScope)
 
     init {
         koinScope.updateRouterInstance(router)

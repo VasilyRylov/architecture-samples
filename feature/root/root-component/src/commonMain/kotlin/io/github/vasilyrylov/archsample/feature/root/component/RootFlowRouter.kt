@@ -8,7 +8,7 @@ import com.arkivanov.decompose.router.slot.childSlot
 import com.arkivanov.decompose.value.Value
 import io.github.vasilyrylov.archsample.common.domain.interfaces.IAuthorizedUserRepository
 import io.github.vasilyrylov.archsample.data.database.ArchSampleDatabase
-import io.github.vasilyrylov.archsample.feature.auth.component.AuthComponent
+import io.github.vasilyrylov.archsample.feature.auth.component.AuthFlowComponent
 import io.github.vasilyrylov.archsample.feature.auth.component.api.IAuthComponentDependencies
 import io.github.vasilyrylov.archsample.feature.todo.component.api.ITodoComponentDependencies
 import io.github.vasilyrylov.archsample.feature.auth.domain.interfaces.IAuthCompletionUseCase
@@ -31,8 +31,8 @@ class RootFlowRouter(componentContext: ComponentContext, private val koinScope: 
 
     private fun slotChild(config: Configuration, componentContext: ComponentContext): SlotChild {
         return when (config) {
-            Configuration.Auth -> SlotChild.Auth(
-                component = AuthComponent(componentContext, object : IAuthComponentDependencies {
+            Configuration.Auth -> SlotChild.AuthFlow(
+                component = AuthFlowComponent(componentContext, object : IAuthComponentDependencies {
                     override val authCompletionUseCase: IAuthCompletionUseCase
                         get() = koinScope.get()
                     override val authorizedUserRepository: IAuthorizedUserRepository
@@ -42,7 +42,7 @@ class RootFlowRouter(componentContext: ComponentContext, private val koinScope: 
                 })
             )
 
-            is Configuration.ToDo -> SlotChild.ToDo(
+            is Configuration.Todo -> SlotChild.TodoFlow(
                 component = TodoFlowComponent(componentContext, object : ITodoComponentDependencies {
                     override val authorizedUserRepository: IAuthorizedUserRepository
                         get() = koinScope.get()
@@ -56,8 +56,8 @@ class RootFlowRouter(componentContext: ComponentContext, private val koinScope: 
     }
 
     internal sealed interface SlotChild {
-        data class Auth(val component: AuthComponent) : SlotChild
-        data class ToDo(val component: TodoFlowComponent) : SlotChild
+        data class AuthFlow(val component: AuthFlowComponent) : SlotChild
+        data class TodoFlow(val component: TodoFlowComponent) : SlotChild
     }
 
     @Serializable
@@ -66,14 +66,14 @@ class RootFlowRouter(componentContext: ComponentContext, private val koinScope: 
         data object Auth : Configuration()
 
         @Serializable
-        data object ToDo : Configuration()
+        data object Todo : Configuration()
     }
 
     override fun toAuth() {
         slotNavigation.activate(Configuration.Auth)
     }
 
-    override fun toToDo() {
-        slotNavigation.activate(Configuration.ToDo)
+    override fun toTodo() {
+        slotNavigation.activate(Configuration.Todo)
     }
 }

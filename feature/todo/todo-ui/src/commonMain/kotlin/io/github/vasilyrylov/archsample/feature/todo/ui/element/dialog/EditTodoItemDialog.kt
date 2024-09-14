@@ -19,12 +19,12 @@ import io.github.vasilyrylov.archsample.resources.todo
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-fun EditToDoItemDialog(
-    toDoItem: TodoItem,
+fun EditTodoItemDialog(
+    todoItem: TodoItem,
     onCancelClick: () -> Unit,
     onConfirmClick: (TodoItem) -> Unit
 ) {
-    var todoState by remember { mutableStateOf(toDoItem) }
+    var todoState by remember { mutableStateOf(todoItem) }
 
     AlertDialog(
         onDismissRequest = onCancelClick,

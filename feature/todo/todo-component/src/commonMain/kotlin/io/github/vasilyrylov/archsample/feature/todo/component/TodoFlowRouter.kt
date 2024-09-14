@@ -8,17 +8,17 @@ import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.router.stack.pushNew
 import com.arkivanov.decompose.value.Value
 import com.benasher44.uuid.uuidFrom
-import io.github.vasilyrylov.archsample.feature.todo.component.details.ToDoDetailsComponent
-import io.github.vasilyrylov.archsample.feature.todo.component.list.ToDoListComponent
+import io.github.vasilyrylov.archsample.feature.todo.component.details.TodoDetailsComponent
+import io.github.vasilyrylov.archsample.feature.todo.component.list.TodoListComponent
 import io.github.vasilyrylov.archsample.common.domain.model.TodoItemId
-import io.github.vasilyrylov.archsample.feature.todo.ui.api.IToDoFlowRouter
+import io.github.vasilyrylov.archsample.feature.todo.ui.api.ITodoFlowRouter
 import kotlinx.serialization.Serializable
 import org.koin.core.scope.Scope
 
-class ToDoFlowRouter(
+class TodoFlowRouter(
     componentContext: ComponentContext,
     private val koinScope: Scope
-) : IToDoFlowRouter {
+) : ITodoFlowRouter {
 
     private val stackNavigation = StackNavigation<Configuration>()
 
@@ -27,39 +27,39 @@ class ToDoFlowRouter(
         serializer = Configuration.serializer(),
         handleBackButton = true,
         childFactory = ::childFactory,
-        initialStack = { listOf(Configuration.ToDoList) }
+        initialStack = { listOf(Configuration.TodoList) }
     )
 
     private fun childFactory(config: Configuration, componentContext: ComponentContext): Child {
         return when (config) {
-            is Configuration.ToDoList -> Child.ToDoList(
-                component = ToDoListComponent(componentContext = componentContext, parentScope = koinScope)
+            is Configuration.TodoList -> Child.TodoList(
+                component = TodoListComponent(componentContext = componentContext, parentScope = koinScope)
             )
 
-            is Configuration.ToDoDetail -> Child.ToDoDetail(
-                component = ToDoDetailsComponent(
-                    componentContext = componentContext, parentScope = koinScope, itemId = TodoItemId(uuidFrom(config.toDoId))
+            is Configuration.TodoDetail -> Child.TodoDetail(
+                component = TodoDetailsComponent(
+                    componentContext = componentContext, parentScope = koinScope, itemId = TodoItemId(uuidFrom(config.todoId))
                 )
             )
         }
     }
 
     internal sealed interface Child {
-        class ToDoList(val component: ToDoListComponent) : Child
-        class ToDoDetail(val component: ToDoDetailsComponent) : Child
+        class TodoList(val component: TodoListComponent) : Child
+        class TodoDetail(val component: TodoDetailsComponent) : Child
     }
 
     @Serializable
     internal sealed class Configuration {
         @Serializable
-        data object ToDoList : Configuration()
+        data object TodoList : Configuration()
 
         @Serializable
-        data class ToDoDetail(val toDoId: String) : Configuration()
+        data class TodoDetail(val todoId: String) : Configuration()
     }
 
-    override fun toDetailToDo(toDoId: String) {
-        stackNavigation.pushNew(Configuration.ToDoDetail(toDoId = toDoId))
+    override fun toDetailTodo(id: TodoItemId) {
+        stackNavigation.pushNew(Configuration.TodoDetail(todoId = id.value.toString()))
     }
 
     override fun back() {

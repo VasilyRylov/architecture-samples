@@ -10,20 +10,20 @@ import io.github.vasilyrylov.archsample.feature.todo.ui.screen.details.TodoDetai
 import io.github.vasilyrylov.archsample.feature.todo.ui.screen.list.TodoListScreenContainer
 
 @Composable
-fun ToDoFlowScreenComponent(toDoFlowComponent: TodoFlowComponent) {
+fun TodoFlowScreenComponent(todoFlowComponent: TodoFlowComponent) {
     // Work in progress
-    val childStack by toDoFlowComponent.router.childStack.subscribeAsState()
+    val childStack by todoFlowComponent.router.childStack.subscribeAsState()
 
     Children(
         stack = childStack,
         animation = stackAnimation(slide())
     ) {
         when (val child = it.instance) {
-            is ToDoFlowRouter.Child.ToDoList -> {
+            is TodoFlowRouter.Child.TodoList -> {
                 TodoListScreenContainer(child.component.viewModel)
             }
 
-            is ToDoFlowRouter.Child.ToDoDetail -> {
+            is TodoFlowRouter.Child.TodoDetail -> {
                 TodoDetailsScreenContainer(child.component.viewModel)
             }
         }

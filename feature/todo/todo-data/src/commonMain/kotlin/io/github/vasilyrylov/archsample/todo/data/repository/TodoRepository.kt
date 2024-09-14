@@ -17,7 +17,7 @@ class TodoRepository(
     private val database: ArchSampleDatabase,
 ) : ITodoRepository {
 
-    override fun observeToDoList(userId: UserId): Flow<List<TodoItem>> {
+    override fun observeTodoList(userId: UserId): Flow<List<TodoItem>> {
         return database.getTodoDao()
             .observeAllByUserId(userId.value.toString())
             .map { it.map(TodoMapper::fromDatabase) }.flowOn(Dispatchers.IO)

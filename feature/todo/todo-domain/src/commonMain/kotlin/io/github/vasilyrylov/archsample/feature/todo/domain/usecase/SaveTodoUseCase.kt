@@ -4,11 +4,11 @@ import io.github.vasilyrylov.archsample.common.domain.interfaces.IAuthorizedUser
 import io.github.vasilyrylov.archsample.common.domain.interfaces.ITodoRepository
 import io.github.vasilyrylov.archsample.common.domain.model.TodoItem
 
-class SaveToDoUseCase(
+class SaveTodoUseCase(
     private val todoRepository: ITodoRepository,
     private val authorizedUserRepository: IAuthorizedUserRepository,
 ) {
-    suspend operator fun invoke(toDoItem: TodoItem) {
-        return todoRepository.save(toDoItem, authorizedUserRepository.getAuthorizedUserId())
+    suspend operator fun invoke(item: TodoItem) {
+        return todoRepository.save(item, authorizedUserRepository.getAuthorizedUserId())
     }
 }

@@ -10,7 +10,7 @@ import io.github.vasilyrylov.archsample.feature.auth.domain.fsm.AuthFSMState
 import io.github.vasilyrylov.archsample.feature.auth.domain.fsm.AuthFeature
 import io.github.vasilyrylov.archsample.feature.auth.ui.AuthViewModel
 
-class AuthComponent(
+class AuthFlowComponent(
     componentContext: ComponentContext,
     dependencies: IAuthComponentDependencies,
 ) : ComponentContext by componentContext {

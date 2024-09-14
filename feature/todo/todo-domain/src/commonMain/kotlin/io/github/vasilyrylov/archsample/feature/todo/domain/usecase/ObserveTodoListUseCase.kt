@@ -7,12 +7,12 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.flow.flow
 
-class ObserveToDoListUseCase(
+class ObserveTodoListUseCase(
     private val todoRepository: ITodoRepository,
     private val authorizedUserRepository: IAuthorizedUserRepository
 ) {
     operator fun invoke(): Flow<List<TodoItem>> = flow {
         val userId = authorizedUserRepository.getAuthorizedUserId()
-        emitAll(todoRepository.observeToDoList(userId))
+        emitAll(todoRepository.observeTodoList(userId))
     }
 }

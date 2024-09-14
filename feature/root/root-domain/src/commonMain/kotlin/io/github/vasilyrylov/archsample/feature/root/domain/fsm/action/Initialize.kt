@@ -6,13 +6,13 @@ import ru.kontur.mobile.visualfsm.Transition
 
 data class Initialize(val userId: UserId?) : RootFSMAction() {
 
-    inner class UserAuthorized : Transition<RootFSMState.AsyncWorkState.Initial, RootFSMState.ToDoFlow>() {
+    inner class UserAuthorized : Transition<RootFSMState.AsyncWorkState.Initial, RootFSMState.TodoFlow>() {
         override fun predicate(state: RootFSMState.AsyncWorkState.Initial): Boolean {
             return userId != null
         }
 
-        override fun transform(state: RootFSMState.AsyncWorkState.Initial): RootFSMState.ToDoFlow {
-            return RootFSMState.ToDoFlow
+        override fun transform(state: RootFSMState.AsyncWorkState.Initial): RootFSMState.TodoFlow {
+            return RootFSMState.TodoFlow
         }
     }
 

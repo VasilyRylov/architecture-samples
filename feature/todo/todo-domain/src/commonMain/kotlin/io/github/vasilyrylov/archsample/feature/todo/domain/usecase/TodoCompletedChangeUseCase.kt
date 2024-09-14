@@ -4,7 +4,7 @@ import io.github.vasilyrylov.archsample.common.domain.interfaces.IAuthorizedUser
 import io.github.vasilyrylov.archsample.common.domain.interfaces.ITodoRepository
 import io.github.vasilyrylov.archsample.common.domain.model.TodoItemId
 
-class ToDoCompletedChangeUseCase(
+class TodoCompletedChangeUseCase(
     private val todoRepository: ITodoRepository,
     private val authorizedUserRepository: IAuthorizedUserRepository
 ) {

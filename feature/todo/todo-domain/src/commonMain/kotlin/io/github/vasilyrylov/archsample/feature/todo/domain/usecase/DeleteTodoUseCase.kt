@@ -4,7 +4,7 @@ import io.github.vasilyrylov.archsample.common.domain.interfaces.ITodoRepository
 import io.github.vasilyrylov.archsample.common.domain.model.TodoItemId
 
 
-class DeleteToDoUseCase(
+class DeleteTodoUseCase(
     private val todoRepository: ITodoRepository,
 ) {
     suspend operator fun invoke(id: TodoItemId) {

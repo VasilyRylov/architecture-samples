@@ -24,7 +24,7 @@ fun TodoListScreenContent(
 ) {
     LazyColumn {
         items(items = todoItems) { todoItem ->
-            ToDoItemContent(
+            TodoItemContent(
                 item = todoItem,
                 onCompletedChange = onCompletedChange,
                 onTodoItemClick = onTodoItemClick
@@ -34,7 +34,7 @@ fun TodoListScreenContent(
 }
 
 @Composable
-fun ToDoItemContent(
+fun TodoItemContent(
     item: TodoItem,
     onCompletedChange: (TodoItemId) -> Unit,
     onTodoItemClick: (TodoItemId) -> Unit

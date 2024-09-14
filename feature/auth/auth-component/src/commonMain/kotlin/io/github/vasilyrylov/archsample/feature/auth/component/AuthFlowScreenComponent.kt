@@ -5,6 +5,6 @@ import io.github.vasilyrylov.archsample.feature.auth.ui.AuthFlowScreenContainer
 
 
 @Composable
-fun AuthFlowScreenComponent(authComponent: AuthComponent) {
-    AuthFlowScreenContainer(authComponent.viewModel)
+fun AuthFlowScreenComponent(authFlowComponent: AuthFlowComponent) {
+    AuthFlowScreenContainer(authFlowComponent.viewModel)
 }

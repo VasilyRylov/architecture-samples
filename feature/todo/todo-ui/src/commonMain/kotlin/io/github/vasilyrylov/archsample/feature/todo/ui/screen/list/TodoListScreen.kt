@@ -22,9 +22,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import io.github.vasilyrylov.archsample.common.domain.model.TodoItem
 import io.github.vasilyrylov.archsample.common.domain.model.TodoItemId
-import io.github.vasilyrylov.archsample.feature.todo.ui.element.dialog.EditToDoItemDialog
-import io.github.vasilyrylov.archsample.feature.todo.ui.screen.list.model.ToDoListViewState
-import io.github.vasilyrylov.archsample.feature.todo.ui.screen.list.model.ToDoListScreenDialog
+import io.github.vasilyrylov.archsample.feature.todo.ui.element.dialog.EditTodoItemDialog
+import io.github.vasilyrylov.archsample.feature.todo.ui.screen.list.model.TodoListViewState
+import io.github.vasilyrylov.archsample.feature.todo.ui.screen.list.model.TodoListScreenDialog
 import io.github.vasilyrylov.archsample.resources.Res
 import io.github.vasilyrylov.archsample.resources.add
 import io.github.vasilyrylov.archsample.resources.logout
@@ -34,10 +34,10 @@ import org.jetbrains.compose.resources.stringResource
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TodoListScreen(
-    viewState: ToDoListViewState,
+    viewState: TodoListViewState,
     onAddClick: () -> Unit,
     onCompletedChange: (TodoItemId) -> Unit,
-    onToDoClick: (TodoItemId) -> Unit,
+    onTodoClick: (TodoItemId) -> Unit,
     onConfirmAddClick: (TodoItem) -> Unit,
     onCancelAddClick: () -> Unit,
     onLogoutClick: () -> Unit,
@@ -70,16 +70,16 @@ fun TodoListScreen(
             TodoListScreenContent(
                 todoItems = viewState.todoItems,
                 onCompletedChange = onCompletedChange,
-                onTodoItemClick = onToDoClick
+                onTodoItemClick = onTodoClick
             )
         }
     }
 
     when (viewState.dialog) {
-        ToDoListScreenDialog.None -> Unit
+        TodoListScreenDialog.None -> Unit
 
-        ToDoListScreenDialog.AddToDo -> EditToDoItemDialog(
-            toDoItem = TodoItem(text = "", completed = false),
+        TodoListScreenDialog.AddTodo -> EditTodoItemDialog(
+            todoItem = TodoItem(text = "", completed = false),
             onConfirmClick = onConfirmAddClick,
             onCancelClick = onCancelAddClick
         )

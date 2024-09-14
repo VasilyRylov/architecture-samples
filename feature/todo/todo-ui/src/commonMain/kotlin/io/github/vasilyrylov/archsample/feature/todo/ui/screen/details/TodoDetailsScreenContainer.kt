@@ -5,7 +5,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 
 @Composable
-fun TodoDetailsScreenContainer(viewModel: ToDoDetailsViewModel) {
+fun TodoDetailsScreenContainer(viewModel: TodoDetailsViewModel) {
 
     val viewState by viewModel.viewState.collectAsState()
 

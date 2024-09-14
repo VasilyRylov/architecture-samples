@@ -14,7 +14,7 @@ sealed class RootFSMState : State {
     }
 
     @Serializable
-    data object ToDoFlow : RootFSMState()
+    data object TodoFlow : RootFSMState()
 
     @Serializable
     data object AuthFlow : RootFSMState()
