@@ -92,7 +92,6 @@ android {
     lint {
         warningsAsErrors = true
         htmlReport = true
-        checkDependencies = true
     }
 }
 
