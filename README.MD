@@ -1,5 +1,3 @@
-# Work in progress
-
 ## Compose Multiplatform Application architecture sample
 
 ### Frameworks and libraries
@@ -108,13 +106,14 @@ graph TB
   :feature:root:root-component --> :common:common-data
   :feature:auth:auth-domain --> :common:common-domain
 ```
+
 ### Variants and ready status
 
-| Sample                                                                                                             | Description                                       | Ready status                                                                           |
-|--------------------------------------------------------------------------------------------------------------------|---------------------------------------------------|----------------------------------------------------------------------------------------|
-| [fsm-mvi-and-mvvm-plus](https://github.com/VasilyRylov/architecture-samples/tree/main)                             | Fsm-based MVI and MVVM+(Todo Feature)             | Working on in-memory repositories, Room Multiplatform WIP in branch room-multiplatform |
-| [fsm-mvi](https://github.com/VasilyRylov/architecture-samples/tree/main/fsm-mvi)                                   | Fsm-based MVI with parent and child relation FSMs | Work in progress                                                                       |
-| [fsm-mvi-extendable-state](https://github.com/VasilyRylov/architecture-samples/tree/main/fsm-mvi-extendable-state) | Fsm-based MVI with extendable parent state        | Work in progress                                                                       |
+| Sample                                                                                                             | Description                                       | Ready status     |
+|--------------------------------------------------------------------------------------------------------------------|---------------------------------------------------|------------------|
+| [fsm-mvi-and-mvvm-plus](https://github.com/VasilyRylov/architecture-samples/tree/main)                             | Fsm-based MVI and MVVM+(Todo Feature)             | Ready            |
+| [fsm-mvi](https://github.com/VasilyRylov/architecture-samples/tree/main/fsm-mvi)                                   | Fsm-based MVI with parent and child relation FSMs | Work in progress |
+| [fsm-mvi-extendable-state](https://github.com/VasilyRylov/architecture-samples/tree/main/fsm-mvi-extendable-state) | Fsm-based MVI with extendable parent state        | Work in progress |
 
 ### Root module FSM
 
