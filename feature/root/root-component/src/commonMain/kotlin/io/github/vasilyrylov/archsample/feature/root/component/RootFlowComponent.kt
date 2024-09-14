@@ -5,6 +5,7 @@ import io.github.vasilyrylov.archsample.common.component.createKoinScope
 import io.github.vasilyrylov.archsample.common.component.createViewModel
 import io.github.vasilyrylov.archsample.common.component.registerAndGetSavedState
 import io.github.vasilyrylov.archsample.common.component.updateRouterInstance
+import io.github.vasilyrylov.archsample.feature.root.component.api.IRootComponentDependencies
 import io.github.vasilyrylov.archsample.feature.root.component.di.createRootModule
 import io.github.vasilyrylov.archsample.feature.root.ui.RootViewModel
 import io.github.vasilyrylov.archsample.feature.root.domain.fsm.RootFeature
@@ -12,6 +13,7 @@ import io.github.vasilyrylov.archsample.feature.root.domain.fsm.RootFSMState
 
 class RootFlowComponent(
     componentContext: ComponentContext,
+    dependencies: IRootComponentDependencies
 ) : ComponentContext by componentContext {
 
 
@@ -25,17 +27,17 @@ class RootFlowComponent(
     }
 
     private val koinScope = createKoinScope(
-        listOf(createRootModule(savedState))
+        listOf(createRootModule(savedState, dependencies))
     )
 
     val router = RootFlowRouter(componentContext, koinScope)
 
-    @Suppress("UNUSED")
-    val viewModel = createViewModel<RootViewModel>(koinScope)
-
     init {
         koinScope.updateRouterInstance(router)
     }
+
+    @Suppress("UNUSED")
+    val viewModel = createViewModel<RootViewModel>(koinScope)
 
     companion object {
         private const val ROOT_FSM_SAVED_STATE = "ROOT_FSM_SAVED_STATE"

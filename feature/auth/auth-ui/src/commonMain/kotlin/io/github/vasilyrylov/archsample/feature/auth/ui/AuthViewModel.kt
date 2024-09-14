@@ -1,7 +1,7 @@
 package io.github.vasilyrylov.archsample.feature.auth.ui
 
 import io.github.vasilyrylov.archsample.common.ui.base.BaseViewModel
-import io.github.vasilyrylov.archsample.feature.auth.domain.api.IAuthCompletionUseCase
+import io.github.vasilyrylov.archsample.feature.auth.domain.interfaces.IAuthCompletionUseCase
 import io.github.vasilyrylov.archsample.feature.auth.domain.fsm.AuthFSMState
 import io.github.vasilyrylov.archsample.feature.auth.domain.fsm.AuthFeature
 import kotlinx.coroutines.flow.SharingStarted

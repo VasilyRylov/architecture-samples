@@ -16,10 +16,10 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import io.github.vasilyrylov.archsample.feature.todo.domain.model.ToDoItem
-import io.github.vasilyrylov.archsample.feature.todo.ui.screen.details.model.ToDoDetailsScreenDialog
-import io.github.vasilyrylov.archsample.feature.todo.ui.screen.details.model.ToDoDetailsViewState
-import io.github.vasilyrylov.archsample.feature.todo.ui.element.dialog.EditToDoItemDialog
+import io.github.vasilyrylov.archsample.common.domain.model.TodoItem
+import io.github.vasilyrylov.archsample.feature.todo.ui.screen.details.model.TodoDetailsScreenDialog
+import io.github.vasilyrylov.archsample.feature.todo.ui.screen.details.model.TodoDetailsViewState
+import io.github.vasilyrylov.archsample.feature.todo.ui.element.dialog.EditTodoItemDialog
 import io.github.vasilyrylov.archsample.resources.Res
 import io.github.vasilyrylov.archsample.resources.back
 import io.github.vasilyrylov.archsample.resources.delete
@@ -30,11 +30,11 @@ import org.jetbrains.compose.resources.stringResource
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TodoDetailsScreen(
-    viewState: ToDoDetailsViewState,
+    viewState: TodoDetailsViewState,
     onBackClick: () -> Unit,
     onDeleteClick: () -> Unit,
     onEditClick: () -> Unit,
-    onConfirmEdit: (ToDoItem) -> Unit,
+    onConfirmEdit: (TodoItem) -> Unit,
     onCancelEdit: () -> Unit
 ) {
     Scaffold(
@@ -68,10 +68,10 @@ fun TodoDetailsScreen(
     }
 
     when (viewState.dialog) {
-        ToDoDetailsScreenDialog.None -> Unit
+        TodoDetailsScreenDialog.None -> Unit
 
-        ToDoDetailsScreenDialog.EditToDo -> EditToDoItemDialog(
-            toDoItem = viewState.item,
+        TodoDetailsScreenDialog.EditTodo -> EditTodoItemDialog(
+            todoItem = viewState.item,
             onConfirmClick = onConfirmEdit,
             onCancelClick = onCancelEdit,
         )

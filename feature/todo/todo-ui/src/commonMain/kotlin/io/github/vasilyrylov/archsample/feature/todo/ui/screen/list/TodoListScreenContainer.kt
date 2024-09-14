@@ -5,7 +5,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 
 @Composable
-fun TodoListScreenContainer(viewModel: ToDoListViewModel) {
+fun TodoListScreenContainer(viewModel: TodoListViewModel) {
 
     val viewState by viewModel.viewState.collectAsState()
 
@@ -13,8 +13,9 @@ fun TodoListScreenContainer(viewModel: ToDoListViewModel) {
         viewState = viewState,
         onAddClick = viewModel::onAddClick,
         onCompletedChange = viewModel::onCompletedChange,
-        onToDoClick = viewModel::onToDoClick,
+        onTodoClick = viewModel::onTodoClick,
         onConfirmAddClick = viewModel::onConfirmAdd,
         onCancelAddClick = viewModel::onCancelAdd,
+        onLogoutClick = viewModel::onLogoutClick,
     )
 }

@@ -1,5 +1,3 @@
-# Work in progress
-
 ## Compose Multiplatform Application architecture sample
 
 ### Frameworks and libraries
@@ -36,10 +34,15 @@ graph TB
     :common:common-ui["common-ui"]
     :common:common-data["common-data"]
   end
+  subgraph :data
+    :data:preferences["preferences"]
+    :data:database["database"]
+  end
   subgraph :feature:auth
     :feature:auth:auth-ui["auth-ui"]
     :feature:auth:auth-domain["auth-domain"]
     :feature:auth:auth-component["auth-component"]
+    :feature:auth:auth-data["auth-data"]
   end
   subgraph :feature:root
     :feature:root:root-domain["root-domain"]
@@ -58,6 +61,7 @@ graph TB
   :feature:todo:todo-component --> :common:common-component
   :feature:todo:todo-component --> :common:common-domain
   :feature:todo:todo-component --> :common:common-ui
+  :feature:todo:todo-component --> :common:common-data
   :feature:auth:auth-ui --> :common:common-ui
   :feature:auth:auth-ui --> :feature:auth:auth-domain
   :feature:root:root-domain --> :common:common-domain
@@ -65,18 +69,30 @@ graph TB
   :feature:root:root-domain --> :feature:todo:todo-domain
   :common:common-component --> :common:common-ui
   :feature:todo:todo-ui --> :common:common-ui
+  :feature:todo:todo-ui --> :common:common-domain
   :feature:todo:todo-ui --> :feature:todo:todo-domain
   :feature:root:root-ui --> :common:common-ui
   :feature:root:root-ui --> :feature:root:root-domain
+  :data:preferences --> :common:common-domain
   :composeApp --> :feature:root:root-component
   :composeApp --> :common:common-ui
+  :composeApp --> :common:common-data
   :feature:auth:auth-component --> :feature:auth:auth-ui
   :feature:auth:auth-component --> :feature:auth:auth-domain
+  :feature:auth:auth-component --> :feature:auth:auth-data
   :feature:auth:auth-component --> :common:common-component
   :feature:auth:auth-component --> :common:common-ui
+  :feature:auth:auth-component --> :common:common-domain
+  :feature:auth:auth-component --> :common:common-data
+  :feature:auth:auth-data --> :feature:auth:auth-domain
+  :feature:auth:auth-data --> :common:common-domain
+  :feature:auth:auth-data --> :common:common-data
+  :common:common-data --> :data:preferences
+  :common:common-data --> :data:database
   :common:common-data --> :common:common-domain
   :feature:todo:todo-data --> :feature:todo:todo-domain
   :feature:todo:todo-data --> :common:common-domain
+  :feature:todo:todo-data --> :common:common-data
   :feature:todo:todo-domain --> :common:common-domain
   :feature:root:root-component --> :feature:root:root-ui
   :feature:root:root-component --> :feature:root:root-domain
@@ -88,14 +104,16 @@ graph TB
   :feature:root:root-component --> :common:common-domain
   :feature:root:root-component --> :common:common-ui
   :feature:root:root-component --> :common:common-data
+  :feature:auth:auth-domain --> :common:common-domain
 ```
+
 ### Variants and ready status
 
-| Sample                                                                                                             | Description                                       | Ready status                                                                           |
-|--------------------------------------------------------------------------------------------------------------------|---------------------------------------------------|----------------------------------------------------------------------------------------|
-| [fsm-mvi-and-mvvm-plus](https://github.com/VasilyRylov/architecture-samples/tree/main)                             | Fsm-based MVI and MVVM+(Todo Feature)             | Working on in-memory repositories, Room Multiplatform WIP in branch room-multiplatform |
-| [fsm-mvi](https://github.com/VasilyRylov/architecture-samples/tree/main/fsm-mvi)                                   | Fsm-based MVI with parent and child relation FSMs | Work in progress                                                                       |
-| [fsm-mvi-extendable-state](https://github.com/VasilyRylov/architecture-samples/tree/main/fsm-mvi-extendable-state) | Fsm-based MVI with extendable parent state        | Work in progress                                                                       |
+| Sample                                                                                                             | Description                                       | Ready status     |
+|--------------------------------------------------------------------------------------------------------------------|---------------------------------------------------|------------------|
+| [fsm-mvi-and-mvvm-plus](https://github.com/VasilyRylov/architecture-samples/tree/main)                             | Fsm-based MVI and MVVM+(Todo Feature)             | Ready            |
+| [fsm-mvi](https://github.com/VasilyRylov/architecture-samples/tree/main/fsm-mvi)                                   | Fsm-based MVI with parent and child relation FSMs | Work in progress |
+| [fsm-mvi-extendable-state](https://github.com/VasilyRylov/architecture-samples/tree/main/fsm-mvi-extendable-state) | Fsm-based MVI with extendable parent state        | Work in progress |
 
 ### Root module FSM
 

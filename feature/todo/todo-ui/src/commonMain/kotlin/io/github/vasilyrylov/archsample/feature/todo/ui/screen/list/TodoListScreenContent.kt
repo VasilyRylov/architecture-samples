@@ -13,18 +13,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import io.github.vasilyrylov.archsample.feature.todo.domain.model.ToDoItem
-import io.github.vasilyrylov.archsample.feature.todo.domain.model.ToDoItemId
+import io.github.vasilyrylov.archsample.common.domain.model.TodoItem
+import io.github.vasilyrylov.archsample.common.domain.model.TodoItemId
 
 @Composable
 fun TodoListScreenContent(
-    todoItems: List<ToDoItem>,
-    onTodoItemClick: (ToDoItemId) -> Unit,
-    onCompletedChange: (ToDoItemId) -> Unit
+    todoItems: List<TodoItem>,
+    onTodoItemClick: (TodoItemId) -> Unit,
+    onCompletedChange: (TodoItemId) -> Unit
 ) {
     LazyColumn {
         items(items = todoItems) { todoItem ->
-            ToDoItemContent(
+            TodoItemContent(
                 item = todoItem,
                 onCompletedChange = onCompletedChange,
                 onTodoItemClick = onTodoItemClick
@@ -34,10 +34,10 @@ fun TodoListScreenContent(
 }
 
 @Composable
-fun ToDoItemContent(
-    item: ToDoItem,
-    onCompletedChange: (ToDoItemId) -> Unit,
-    onTodoItemClick: (ToDoItemId) -> Unit
+fun TodoItemContent(
+    item: TodoItem,
+    onCompletedChange: (TodoItemId) -> Unit,
+    onTodoItemClick: (TodoItemId) -> Unit
 ) {
     Row(
         modifier = Modifier.fillMaxWidth()
