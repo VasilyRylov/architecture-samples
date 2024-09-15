@@ -11,8 +11,27 @@ import io.github.vasilyrylov.archsample.data.database.getRoomDatabase
 import java.awt.Dimension
 import io.github.vasilyrylov.archsample.feature.root.component.RootFlowComponent
 import io.github.vasilyrylov.archsample.feature.root.component.api.IRootComponentDependencies
+import java.awt.Button
+import java.awt.Dialog
+import java.awt.FlowLayout
+import java.awt.Frame
+import java.awt.Label
 
 fun main() {
+    Thread.setDefaultUncaughtExceptionHandler { _, e ->
+        Dialog(Frame(), e.message ?: "Error").apply {
+            layout = FlowLayout()
+            val label = Label(e.message)
+            add(label)
+            val button = Button("OK").apply {
+                addActionListener { dispose() }
+            }
+            add(button)
+            setSize(300,300)
+            isVisible = true
+        }
+    }
+
     val lifecycle = LifecycleRegistry()
 
     val database = getRoomDatabase()
