@@ -103,6 +103,10 @@ compose.desktop {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "io.github.vasilyrylov.archsample.desktopApp"
             packageVersion = libs.versions.app.versionName.get()
+
+            buildTypes.release.proguard {
+                isEnabled.set(false)
+            }
         }
     }
 }
