@@ -31,7 +31,6 @@ internal fun createRootModule(
         factoryOf(::GetCurrentLoggedInUserUseCase)
         singleOf(::RootAsyncWorker)
         singleOf(::AuthorizedUserRepository) bind IAuthorizedUserRepository::class
-        single { RouterHolder<IRootFlowRouter>(null) }
         single {
             RootFeature(
                 initialState = initialState,
@@ -44,4 +43,5 @@ internal fun createRootModule(
         factory<IPreferences> { dependencies.preferences }
         factory<UserDao> { dependencies.userDao }
         factory<TodoDao> { dependencies.todoDao }
+        single<RouterHolder<IRootFlowRouter>> { RouterHolder() }
     }

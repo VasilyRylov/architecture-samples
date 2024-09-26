@@ -32,7 +32,10 @@ kotlin {
             implementation(compose.components.resources)
         }
         commonTest.dependencies {
-            // implementation(libs.kotlin.test)
+            implementation(kotlin("test"))
+        }
+        jvmTest.dependencies {
+            implementation(libs.koin.test)
         }
     }
 }

@@ -44,7 +44,7 @@ class AuthFSMTests {
 
         assertTrue(
             "FSM have not correct final states: ${finalStates.joinToString(", ")}",
-            finalStates.isEmpty()
+            finalStates.containsAll(listOf(AuthFSMState.UserAuthorized::class))
         )
     }
 }

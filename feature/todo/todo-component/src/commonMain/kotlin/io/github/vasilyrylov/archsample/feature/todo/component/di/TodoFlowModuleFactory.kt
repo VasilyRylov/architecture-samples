@@ -16,7 +16,6 @@ import org.koin.dsl.bind
 internal fun createTodoFlowModule(
     componentDependencies: ITodoComponentDependencies
 ) = module {
-    single<RouterHolder<ITodoFlowRouter>> { RouterHolder(null) }
     factoryOf(::TodoCompletedChangeUseCase)
     factoryOf(::SaveTodoUseCase)
     singleOf(::TodoRepository) bind ITodoRepository::class
@@ -29,4 +28,5 @@ internal fun createTodoFlowModule(
     factory {
         componentDependencies.todoDao
     }
+    single<RouterHolder<ITodoFlowRouter>> { RouterHolder() }
 }
