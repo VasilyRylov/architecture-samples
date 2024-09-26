@@ -10,11 +10,10 @@ import kotlinx.coroutines.flow.onEach
 
 class RootViewModel(
     private val feature: RootFeature,
-    private val routerHolder: RouterHolder<IRootFlowRouter>
+    routerHolder: RouterHolder<IRootFlowRouter>
 ) : BaseViewModel() {
 
-    private val router: IRootFlowRouter
-        get() = routerHolder.router
+    private val router by routerHolder
 
     init {
         observeState()

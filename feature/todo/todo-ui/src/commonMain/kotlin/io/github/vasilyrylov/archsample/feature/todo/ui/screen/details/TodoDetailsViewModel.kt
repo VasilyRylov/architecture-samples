@@ -15,15 +15,14 @@ import kotlinx.coroutines.launch
 
 class TodoDetailsViewModel(
     private val itemId: TodoItemId,
-    private val routerHolder: RouterHolder<ITodoFlowRouter>,
     private val getTodoDetails: GetTodoDetailsUseCase,
     private val saveTodo: SaveTodoUseCase,
     private val deleteTodo: DeleteTodoUseCase,
-    private val completedChange: TodoCompletedChangeUseCase
+    private val completedChange: TodoCompletedChangeUseCase,
+    routerHolder: RouterHolder<ITodoFlowRouter>,
 ) : BaseStateViewModel<TodoDetailsViewState>() {
 
-    private val router: ITodoFlowRouter
-        get() = routerHolder.router
+    private val router by routerHolder
 
     override fun createInitialState() = TodoDetailsViewState(
         item = TodoItem(text = "", completed = false)

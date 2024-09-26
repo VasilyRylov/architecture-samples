@@ -15,14 +15,13 @@ import kotlinx.coroutines.launch
 
 class TodoListViewModel(
     private val observeTodoList: ObserveTodoListUseCase,
-    private val routerHolder: RouterHolder<ITodoFlowRouter>,
+    routerHolder: RouterHolder<ITodoFlowRouter>,
     private val completedChange: TodoCompletedChangeUseCase,
     private val saveTodo: SaveTodoUseCase,
     private val logout: ILogoutUseCase,
 ) : BaseStateViewModel<TodoListViewState>() {
 
-    private val router: ITodoFlowRouter
-        get() = routerHolder.router
+    private val router by routerHolder
 
     init {
         initObservers()
