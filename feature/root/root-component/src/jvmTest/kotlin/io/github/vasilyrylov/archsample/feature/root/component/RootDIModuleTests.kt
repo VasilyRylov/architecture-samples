@@ -13,7 +13,7 @@ import kotlin.test.Test
 class RootDIModuleTests {
 
     @Test
-    fun verifyAuthModuleTest() {
+    fun verifyRootModuleTest() {
         val module = createRootModule(RootFSMState.AsyncWorkState.Initial, object : IRootComponentDependencies {
             override val preferences: IPreferences
                 get() = error("not used in test")
