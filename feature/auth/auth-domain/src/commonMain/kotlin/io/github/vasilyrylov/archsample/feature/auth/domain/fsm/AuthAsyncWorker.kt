@@ -9,7 +9,9 @@ import io.github.vasilyrylov.archsample.feature.auth.domain.fsm.actions.HandleAu
 import io.github.vasilyrylov.archsample.feature.auth.domain.fsm.actions.HandleRegistrationResult
 import io.github.vasilyrylov.archsample.feature.auth.domain.usecase.AuthorizeUseCase
 import io.github.vasilyrylov.archsample.feature.auth.domain.usecase.RegisterUserUseCase
+import me.tatarka.inject.annotations.Inject
 
+@Inject
 class AuthAsyncWorker(
     private val authorize: AuthorizeUseCase,
     private val registerUser: RegisterUserUseCase,

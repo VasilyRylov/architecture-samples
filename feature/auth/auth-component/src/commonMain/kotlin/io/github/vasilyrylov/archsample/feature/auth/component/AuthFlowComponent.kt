@@ -1,14 +1,12 @@
 package io.github.vasilyrylov.archsample.feature.auth.component
 
 import com.arkivanov.decompose.ComponentContext
-import io.github.vasilyrylov.archsample.common.component.createKoinScope
-import io.github.vasilyrylov.archsample.common.component.createViewModel
+import com.arkivanov.essenty.instancekeeper.getOrCreate
 import io.github.vasilyrylov.archsample.common.component.registerAndGetSavedState
 import io.github.vasilyrylov.archsample.feature.auth.component.api.IAuthComponentDependencies
-import io.github.vasilyrylov.archsample.feature.auth.component.di.createAuthModule
+import io.github.vasilyrylov.archsample.feature.auth.component.di.AuthDIComponent
+import io.github.vasilyrylov.archsample.feature.auth.component.di.create
 import io.github.vasilyrylov.archsample.feature.auth.domain.fsm.AuthFSMState
-import io.github.vasilyrylov.archsample.feature.auth.domain.fsm.AuthFeature
-import io.github.vasilyrylov.archsample.feature.auth.ui.AuthViewModel
 
 class AuthFlowComponent(
     componentContext: ComponentContext,
@@ -21,15 +19,15 @@ class AuthFlowComponent(
         deserialization = AuthFSMState.serializer(),
         serialization = AuthFSMState.serializer()
     ) {
-        koinScope.get<AuthFeature>(AuthFeature::class).getCurrentState()
+        diComponent.authFeature.getCurrentState()
     }
 
-    private val koinScope = createKoinScope(
-        listOf(createAuthModule(savedState, dependencies))
-    )
+    private val diComponent = instanceKeeper.getOrCreate {
+        AuthDIComponent::class.create(savedState, dependencies)
+    }
 
     @Suppress("UNUSED")
-    val viewModel = createViewModel<AuthViewModel>(koinScope)
+    val viewModel = diComponent.viewModel
 
     companion object {
         private const val AUTH_FSM_SAVED_STATE = "AUTH_FSM_SAVED_STATE"

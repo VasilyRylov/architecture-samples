@@ -8,9 +8,11 @@ import io.github.vasilyrylov.archsample.feature.auth.domain.fsm.actions.HandleCh
 import io.github.vasilyrylov.archsample.feature.auth.domain.fsm.actions.HandleConfirmation
 import io.github.vasilyrylov.archsample.feature.auth.domain.fsm.actions.HandleSnackBarShowed
 import io.github.vasilyrylov.archsample.feature.auth.domain.fsm.actions.StartRegistration
+import me.tatarka.inject.annotations.Inject
 import ru.kontur.mobile.visualfsm.Feature
 import ru.kontur.mobile.visualfsm.GenerateTransitionsFactory
 
+@Inject
 @GenerateTransitionsFactory
 class AuthFeature(
     initialState: AuthFSMState,

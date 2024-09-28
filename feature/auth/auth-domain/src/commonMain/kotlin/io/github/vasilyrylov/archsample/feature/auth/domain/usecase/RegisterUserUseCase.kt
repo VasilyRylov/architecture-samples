@@ -3,7 +3,9 @@ package io.github.vasilyrylov.archsample.feature.auth.domain.usecase
 import io.github.vasilyrylov.archsample.feature.auth.domain.interfaces.IUserRepository
 import io.github.vasilyrylov.archsample.common.domain.model.User
 import io.github.vasilyrylov.archsample.feature.auth.domain.data.RegistrationResult
+import me.tatarka.inject.annotations.Inject
 
+@Inject
 class RegisterUserUseCase(
     private val userRepository: IUserRepository,
 ) {
