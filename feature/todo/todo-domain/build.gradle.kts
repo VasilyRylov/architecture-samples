@@ -15,8 +15,9 @@ kotlin {
         commonMain.dependencies {
             implementation(projects.common.commonDomain)
             implementation(libs.kotlinx.coroutines.core)
-            api(libs.uuid)
             implementation(libs.kotlinx.serialization.json)
+            implementation(libs.kotlin.inject.runtime)
+            api(libs.uuid)
         }
 
         commonTest.dependencies {

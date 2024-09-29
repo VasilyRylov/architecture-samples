@@ -1,19 +1,19 @@
 package io.github.vasilyrylov.archsample.feature.todo.component.list
 
 import com.arkivanov.decompose.ComponentContext
-import io.github.vasilyrylov.archsample.common.component.createChildScope
-import io.github.vasilyrylov.archsample.common.component.createViewModel
-import io.github.vasilyrylov.archsample.feature.todo.component.list.di.createTodoListModule
-import io.github.vasilyrylov.archsample.feature.todo.ui.screen.list.TodoListViewModel
-import org.koin.core.scope.Scope
+import com.arkivanov.essenty.instancekeeper.getOrCreate
+import io.github.vasilyrylov.archsample.feature.todo.component.di.TodoFlowDIComponent
+import io.github.vasilyrylov.archsample.feature.todo.component.list.di.TodoListDIComponent
+import io.github.vasilyrylov.archsample.feature.todo.component.list.di.create
 
 class TodoListComponent(
     componentContext: ComponentContext,
-    parentScope: Scope,
+    todoFlowDIComponent: TodoFlowDIComponent,
 ) : ComponentContext by componentContext {
 
-    private val koinScope = createChildScope(parentScope, listOf(createTodoListModule()))
+    private val diComponent = instanceKeeper.getOrCreate {
+        TodoListDIComponent::class.create(todoFlowDIComponent)
+    }
 
-    @Suppress("UNUSED")
-    val viewModel = createViewModel<TodoListViewModel>(koinScope)
+    val viewModel = diComponent.viewModel
 }

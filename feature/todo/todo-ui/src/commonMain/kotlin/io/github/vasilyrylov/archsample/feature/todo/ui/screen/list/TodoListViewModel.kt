@@ -12,7 +12,9 @@ import io.github.vasilyrylov.archsample.feature.todo.ui.api.ITodoFlowRouter
 import io.github.vasilyrylov.archsample.feature.todo.ui.screen.list.model.TodoListViewState
 import io.github.vasilyrylov.archsample.feature.todo.ui.screen.list.model.TodoListScreenDialog
 import kotlinx.coroutines.launch
+import me.tatarka.inject.annotations.Inject
 
+@Inject
 class TodoListViewModel(
     private val observeTodoList: ObserveTodoListUseCase,
     routerHolder: RouterHolder<ITodoFlowRouter>,

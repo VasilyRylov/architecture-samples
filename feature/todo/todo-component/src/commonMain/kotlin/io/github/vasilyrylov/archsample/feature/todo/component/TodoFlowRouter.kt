@@ -11,13 +11,13 @@ import com.benasher44.uuid.uuidFrom
 import io.github.vasilyrylov.archsample.feature.todo.component.details.TodoDetailsComponent
 import io.github.vasilyrylov.archsample.feature.todo.component.list.TodoListComponent
 import io.github.vasilyrylov.archsample.common.domain.model.TodoItemId
+import io.github.vasilyrylov.archsample.feature.todo.component.di.TodoFlowDIComponent
 import io.github.vasilyrylov.archsample.feature.todo.ui.api.ITodoFlowRouter
 import kotlinx.serialization.Serializable
-import org.koin.core.scope.Scope
 
 class TodoFlowRouter(
     componentContext: ComponentContext,
-    private val koinScope: Scope
+    private val todoFlowDIComponent: TodoFlowDIComponent
 ) : ITodoFlowRouter {
 
     private val stackNavigation = StackNavigation<Configuration>()
@@ -33,12 +33,12 @@ class TodoFlowRouter(
     private fun childFactory(config: Configuration, componentContext: ComponentContext): Child {
         return when (config) {
             is Configuration.TodoList -> Child.TodoList(
-                component = TodoListComponent(componentContext = componentContext, parentScope = koinScope)
+                component = TodoListComponent(componentContext = componentContext, todoFlowDIComponent = todoFlowDIComponent)
             )
 
             is Configuration.TodoDetail -> Child.TodoDetail(
                 component = TodoDetailsComponent(
-                    componentContext = componentContext, parentScope = koinScope, itemId = TodoItemId(uuidFrom(config.todoId))
+                    componentContext = componentContext, todoFlowDIComponent = todoFlowDIComponent, itemId = TodoItemId(uuidFrom(config.todoId))
                 )
             )
         }

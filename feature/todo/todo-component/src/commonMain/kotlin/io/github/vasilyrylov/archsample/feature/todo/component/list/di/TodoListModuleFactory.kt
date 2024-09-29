@@ -1,12 +1,14 @@
 package io.github.vasilyrylov.archsample.feature.todo.component.list.di
 
-import io.github.vasilyrylov.archsample.feature.todo.domain.usecase.ObserveTodoListUseCase
-import org.koin.dsl.module
+import com.arkivanov.essenty.instancekeeper.InstanceKeeper
+import io.github.vasilyrylov.archsample.feature.todo.component.di.TodoFlowDIComponent
 import io.github.vasilyrylov.archsample.feature.todo.ui.screen.list.TodoListViewModel
-import org.koin.core.module.dsl.factoryOf
-import org.koin.core.module.dsl.singleOf
+import me.tatarka.inject.annotations.Component
 
-internal fun createTodoListModule() = module {
-    singleOf(::TodoListViewModel)
-    factoryOf(::ObserveTodoListUseCase)
+@Component
+abstract class TodoListDIComponent(
+    @Component val parent: TodoFlowDIComponent
+) : InstanceKeeper.Instance {
+
+    abstract val viewModel: TodoListViewModel
 }

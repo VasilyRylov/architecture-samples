@@ -12,7 +12,9 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
+import me.tatarka.inject.annotations.Inject
 
+@Inject
 class TodoRepository(
     private val todoDao: TodoDao,
 ) : ITodoRepository {

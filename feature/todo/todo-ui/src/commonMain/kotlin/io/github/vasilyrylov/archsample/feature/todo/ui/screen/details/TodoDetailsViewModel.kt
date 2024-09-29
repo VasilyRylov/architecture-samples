@@ -12,7 +12,9 @@ import io.github.vasilyrylov.archsample.feature.todo.ui.api.ITodoFlowRouter
 import io.github.vasilyrylov.archsample.feature.todo.ui.screen.details.model.TodoDetailsScreenDialog
 import io.github.vasilyrylov.archsample.feature.todo.ui.screen.details.model.TodoDetailsViewState
 import kotlinx.coroutines.launch
+import me.tatarka.inject.annotations.Inject
 
+@Inject
 class TodoDetailsViewModel(
     private val itemId: TodoItemId,
     private val getTodoDetails: GetTodoDetailsUseCase,
