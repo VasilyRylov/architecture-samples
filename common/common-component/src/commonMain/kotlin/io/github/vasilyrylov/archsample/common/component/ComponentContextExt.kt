@@ -1,14 +1,8 @@
 package io.github.vasilyrylov.archsample.common.component
 
 import com.arkivanov.decompose.ComponentContext
-import com.arkivanov.essenty.instancekeeper.InstanceKeeper
-import com.arkivanov.essenty.instancekeeper.getOrCreate
-import io.github.vasilyrylov.archsample.common.ui.base.BaseViewModel
-import io.github.vasilyrylov.archsample.common.ui.navigation.RouterHolder
 import kotlinx.serialization.DeserializationStrategy
 import kotlinx.serialization.SerializationStrategy
-import org.koin.core.module.Module
-import org.koin.core.scope.Scope
 
 
 fun <T : Any> ComponentContext.registerAndGetSavedState(
@@ -23,32 +17,4 @@ fun <T : Any> ComponentContext.registerAndGetSavedState(
     }
 
     return stateKeeper.consume(key = key, strategy = deserialization) ?: initialValue
-}
-
-inline fun <reified T : BaseViewModel> ComponentContext.createViewModel(scope: Scope): T {
-    return instanceKeeper.getOrCreate {
-        ComponentViewModelDecorator(scope.get<T>(T::class))
-    }.viewModel
-}
-
-class ComponentViewModelDecorator<T : BaseViewModel>(val viewModel: T) : InstanceKeeper.Instance {
-    override fun onDestroy() {
-        viewModel.onDestroy()
-    }
-}
-
-fun ComponentContext.createKoinScope(modules: List<Module>): Scope {
-    return instanceKeeper.getOrCreate {
-        ComponentKoinContext()
-    }.getOrCreateKoinScope(modules)
-}
-
-fun ComponentContext.createChildScope(parentScope: Scope, modules: List<Module>): Scope {
-    return instanceKeeper.getOrCreate {
-        ComponentKoinChildScope()
-    }.getOrCreateKoinChildScope(parentScope, modules, this::class.qualifiedName!!)
-}
-
-fun <T> Scope.updateRouterInstance(router: T) {
-    get<RouterHolder<T>>(RouterHolder::class).updateInstance(router)
 }

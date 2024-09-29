@@ -17,7 +17,6 @@ kotlinx-serialization = "1.7.1"
 kotlinx-datetime = "0.6.1"
 multiplatformSettings = "1.2.0"
 kotlin-inject = "0.7.2"
-koin = "3.5.6"
 room = "2.7.0-alpha07"
 sqlite = "2.5.0-alpha07"
 ksp = "2.0.20-1.0.24"
@@ -43,8 +42,6 @@ kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-t
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinx-datetime" }
 multiplatformSettings = { module = "com.russhwolf:multiplatform-settings", version.ref = "multiplatformSettings" }
-koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
-koin-test = { module = "io.insert-koin:koin-test", version.ref = "koin" }
 kotlin-inject-runtime = { module = "me.tatarka.inject:kotlin-inject-runtime", version.ref = "kotlin-inject" }
 kotlin-inject-compiler = { module = "me.tatarka.inject:kotlin-inject-compiler-ksp", version.ref = "kotlin-inject" }
 room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
