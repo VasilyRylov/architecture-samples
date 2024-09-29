@@ -13,9 +13,10 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(projects.common.commonDomain)
+            implementation(libs.kotlin.inject.runtime)
+            implementation(libs.kotlinx.coroutines.core)
             api(projects.data.preferences)
             api(projects.data.database)
-            implementation(libs.kotlinx.coroutines.core)
             api(libs.uuid)
         }
 

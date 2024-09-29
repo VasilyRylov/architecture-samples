@@ -21,6 +21,7 @@ kotlin {
 
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.kotlinx.serialization.json)
+            implementation(libs.kotlin.inject.runtime)
 
             api(libs.visualfsm.core)
             api(libs.uuid)
