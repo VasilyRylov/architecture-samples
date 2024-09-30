@@ -13,4 +13,8 @@ abstract class TodoListDIComponent(
 ) : InstanceKeeper.Instance {
 
     abstract val viewModel: TodoListViewModel
+
+    override fun onDestroy() {
+        viewModel.onDestroy()
+    }
 }

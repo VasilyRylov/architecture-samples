@@ -19,4 +19,8 @@ abstract class TodoDetailsDIComponent(
 
     @Provides
     protected fun getItemId(): TodoItemId = itemId
+
+    override fun onDestroy() {
+        viewModel.onDestroy()
+    }
 }
