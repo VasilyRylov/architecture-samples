@@ -4,7 +4,7 @@
 
 - [Compose Multiplatform](https://github.com/JetBrains/compose-multiplatform)
 - [Decompose](https://github.com/arkivanov/Decompose)
-- [kotlin-inject](https://github.com/InsertKoinIO/koin) or [Koin](https://github.com/InsertKoinIO/koin) DI [variants](#variants-and-ready-status)
+- [kotlin-inject](https://github.com/evant/kotlin-inject) or [Koin](https://github.com/InsertKoinIO/koin) DI [variants](#variants-and-ready-status)
 - [Multiplatform Settings](https://github.com/russhwolf/multiplatform-settings)
 - [VisualFSM](https://github.com/Kontur-Mobile/VisualFSM)
 - [Room Multiplatform](https://developer.android.com/kotlin/multiplatform/room)
