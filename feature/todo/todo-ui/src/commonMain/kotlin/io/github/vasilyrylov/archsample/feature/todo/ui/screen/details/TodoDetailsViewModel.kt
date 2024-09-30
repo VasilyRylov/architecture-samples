@@ -4,6 +4,7 @@ import io.github.vasilyrylov.archsample.common.ui.base.BaseStateViewModel
 import io.github.vasilyrylov.archsample.common.ui.navigation.RouterHolder
 import io.github.vasilyrylov.archsample.common.domain.model.TodoItem
 import io.github.vasilyrylov.archsample.common.domain.model.TodoItemId
+import io.github.vasilyrylov.archsample.feature.todo.domain.di.TodoDetailsScope
 import io.github.vasilyrylov.archsample.feature.todo.domain.usecase.DeleteTodoUseCase
 import io.github.vasilyrylov.archsample.feature.todo.domain.usecase.GetTodoDetailsUseCase
 import io.github.vasilyrylov.archsample.feature.todo.domain.usecase.SaveTodoUseCase
@@ -14,6 +15,7 @@ import io.github.vasilyrylov.archsample.feature.todo.ui.screen.details.model.Tod
 import kotlinx.coroutines.launch
 import me.tatarka.inject.annotations.Inject
 
+@TodoDetailsScope
 @Inject
 class TodoDetailsViewModel(
     private val itemId: TodoItemId,

@@ -5,6 +5,7 @@ import io.github.vasilyrylov.archsample.common.ui.navigation.RouterHolder
 import io.github.vasilyrylov.archsample.common.domain.model.TodoItem
 import io.github.vasilyrylov.archsample.common.domain.model.TodoItemId
 import io.github.vasilyrylov.archsample.feature.todo.domain.api.ILogoutUseCase
+import io.github.vasilyrylov.archsample.feature.todo.domain.di.TodoListScope
 import io.github.vasilyrylov.archsample.feature.todo.domain.usecase.ObserveTodoListUseCase
 import io.github.vasilyrylov.archsample.feature.todo.domain.usecase.SaveTodoUseCase
 import io.github.vasilyrylov.archsample.feature.todo.domain.usecase.TodoCompletedChangeUseCase
@@ -14,6 +15,7 @@ import io.github.vasilyrylov.archsample.feature.todo.ui.screen.list.model.TodoLi
 import kotlinx.coroutines.launch
 import me.tatarka.inject.annotations.Inject
 
+@TodoListScope
 @Inject
 class TodoListViewModel(
     private val observeTodoList: ObserveTodoListUseCase,

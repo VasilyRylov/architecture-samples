@@ -5,6 +5,7 @@ import io.github.vasilyrylov.archsample.auth.data.repository.UserRepository
 import io.github.vasilyrylov.archsample.common.domain.interfaces.IAuthorizedUserRepository
 import io.github.vasilyrylov.archsample.data.database.dao.UserDao
 import io.github.vasilyrylov.archsample.feature.auth.component.api.IAuthComponentDependencies
+import io.github.vasilyrylov.archsample.feature.auth.domain.di.AuthFlowScope
 import io.github.vasilyrylov.archsample.feature.auth.domain.interfaces.IAuthCompletionUseCase
 import io.github.vasilyrylov.archsample.feature.auth.domain.fsm.AuthFSMState
 import io.github.vasilyrylov.archsample.feature.auth.domain.fsm.AuthFeature
@@ -13,6 +14,7 @@ import io.github.vasilyrylov.archsample.feature.auth.ui.AuthViewModel
 import me.tatarka.inject.annotations.Component
 import me.tatarka.inject.annotations.Provides
 
+@AuthFlowScope
 @Component
 abstract class AuthDIComponent(
     private val initialState: AuthFSMState,

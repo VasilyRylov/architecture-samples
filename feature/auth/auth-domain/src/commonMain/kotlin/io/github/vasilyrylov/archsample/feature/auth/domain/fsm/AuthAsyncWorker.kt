@@ -1,6 +1,7 @@
 package io.github.vasilyrylov.archsample.feature.auth.domain.fsm
 
 import io.github.vasilyrylov.archsample.common.domain.model.User
+import io.github.vasilyrylov.archsample.feature.auth.domain.di.AuthFlowScope
 import ru.kontur.mobile.visualfsm.AsyncWorker
 import ru.kontur.mobile.visualfsm.AsyncWorkerTask
 import io.github.vasilyrylov.archsample.feature.auth.domain.fsm.AuthFSMState.AsyncWorkState
@@ -11,6 +12,7 @@ import io.github.vasilyrylov.archsample.feature.auth.domain.usecase.AuthorizeUse
 import io.github.vasilyrylov.archsample.feature.auth.domain.usecase.RegisterUserUseCase
 import me.tatarka.inject.annotations.Inject
 
+@AuthFlowScope
 @Inject
 class AuthAsyncWorker(
     private val authorize: AuthorizeUseCase,
