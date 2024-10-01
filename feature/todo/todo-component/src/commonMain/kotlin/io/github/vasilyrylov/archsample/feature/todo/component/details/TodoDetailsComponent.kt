@@ -6,9 +6,8 @@ import io.github.vasilyrylov.archsample.common.domain.model.TodoItemId
 import io.github.vasilyrylov.archsample.feature.todo.component.details.di.TodoDetailsDIComponent
 import io.github.vasilyrylov.archsample.feature.todo.component.details.di.create
 import io.github.vasilyrylov.archsample.feature.todo.component.di.TodoFlowDIComponent
-import io.github.vasilyrylov.archsample.feature.todo.domain.di.TodoDetailsScope
 
-@TodoDetailsScope
+
 class TodoDetailsComponent(
     componentContext: ComponentContext,
     todoFlowDIComponent: TodoFlowDIComponent,

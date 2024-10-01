@@ -1,6 +1,5 @@
 package io.github.vasilyrylov.archsample.feature.root.domain.fsm
 
-import io.github.vasilyrylov.archsample.feature.root.domain.di.RootFlowScope
 import io.github.vasilyrylov.archsample.feature.root.domain.fsm.action.Initialize
 import io.github.vasilyrylov.archsample.feature.root.domain.fsm.action.RootFSMAction
 import io.github.vasilyrylov.archsample.feature.root.domain.usecase.GetCurrentLoggedInUserUseCase
@@ -8,7 +7,6 @@ import me.tatarka.inject.annotations.Inject
 import ru.kontur.mobile.visualfsm.AsyncWorker
 import ru.kontur.mobile.visualfsm.AsyncWorkerTask
 
-@RootFlowScope
 @Inject
 class RootAsyncWorker(
     private val getCurrentLoggedInUser: GetCurrentLoggedInUserUseCase
