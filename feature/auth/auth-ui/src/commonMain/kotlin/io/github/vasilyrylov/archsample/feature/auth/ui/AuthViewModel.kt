@@ -1,6 +1,7 @@
 package io.github.vasilyrylov.archsample.feature.auth.ui
 
 import io.github.vasilyrylov.archsample.common.ui.base.BaseViewModel
+import io.github.vasilyrylov.archsample.feature.auth.domain.di.AuthFlowScope
 import io.github.vasilyrylov.archsample.feature.auth.domain.interfaces.IAuthCompletionUseCase
 import io.github.vasilyrylov.archsample.feature.auth.domain.fsm.AuthFSMState
 import io.github.vasilyrylov.archsample.feature.auth.domain.fsm.AuthFeature
@@ -8,7 +9,10 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import me.tatarka.inject.annotations.Inject
 
+@AuthFlowScope
+@Inject
 class AuthViewModel(
     private val authFeature: AuthFeature,
     private val authCompletion: IAuthCompletionUseCase

@@ -8,7 +8,9 @@ import io.github.vasilyrylov.archsample.data.database.dao.UserDao
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.withContext
+import me.tatarka.inject.annotations.Inject
 
+@Inject
 class AuthorizedUserRepository(
     private val preferences: IPreferences,
     private val userDao: UserDao,

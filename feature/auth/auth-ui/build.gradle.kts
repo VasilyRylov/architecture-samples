@@ -22,6 +22,7 @@ kotlin {
             implementation(compose.foundation)
             implementation(compose.material3)
             implementation(compose.components.resources)
+            implementation(libs.kotlin.inject.runtime)
             //put your multiplatform dependencies here
         }
         commonTest.dependencies {

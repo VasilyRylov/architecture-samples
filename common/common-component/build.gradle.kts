@@ -14,10 +14,8 @@ kotlin {
             implementation(projects.common.commonUi)
 
             implementation(libs.decompose)
-            implementation(libs.koin.core)
         }
         commonTest.dependencies {
-            // implementation(libs.kotlin.test)
         }
     }
 }

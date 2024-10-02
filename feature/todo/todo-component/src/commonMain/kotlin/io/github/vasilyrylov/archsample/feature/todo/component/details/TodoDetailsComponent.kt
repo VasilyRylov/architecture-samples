@@ -1,19 +1,22 @@
 package io.github.vasilyrylov.archsample.feature.todo.component.details
 
 import com.arkivanov.decompose.ComponentContext
-import io.github.vasilyrylov.archsample.common.component.createChildScope
-import io.github.vasilyrylov.archsample.common.component.createViewModel
-import io.github.vasilyrylov.archsample.feature.todo.component.details.di.createTodoDetailsModule
+import com.arkivanov.essenty.instancekeeper.getOrCreate
 import io.github.vasilyrylov.archsample.common.domain.model.TodoItemId
-import io.github.vasilyrylov.archsample.feature.todo.ui.screen.details.TodoDetailsViewModel
-import org.koin.core.scope.Scope
+import io.github.vasilyrylov.archsample.feature.todo.component.details.di.TodoDetailsDIComponent
+import io.github.vasilyrylov.archsample.feature.todo.component.details.di.create
+import io.github.vasilyrylov.archsample.feature.todo.component.di.TodoFlowDIComponent
+
 
 class TodoDetailsComponent(
     componentContext: ComponentContext,
-    parentScope: Scope,
+    todoFlowDIComponent: TodoFlowDIComponent,
     itemId: TodoItemId
 ) : ComponentContext by componentContext {
-    private val koinScope = createChildScope(parentScope, listOf(createTodoDetailsModule(itemId)))
 
-    val viewModel = createViewModel<TodoDetailsViewModel>(koinScope)
+    private val diComponent = instanceKeeper.getOrCreate {
+        TodoDetailsDIComponent::class.create(itemId, todoFlowDIComponent)
+    }
+
+    val viewModel = diComponent.viewModel
 }

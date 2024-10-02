@@ -2,7 +2,9 @@ package io.github.vasilyrylov.archsample.feature.root.domain.usecase
 
 import io.github.vasilyrylov.archsample.common.domain.interfaces.IAuthorizedUserRepository
 import io.github.vasilyrylov.archsample.common.domain.model.UserId
+import me.tatarka.inject.annotations.Inject
 
+@Inject
 class GetCurrentLoggedInUserUseCase(
     private val authorizedUserRepository: IAuthorizedUserRepository
 ) {

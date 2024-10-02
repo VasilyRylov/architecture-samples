@@ -1,19 +1,21 @@
-## Compose Multiplatform Application architecture sample
+## Compose Multiplatform Application architecture samples
 
 ### Frameworks and libraries
 
 - [Compose Multiplatform](https://github.com/JetBrains/compose-multiplatform)
 - [Decompose](https://github.com/arkivanov/Decompose)
+- [kotlin-inject](https://github.com/evant/kotlin-inject) or [Koin](https://github.com/InsertKoinIO/koin) DI [variants](#variants-and-ready-status)
+- [Multiplatform Settings](https://github.com/russhwolf/multiplatform-settings)
 - [VisualFSM](https://github.com/Kontur-Mobile/VisualFSM)
-- [Koin DI](https://github.com/InsertKoinIO/koin)
 - [Room Multiplatform](https://developer.android.com/kotlin/multiplatform/room)
 
 ### Key concepts
 
-- FSM based MVI
+- FSM based MVI and MVVM+
 - Navigation is abstracted from Decompose
 - Decompose components are separated into own modules
 - Business logic and UI modules do not depend on Component modules
+- Multi-module DI, each module can use its own DI framework
 - Component modules are only responsible for routers implementation, DI setup and lifecycle.
 - Features are allocated into separate groups of modules,
   each of which is divided into modules with business logic, UI and components with a life cycle.
@@ -109,11 +111,10 @@ graph TB
 
 ### Variants and ready status
 
-| Sample                                                                                                             | Description                                       | Ready status     |
-|--------------------------------------------------------------------------------------------------------------------|---------------------------------------------------|------------------|
-| [fsm-mvi-and-mvvm-plus](https://github.com/VasilyRylov/architecture-samples/tree/main)                             | Fsm-based MVI and MVVM+(Todo Feature)             | Ready            |
-| [fsm-mvi](https://github.com/VasilyRylov/architecture-samples/tree/main/fsm-mvi)                                   | Fsm-based MVI with parent and child relation FSMs | Work in progress |
-| [fsm-mvi-extendable-state](https://github.com/VasilyRylov/architecture-samples/tree/main/fsm-mvi-extendable-state) | Fsm-based MVI with extendable parent state        | Work in progress |
+| Sample                                                                                                        | Description                                                                  | Ready status     |
+|---------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------|------------------|
+| [fsm mvi, mvvm plus, kotlin-inject](https://github.com/VasilyRylov/architecture-samples/tree/main)            | Fsm-based MVI(root and auth features), MVVM+(todo feature), kotlin-inject DI | Ready            |
+| [fsm mvi, mvvm plus, Koin](https://github.com/VasilyRylov/architecture-samples/tree/mvi-and-mvvm-koin)        | Fsm-based MVI(root and auth features), MVVM+(todo feature), Koin DI          | Ready            |
 
 ### Root module FSM
 
@@ -122,6 +123,31 @@ graph TB
 ### Auth module FSM
 
 <img src="doc/img/authfsm.png" alt="graph"/>
+
+### Screenshots
+
+<table width="100%">
+  <tr>
+  <td width="33%">Login</td>
+  <td width="33%">Registration</td>
+  <td width="33%">ConfirmationRequested</td>
+  </tr>
+  <tr>
+  <td width="33%"><img src="./doc/img/screen/auth1.png"/></td>
+  <td width="33%"><img src="./doc/img/screen/auth2.png"/></td>
+  <td width="33%"><img src="./doc/img/screen/auth3.png"/></td>
+  </tr>
+  <tr>
+  <td width="33%">Add new todo</td>
+  <td width="33%">Todo list</td>
+  <td width="33%">Todo details</td>
+  </tr>
+  <tr>
+  <td width="33%"><img src="./doc/img/screen/todo1.png"/></td>
+  <td width="33%"><img src="./doc/img/screen/todo3.png"/></td>
+  <td width="33%"><img src="./doc/img/screen/todo2.png"/></td>
+  </tr>
+</table>
 
 ### Before running!
 

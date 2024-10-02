@@ -3,7 +3,9 @@ package io.github.vasilyrylov.archsample.feature.auth.domain.usecase
 import io.github.vasilyrylov.archsample.common.domain.interfaces.IAuthorizedUserRepository
 import io.github.vasilyrylov.archsample.feature.auth.domain.interfaces.IUserRepository
 import io.github.vasilyrylov.archsample.feature.auth.domain.data.AuthResult
+import me.tatarka.inject.annotations.Inject
 
+@Inject
 class AuthorizeUseCase(
     private val userRepository: IUserRepository,
     private val authorizedIUserRepository: IAuthorizedUserRepository

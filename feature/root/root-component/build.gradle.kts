@@ -1,5 +1,8 @@
+import com.google.devtools.ksp.gradle.KspTaskMetadata
+
 plugins {
     alias(libs.plugins.multiplatform)
+    alias(libs.plugins.ksp)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.compose)
     alias(libs.plugins.kotlinx.serialization)
@@ -30,7 +33,7 @@ kotlin {
 
             implementation(libs.decompose)
             implementation(libs.decompose.compose)
-            implementation(libs.koin.core)
+            implementation(libs.kotlin.inject.runtime)
 
             implementation(compose.runtime)
             implementation(compose.foundation)
@@ -40,8 +43,11 @@ kotlin {
         commonTest.dependencies {
             implementation(kotlin("test"))
         }
-        jvmTest.dependencies {
-            implementation(libs.koin.test)
-        }
     }
 }
+
+dependencies {
+    kspCommonMainMetadata(libs.kotlin.inject.compiler)
+}
+
+kotlin.sourceSets.commonMain { tasks.withType<KspTaskMetadata> { kotlin.srcDir(destinationDirectory) } }
