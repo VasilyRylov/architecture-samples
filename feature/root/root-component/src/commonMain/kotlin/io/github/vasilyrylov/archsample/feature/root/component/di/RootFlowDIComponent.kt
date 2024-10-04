@@ -51,10 +51,10 @@ internal abstract class RootFlowDIComponent(
     protected fun getPreferences(): IPreferences = dependencies.preferences
 
     @Provides
-    protected fun getTodoDao(): TodoDao = dependencies.todoDao
+    protected fun getTodoDao(): TodoDao = dependencies.database.getTodoDao()
 
     @Provides
-    protected fun getUserDao(): UserDao = dependencies.userDao
+    protected fun getUserDao(): UserDao = dependencies.database.getUserDao()
 
     @Provides
     protected fun bind(it: AuthorizedUserRepository): IAuthorizedUserRepository = it

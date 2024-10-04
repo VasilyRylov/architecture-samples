@@ -40,8 +40,7 @@ fun main() {
 
     val rootComponentDependencies = object : IRootComponentDependencies {
         override val preferences = preferences
-        override val userDao = database.getUserDao()
-        override val todoDao = database.getTodoDao()
+        override val database = database
     }
 
     val rootFlowComponent = runOnUiThread {
