@@ -6,20 +6,13 @@ import com.arkivanov.decompose.router.slot.SlotNavigation
 import com.arkivanov.decompose.router.slot.activate
 import com.arkivanov.decompose.router.slot.childSlot
 import com.arkivanov.decompose.value.Value
-import io.github.vasilyrylov.archsample.common.domain.interfaces.IAuthorizedUserRepository
-import io.github.vasilyrylov.archsample.data.database.dao.TodoDao
-import io.github.vasilyrylov.archsample.data.database.dao.UserDao
 import io.github.vasilyrylov.archsample.feature.auth.component.AuthFlowComponent
-import io.github.vasilyrylov.archsample.feature.auth.component.api.IAuthComponentDependencies
-import io.github.vasilyrylov.archsample.feature.todo.component.api.ITodoComponentDependencies
-import io.github.vasilyrylov.archsample.feature.auth.domain.interfaces.IAuthCompletionUseCase
 import io.github.vasilyrylov.archsample.feature.root.component.di.RootFlowDIComponent
 import io.github.vasilyrylov.archsample.feature.root.ui.api.IRootFlowRouter
 import io.github.vasilyrylov.archsample.feature.todo.component.TodoFlowComponent
-import io.github.vasilyrylov.archsample.feature.todo.domain.api.ILogoutUseCase
 import kotlinx.serialization.Serializable
 
-class RootFlowRouter(componentContext: ComponentContext, private val rootFlowDIComponent: RootFlowDIComponent) : IRootFlowRouter {
+internal class RootFlowRouter(componentContext: ComponentContext, private val rootFlowDIComponent: RootFlowDIComponent) : IRootFlowRouter {
 
     private val slotNavigation = SlotNavigation<Configuration>()
 
@@ -33,25 +26,11 @@ class RootFlowRouter(componentContext: ComponentContext, private val rootFlowDIC
     private fun slotChild(config: Configuration, componentContext: ComponentContext): SlotChild {
         return when (config) {
             Configuration.Auth -> SlotChild.AuthFlow(
-                component = AuthFlowComponent(componentContext, object : IAuthComponentDependencies {
-                    override val authCompletionUseCase: IAuthCompletionUseCase
-                        get() = rootFlowDIComponent.authCompletionUseCase
-                    override val authorizedUserRepository: IAuthorizedUserRepository
-                        get() = rootFlowDIComponent.authorizedUserRepository
-                    override val userDao: UserDao
-                        get() = rootFlowDIComponent.getUserDao()
-                })
+                component = AuthFlowComponent(componentContext, rootFlowDIComponent.authComponentDependencies)
             )
 
             is Configuration.Todo -> SlotChild.TodoFlow(
-                component = TodoFlowComponent(componentContext, object : ITodoComponentDependencies {
-                    override val authorizedUserRepository: IAuthorizedUserRepository
-                        get() = rootFlowDIComponent.authorizedUserRepository
-                    override val logoutUseCase: ILogoutUseCase
-                        get() = rootFlowDIComponent.logoutUseCase
-                    override val todoDao: TodoDao
-                        get() = rootFlowDIComponent.getTodoDao()
-                })
+                component = TodoFlowComponent(componentContext, rootFlowDIComponent.todoComponentDependencies)
             )
         }
     }
