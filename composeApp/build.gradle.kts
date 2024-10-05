@@ -3,6 +3,7 @@ import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 
 plugins {
     alias(libs.plugins.multiplatform)
+    alias(libs.plugins.ksp)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.compose)
     alias(libs.plugins.android.application)
@@ -37,6 +38,7 @@ kotlin {
 
             implementation(libs.decompose)
             implementation(libs.decompose.compose)
+            implementation(libs.kotlin.inject.runtime)
         }
 
         commonTest.dependencies {
@@ -109,4 +111,12 @@ compose.desktop {
             }
         }
     }
+}
+
+dependencies {
+    add("kspAndroid", libs.kotlin.inject.compiler)
+    add("kspJvm", libs.kotlin.inject.compiler)
+    add("kspIosSimulatorArm64", libs.kotlin.inject.compiler)
+    add("kspIosX64", libs.kotlin.inject.compiler)
+    add("kspIosArm64", libs.kotlin.inject.compiler)
 }
