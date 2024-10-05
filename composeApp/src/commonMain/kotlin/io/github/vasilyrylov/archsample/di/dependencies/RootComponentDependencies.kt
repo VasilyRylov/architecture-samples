@@ -7,11 +7,9 @@ import me.tatarka.inject.annotations.Inject
 
 @Inject
 class RootComponentDependencies(
-    private val lazyPreferences: Lazy<IPreferences>,
-    private val lazyDatabase: Lazy<ArchSampleDatabase>,
+    lazyPreferences: Lazy<IPreferences>,
+    lazyDatabase: Lazy<ArchSampleDatabase>,
 ) : IRootComponentDependencies {
-    override val preferences: IPreferences
-        get() = lazyPreferences.value
-    override val database: ArchSampleDatabase
-        get() = lazyDatabase.value
+    override val preferences by lazyPreferences
+    override val database by lazyDatabase
 }

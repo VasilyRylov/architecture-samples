@@ -7,7 +7,6 @@ import io.github.vasilyrylov.archsample.data.database.getRoomDatabase
 import me.tatarka.inject.annotations.Component
 import me.tatarka.inject.annotations.Provides
 
-
 @AppScope
 @Component
 abstract class AndroidPlatformComponent(private val applicationContext: Context) : PlatformComponent() {

@@ -8,14 +8,11 @@ import me.tatarka.inject.annotations.Inject
 
 @Inject
 internal class AuthComponentDependencies(
-    private val lazyAuthCompletionUseCase: Lazy<IAuthCompletionUseCase>,
-    private val lazyAuthorizedUserRepository: Lazy<IAuthorizedUserRepository>,
-    private val lazyUserDao: Lazy<UserDao>,
+    lazyAuthCompletionUseCase: Lazy<IAuthCompletionUseCase>,
+    lazyAuthorizedUserRepository: Lazy<IAuthorizedUserRepository>,
+    lazyUserDao: Lazy<UserDao>,
 ) : IAuthComponentDependencies {
-    override val authCompletionUseCase: IAuthCompletionUseCase
-        get() = lazyAuthCompletionUseCase.value
-    override val authorizedUserRepository: IAuthorizedUserRepository
-        get() = lazyAuthorizedUserRepository.value
-    override val userDao: UserDao
-        get() = lazyUserDao.value
+    override val authCompletionUseCase by lazyAuthCompletionUseCase
+    override val authorizedUserRepository by lazyAuthorizedUserRepository
+    override val userDao by lazyUserDao
 }

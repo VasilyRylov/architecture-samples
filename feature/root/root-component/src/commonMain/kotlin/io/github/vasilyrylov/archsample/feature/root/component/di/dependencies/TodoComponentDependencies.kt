@@ -8,14 +8,11 @@ import me.tatarka.inject.annotations.Inject
 
 @Inject
 internal class TodoComponentDependencies(
-    private val lazyAuthorizedUserRepository: Lazy<IAuthorizedUserRepository>,
-    private val lazyLogoutUseCase: Lazy<ILogoutUseCase>,
-    private val lazyTodoDao: Lazy<TodoDao>,
+    lazyAuthorizedUserRepository: Lazy<IAuthorizedUserRepository>,
+    lazyLogoutUseCase: Lazy<ILogoutUseCase>,
+    lazyTodoDao: Lazy<TodoDao>,
 ) : ITodoComponentDependencies {
-    override val authorizedUserRepository: IAuthorizedUserRepository
-        get() = lazyAuthorizedUserRepository.value
-    override val logoutUseCase: ILogoutUseCase
-        get() = lazyLogoutUseCase.value
-    override val todoDao: TodoDao
-        get() = lazyTodoDao.value
+    override val authorizedUserRepository by lazyAuthorizedUserRepository
+    override val logoutUseCase by lazyLogoutUseCase
+    override val todoDao by lazyTodoDao
 }
