@@ -26,7 +26,7 @@ class RootFlowComponent(
         RootFlowDIComponent::class.create(savedState, dependencies)
     }
 
-    val router = RootFlowRouter(componentContext, diComponent)
+    internal val router = RootFlowRouter(componentContext, diComponent)
 
     init {
         diComponent.getRouterHolder().updateInstance(router)

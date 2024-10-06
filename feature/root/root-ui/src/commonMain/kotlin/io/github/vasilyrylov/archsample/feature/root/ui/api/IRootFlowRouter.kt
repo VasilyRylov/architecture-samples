@@ -1,6 +1,8 @@
 package io.github.vasilyrylov.archsample.feature.root.ui.api
 
-interface IRootFlowRouter {
+import io.github.vasilyrylov.archsample.common.ui.navigation.IRouter
+
+interface IRootFlowRouter: IRouter {
     fun toAuth()
     fun toTodo()
 }

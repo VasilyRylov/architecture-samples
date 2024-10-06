@@ -4,8 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import androidx.sqlite.driver.bundled.BundledSQLiteDriver
 
-fun getRoomDatabase(ctx: Context): ArchSampleDatabase {
-    val appContext = ctx.applicationContext
+fun getRoomDatabase(appContext: Context): ArchSampleDatabase {
     val dbFile = appContext.getDatabasePath("arch_sample_room.db")
     return Room.databaseBuilder<ArchSampleDatabase>(
         context = appContext,
