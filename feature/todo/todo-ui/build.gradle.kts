@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.compose)
+    alias(libs.plugins.kotlinx.serialization)
 }
 
 kotlin {
@@ -26,6 +27,7 @@ kotlin {
             implementation(compose.materialIconsExtended)
             implementation(compose.components.resources)
             implementation(libs.kotlin.inject.runtime)
+            implementation(libs.kotlinx.serialization.json)
         }
         commonTest.dependencies {
             // implementation(libs.kotlin.test)

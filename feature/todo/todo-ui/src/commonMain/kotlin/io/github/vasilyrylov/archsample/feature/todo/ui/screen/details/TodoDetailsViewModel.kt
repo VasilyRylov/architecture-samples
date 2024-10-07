@@ -23,14 +23,11 @@ class TodoDetailsViewModel(
     private val saveTodo: SaveTodoUseCase,
     private val deleteTodo: DeleteTodoUseCase,
     private val completedChange: TodoCompletedChangeUseCase,
+    private val initialState: TodoDetailsViewState,
     routerHolder: RouterHolder<ITodoFlowRouter>,
 ) : BaseStateViewModel<TodoDetailsViewState>() {
 
     private val router by routerHolder
-
-    override fun createInitialState() = TodoDetailsViewState(
-        item = TodoItem(text = "", completed = false)
-    )
 
     init {
         updateItemDetails()
@@ -76,4 +73,6 @@ class TodoDetailsViewModel(
     fun onCancelEdit() {
         setState { copy(dialog = TodoDetailsScreenDialog.None) }
     }
+
+    override fun createInitialState() = initialState
 }

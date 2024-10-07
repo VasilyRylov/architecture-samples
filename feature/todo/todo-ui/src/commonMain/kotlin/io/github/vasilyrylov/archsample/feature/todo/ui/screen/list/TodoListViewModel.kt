@@ -23,6 +23,7 @@ class TodoListViewModel(
     private val completedChange: TodoCompletedChangeUseCase,
     private val saveTodo: SaveTodoUseCase,
     private val logout: ILogoutUseCase,
+    private val initialState: TodoListViewState,
 ) : BaseStateViewModel<TodoListViewState>() {
 
     private val router by routerHolder
@@ -68,8 +69,5 @@ class TodoListViewModel(
         }
     }
 
-    override fun createInitialState() = TodoListViewState(
-        todoItems = listOf(),
-        dialog = TodoListScreenDialog.None
-    )
+    override fun createInitialState() = initialState
 }
