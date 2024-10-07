@@ -1,7 +1,6 @@
 package io.github.vasilyrylov.archsample.feature.root.component.di
 
 import com.arkivanov.essenty.instancekeeper.InstanceKeeper
-import io.github.vasilyrylov.archsample.common.data.preferences.IPreferences
 import io.github.vasilyrylov.archsample.common.data.repository.AuthorizedUserRepository
 import io.github.vasilyrylov.archsample.common.domain.interfaces.IAuthorizedUserRepository
 import io.github.vasilyrylov.archsample.common.ui.navigation.RouterHolder
@@ -28,7 +27,7 @@ import me.tatarka.inject.annotations.Provides
 @Component
 internal abstract class RootFlowDIComponent(
     private val initialState: RootFSMState,
-    private val dependencies: IRootComponentDependencies
+    @Component val dependencies: IRootComponentDependencies
 ) : InstanceKeeper.Instance {
 
     private val routerHolder = RouterHolder<IRootFlowRouter>()
@@ -46,9 +45,6 @@ internal abstract class RootFlowDIComponent(
 
     @Provides
     protected fun getInitialState(): RootFSMState = initialState
-
-    @Provides
-    protected fun getPreferences(): IPreferences = dependencies.preferences
 
     @Provides
     protected fun getTodoDao(): TodoDao = dependencies.database.getTodoDao()
