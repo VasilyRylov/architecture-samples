@@ -16,7 +16,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import io.github.vasilyrylov.archsample.feature.auth.ui.element.RegistrationScreenContent
-import io.github.vasilyrylov.archsample.feature.auth.ui.data.RegistrationViewState
+import io.github.vasilyrylov.archsample.feature.auth.ui.state.RegistrationViewState
 import io.github.vasilyrylov.archsample.feature.auth.ui.element.dialog.ConfirmDialog
 import io.github.vasilyrylov.archsample.resources.Res
 import io.github.vasilyrylov.archsample.resources.back

@@ -9,7 +9,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import io.github.vasilyrylov.archsample.feature.auth.ui.element.LoginScreenContent
-import io.github.vasilyrylov.archsample.feature.auth.ui.data.LoginViewState
+import io.github.vasilyrylov.archsample.feature.auth.ui.state.LoginViewState
 
 @Composable
 fun LoginScreen(

@@ -6,8 +6,8 @@ import io.github.vasilyrylov.archsample.feature.auth.component.api.IAuthComponen
 import io.github.vasilyrylov.archsample.feature.auth.domain.di.AuthFlowScope
 import io.github.vasilyrylov.archsample.feature.auth.domain.fsm.AuthFSMState
 import io.github.vasilyrylov.archsample.feature.auth.domain.fsm.AuthFeature
+import io.github.vasilyrylov.archsample.feature.auth.domain.fsm.AuthFeatureImpl
 import io.github.vasilyrylov.archsample.feature.auth.domain.interfaces.IUserRepository
-import io.github.vasilyrylov.archsample.feature.auth.ui.AuthViewModel
 import me.tatarka.inject.annotations.Component
 import me.tatarka.inject.annotations.Provides
 
@@ -17,17 +17,19 @@ abstract class AuthDIComponent(
     private val initialState: AuthFSMState,
     @Component val dependencies: IAuthComponentDependencies
 ) : InstanceKeeper.Instance {
-    abstract val viewModel: AuthViewModel
 
     abstract val authFeature: AuthFeature
 
     @Provides
     protected fun getInitialState(): AuthFSMState = initialState
 
-    protected val UserRepository.bind: IUserRepository
+    @Provides
+    protected fun bind(impl: AuthFeatureImpl): AuthFeature = impl
+
+    protected val UserRepository.bind: IUserRepository // Это я вообще не понял что тут делает, надо куда-то ближе к UserRepository утажить
         @Provides get() = this
 
     override fun onDestroy() {
-        viewModel.onDestroy()
+        authFeature.onDestroy()
     }
 }

@@ -1,5 +1,6 @@
 package io.github.vasilyrylov.archsample.feature.todo.component.list
 
+import androidx.compose.runtime.Composable
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.essenty.instancekeeper.getOrCreate
 import io.github.vasilyrylov.archsample.common.component.registerAndGetSavedState
@@ -14,6 +15,12 @@ class TodoListComponent(
     todoFlowDIComponent: TodoFlowDIComponent,
 ) : ComponentContext by componentContext {
 
+    private val diComponent = instanceKeeper.getOrCreate {
+        TodoListDIComponent::class.create(todoFlowDIComponent, savedState)
+    }
+
+    private val viewModel = diComponent.viewModel
+
     private val savedState: TodoListViewState = registerAndGetSavedState(
         key = TODO_LIST_SAVED_STATE,
         initialValue = TodoListViewState(
@@ -25,12 +32,6 @@ class TodoListComponent(
     ) {
         viewModel.currentState
     }
-
-    private val diComponent = instanceKeeper.getOrCreate {
-        TodoListDIComponent::class.create(todoFlowDIComponent, savedState)
-    }
-
-    val viewModel = diComponent.viewModel
 
     companion object {
         private const val TODO_LIST_SAVED_STATE = "TODO_LIST_SAVED_STATE"

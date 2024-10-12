@@ -11,7 +11,7 @@ fun RootFlowScreenComponent(rootFlowComponent: RootFlowComponent) {
     val childSlot by rootFlowComponent.router.childSlot.subscribeAsState()
 
     when (val child = childSlot.child?.instance) {
-        is RootFlowRouter.SlotChild.AuthFlow -> AuthFlowScreenComponent(child.component)
+        is RootFlowRouter.SlotChild.AuthFlow -> child.component.Ui()
         is RootFlowRouter.SlotChild.TodoFlow -> TodoFlowScreenComponent(child.component)
         null -> Unit
     }

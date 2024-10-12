@@ -22,7 +22,7 @@ class RootFlowComponent(
         diComponent.rootFeature.getCurrentState()
     }
 
-    private val diComponent = instanceKeeper.getOrCreate {
+    private val diComponent = instanceKeeper.getOrCreate<RootFlowDIComponent> {
         RootFlowDIComponent::class.create(savedState, dependencies)
     }
 

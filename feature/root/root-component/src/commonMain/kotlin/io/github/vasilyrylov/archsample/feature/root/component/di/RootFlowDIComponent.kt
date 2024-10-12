@@ -6,6 +6,8 @@ import io.github.vasilyrylov.archsample.common.domain.interfaces.IAuthorizedUser
 import io.github.vasilyrylov.archsample.common.ui.navigation.RouterHolder
 import io.github.vasilyrylov.archsample.data.database.dao.TodoDao
 import io.github.vasilyrylov.archsample.data.database.dao.UserDao
+import io.github.vasilyrylov.archsample.feature.auth.component.AuthFlowComponent
+import io.github.vasilyrylov.archsample.feature.auth.component.AuthFlowComponentImpl
 import io.github.vasilyrylov.archsample.feature.auth.component.api.IAuthComponentDependencies
 import io.github.vasilyrylov.archsample.feature.auth.domain.interfaces.IAuthCompletionUseCase
 import io.github.vasilyrylov.archsample.feature.root.component.api.IRootComponentDependencies
@@ -38,6 +40,8 @@ internal abstract class RootFlowDIComponent(
 
     abstract val authComponentDependencies: IAuthComponentDependencies
 
+    abstract val authFlowComponentFactory: AuthFlowComponent.Factory
+
     abstract val todoComponentDependencies: ITodoComponentDependencies
 
     @Provides
@@ -61,8 +65,10 @@ internal abstract class RootFlowDIComponent(
     @Provides
     protected fun bind(it: LogoutUseCase): ILogoutUseCase = it
 
+    // TODO AuthFlowComponentImpl должен быть internal, так что нужно этот bind как-то унести внутрь модуля auth-component, а в этом модуле сразу получать AuthFlowComponent.Factory
     @Provides
-    protected fun bind(it: AuthComponentDependencies): IAuthComponentDependencies = it
+    protected fun bind(deps: AuthComponentDependencies): AuthFlowComponent.Factory =
+        AuthFlowComponentImpl.Factory(deps)
 
     @Provides
     protected fun bind(it: TodoComponentDependencies): ITodoComponentDependencies = it

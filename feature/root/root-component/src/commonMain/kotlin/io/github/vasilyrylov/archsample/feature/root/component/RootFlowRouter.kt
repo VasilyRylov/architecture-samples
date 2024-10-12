@@ -12,7 +12,10 @@ import io.github.vasilyrylov.archsample.feature.root.ui.api.IRootFlowRouter
 import io.github.vasilyrylov.archsample.feature.todo.component.TodoFlowComponent
 import kotlinx.serialization.Serializable
 
-internal class RootFlowRouter(componentContext: ComponentContext, private val rootFlowDIComponent: RootFlowDIComponent) : IRootFlowRouter {
+internal class RootFlowRouter(
+    componentContext: ComponentContext,
+    private val rootFlowDIComponent: RootFlowDIComponent,
+    ) : IRootFlowRouter {
 
     private val slotNavigation = SlotNavigation<Configuration>()
 
@@ -26,7 +29,7 @@ internal class RootFlowRouter(componentContext: ComponentContext, private val ro
     private fun slotChild(config: Configuration, componentContext: ComponentContext): SlotChild {
         return when (config) {
             Configuration.Auth -> SlotChild.AuthFlow(
-                component = AuthFlowComponent(componentContext, rootFlowDIComponent.authComponentDependencies)
+                component = rootFlowDIComponent.authFlowComponentFactory.create(componentContext)
             )
 
             is Configuration.Todo -> SlotChild.TodoFlow(
