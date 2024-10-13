@@ -1,27 +1,24 @@
 package io.github.vasilyrylov.archsample.feature.root.component.di
 
 import com.arkivanov.essenty.instancekeeper.InstanceKeeper
-import io.github.vasilyrylov.archsample.common.data.repository.AuthorizedUserRepository
-import io.github.vasilyrylov.archsample.common.domain.interfaces.IAuthorizedUserRepository
-import io.github.vasilyrylov.archsample.common.ui.navigation.RouterHolder
-import io.github.vasilyrylov.archsample.data.database.dao.TodoDao
+import io.github.vasilyrylov.archsample.common.data.preferences.IPreferencesComponent
+import io.github.vasilyrylov.archsample.common.data.preferences.PreferencesComponent
+import io.github.vasilyrylov.archsample.data.database.ArchSampleDatabase
 import io.github.vasilyrylov.archsample.data.database.dao.UserDao
+import io.github.vasilyrylov.archsample.data.database.di.DatabaseComponent
+import io.github.vasilyrylov.archsample.data.database.di.IDatabaseComponent
 import io.github.vasilyrylov.archsample.feature.auth.component.AuthFlowComponent
-import io.github.vasilyrylov.archsample.feature.auth.component.AuthFlowComponentImpl
-import io.github.vasilyrylov.archsample.feature.auth.component.api.IAuthComponentDependencies
-import io.github.vasilyrylov.archsample.feature.auth.domain.interfaces.IAuthCompletionUseCase
-import io.github.vasilyrylov.archsample.feature.root.component.api.IRootComponentDependencies
+import io.github.vasilyrylov.archsample.feature.root.component.IRootFlowRouter
+import io.github.vasilyrylov.archsample.feature.root.component.RootFlowRouter
 import io.github.vasilyrylov.archsample.feature.root.component.di.dependencies.AuthComponentDependencies
 import io.github.vasilyrylov.archsample.feature.root.component.di.dependencies.TodoComponentDependencies
-import io.github.vasilyrylov.archsample.feature.root.domain.di.RootFlowScope
 import io.github.vasilyrylov.archsample.feature.root.domain.fsm.RootFSMState
 import io.github.vasilyrylov.archsample.feature.root.domain.fsm.RootFeature
-import io.github.vasilyrylov.archsample.feature.root.domain.usecase.AuthCompletionUseCase
-import io.github.vasilyrylov.archsample.feature.root.domain.usecase.LogoutUseCase
-import io.github.vasilyrylov.archsample.feature.root.ui.RootViewModel
-import io.github.vasilyrylov.archsample.feature.root.ui.api.IRootFlowRouter
-import io.github.vasilyrylov.archsample.feature.todo.component.api.ITodoComponentDependencies
-import io.github.vasilyrylov.archsample.feature.todo.domain.api.ILogoutUseCase
+import io.github.vasilyrylov.archsample.feature.root.component.RootViewModel
+import io.github.vasilyrylov.archsample.feature.root.domain.di.RootFlowScope
+import io.github.vasilyrylov.archsample.feature.todo.component.api.TodoFlowComponent
+import io.github.vasilyrylov.archsample.user.data.repository.api.IAuthorizedUserRepository
+import io.github.vasilyrylov.archsample.user.data.repository.impl.AuthorizedUserRepository
 import me.tatarka.inject.annotations.Component
 import me.tatarka.inject.annotations.Provides
 
@@ -29,49 +26,39 @@ import me.tatarka.inject.annotations.Provides
 @Component
 internal abstract class RootFlowDIComponent(
     private val initialState: RootFSMState,
-    @Component val dependencies: IRootComponentDependencies
+    @Component val preferences: IPreferencesComponent = PreferencesComponent,
+    @Component val database: IDatabaseComponent = DatabaseComponent,
 ) : InstanceKeeper.Instance {
 
-    private val routerHolder = RouterHolder<IRootFlowRouter>()
+    abstract val router: RootFlowRouter
+
+    @Provides
+    fun bind(): IRootFlowRouter = router
 
     abstract val viewModel: RootViewModel
 
     abstract val rootFeature: RootFeature
 
-    abstract val authComponentDependencies: IAuthComponentDependencies
-
-    abstract val authFlowComponentFactory: AuthFlowComponent.Factory
-
-    abstract val todoComponentDependencies: ITodoComponentDependencies
-
-    @Provides
-    fun getRouterHolder(): RouterHolder<IRootFlowRouter> = routerHolder
-
     @Provides
     protected fun getInitialState(): RootFSMState = initialState
 
     @Provides
-    protected fun getTodoDao(): TodoDao = dependencies.database.getTodoDao()
+    protected fun AuthComponentDependencies.bind(): AuthFlowComponent.Dependencies = this
 
     @Provides
-    protected fun getUserDao(): UserDao = dependencies.database.getUserDao()
+    protected fun AuthFlowComponent.DI.bind(): AuthFlowComponent.Factory = factory
 
     @Provides
-    protected fun bind(it: AuthorizedUserRepository): IAuthorizedUserRepository = it
+    protected fun TodoComponentDependencies.bind(): TodoFlowComponent.Dependencies = this
 
     @Provides
-    protected fun bind(it: AuthCompletionUseCase): IAuthCompletionUseCase = it
+    protected fun TodoFlowComponent.DI.bind(): TodoFlowComponent.Factory = factory
+
+    val AuthorizedUserRepository.bind: IAuthorizedUserRepository
+        @Provides get() = this
 
     @Provides
-    protected fun bind(it: LogoutUseCase): ILogoutUseCase = it
-
-    // TODO AuthFlowComponentImpl должен быть internal, так что нужно этот bind как-то унести внутрь модуля auth-component, а в этом модуле сразу получать AuthFlowComponent.Factory
-    @Provides
-    protected fun bind(deps: AuthComponentDependencies): AuthFlowComponent.Factory =
-        AuthFlowComponentImpl.Factory(deps)
-
-    @Provides
-    protected fun bind(it: TodoComponentDependencies): ITodoComponentDependencies = it
+    fun ArchSampleDatabase.userDao(): UserDao = getUserDao()
 
     override fun onDestroy() {
         viewModel.onDestroy()

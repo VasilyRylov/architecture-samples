@@ -13,12 +13,9 @@ expect fun IOsPlatformComponent.Companion.createKmp(userDefaults: NSUserDefaults
 
 private val platformComponent: PlatformComponent = IOsPlatformComponent.createKmp(NSUserDefaults.standardUserDefaults)
 
-expect fun AppComponent.Companion.createKmp(platformComponent: PlatformComponent): AppComponent
-
-private val appComponent: AppComponent = AppComponent.createKmp(platformComponent)
-
 fun MainViewController(context: ComponentContext): UIViewController {
-    val root = RootFlowComponent(context, appComponent.rootComponentDependencies)
+    AppComponent.init(platformComponent)
+    val root = RootFlowComponent.DI.factory.create(context)
 
     return ComposeUIViewController {
         ComposeApp(root)

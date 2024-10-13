@@ -1,16 +1,23 @@
 package io.github.vasilyrylov.archsample.feature.auth.component
 
-import androidx.compose.runtime.Composable
 import com.arkivanov.decompose.ComponentContext
+import io.github.vasilyrylov.archsample.common.data.preferences.IPreferencesComponent
+import io.github.vasilyrylov.archsample.common.ui.base.UiComponent
+import io.github.vasilyrylov.archsample.data.database.di.IDatabaseComponent
+import me.tatarka.inject.annotations.Inject
 
-// Такой api интерфейс позволяет скрыть вообще всю реализацию и все зависимости внутри модуля и практически ничего не выдавать на ружу. в ui можно получить Modifier и использовать такие компоненты вплоть до кнопок, а не только для целых экранов.
-interface AuthFlowComponent {
+interface AuthFlowComponent : UiComponent {
 
-    @Composable
-    fun Ui()
+    interface Dependencies : IDatabaseComponent, IPreferencesComponent {
+        val callback: AuthFlowCallback
+    }
 
     interface Factory {
-        // а сюда можно добавить входные параметры для компонента, роутер или колбэки при необходимости
         fun create(context: ComponentContext): AuthFlowComponent
+    }
+
+    @Inject
+    class DI(dependencies: Dependencies) {
+        val factory: Factory = AuthFlowComponentImpl.Factory(dependencies)
     }
 }

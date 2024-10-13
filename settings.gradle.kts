@@ -38,19 +38,18 @@ include(":data:database")
 include(":data:preferences")
 include(":common:common-ui")
 include(":common:common-component")
-include(":common:common-domain")
-include(":common:common-data")
+include(":common:common-id")
 
 include(":feature:root:root-domain")
-include(":feature:root:root-ui")
 include(":feature:root:root-component")
 
 include(":feature:auth:auth-domain")
 include(":feature:auth:auth-ui")
 include(":feature:auth:auth-component")
-include(":feature:auth:auth-data")
 
 include(":feature:todo:todo-ui")
 include(":feature:todo:todo-domain")
 include(":feature:todo:todo-component")
 include(":feature:todo:todo-data")
+
+include(":feature:user:user-data")

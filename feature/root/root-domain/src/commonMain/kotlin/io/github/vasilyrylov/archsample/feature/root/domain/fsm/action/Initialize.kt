@@ -1,6 +1,6 @@
 package io.github.vasilyrylov.archsample.feature.root.domain.fsm.action
 
-import io.github.vasilyrylov.archsample.common.domain.model.UserId
+import io.github.vasilyrylov.archsample.common.data.id.UserId
 import io.github.vasilyrylov.archsample.feature.root.domain.fsm.RootFSMState
 import ru.kontur.mobile.visualfsm.Transition
 

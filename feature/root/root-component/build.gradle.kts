@@ -17,19 +17,17 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(projects.feature.root.rootUi)
             implementation(projects.feature.root.rootDomain)
+            implementation(projects.feature.user.userData)
             
             implementation(projects.feature.auth.authComponent)
-            implementation(projects.feature.auth.authDomain)
-
             implementation(projects.feature.todo.todoComponent)
-            implementation(projects.feature.todo.todoDomain)
 
             implementation(projects.common.commonComponent)
-            implementation(projects.common.commonDomain)
             implementation(projects.common.commonUi)
-            implementation(projects.common.commonData)
+
+            implementation(projects.data.database)
+            implementation(projects.data.preferences)
 
             implementation(libs.decompose)
             implementation(libs.decompose.compose)

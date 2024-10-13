@@ -9,7 +9,7 @@ import me.tatarka.inject.annotations.Provides
 
 @AppScope
 @Component
-abstract class AndroidPlatformComponent(private val applicationContext: Context) : PlatformComponent() {
+abstract class AndroidPlatformComponent(private val applicationContext: Context) : PlatformComponent {
 
     val providesApplicationContext: Context
         @AppScope @Provides get() = applicationContext

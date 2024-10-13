@@ -21,10 +21,14 @@ kotlin {
             implementation(projects.feature.todo.todoDomain)
             implementation(projects.feature.todo.todoData)
 
+            implementation(projects.feature.user.userData)
+
             implementation(projects.common.commonComponent)
-            implementation(projects.common.commonDomain)
             implementation(projects.common.commonUi)
-            implementation(projects.common.commonData)
+            implementation(projects.common.commonId)
+
+            implementation(projects.data.database)
+            implementation(projects.data.preferences)
 
             implementation(libs.decompose)
             implementation(libs.decompose.compose)

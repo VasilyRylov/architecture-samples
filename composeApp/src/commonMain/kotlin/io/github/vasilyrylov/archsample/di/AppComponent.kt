@@ -1,36 +1,25 @@
 package io.github.vasilyrylov.archsample.di
 
-import io.github.vasilyrylov.archsample.common.data.preferences.IPreferences
-import io.github.vasilyrylov.archsample.data.database.ArchSampleDatabase
-import io.github.vasilyrylov.archsample.di.dependencies.RootComponentDependencies
-import io.github.vasilyrylov.archsample.feature.root.component.api.IRootComponentDependencies
-import me.tatarka.inject.annotations.Component
-import me.tatarka.inject.annotations.Provides
+import io.github.vasilyrylov.archsample.common.data.preferences.IPreferencesSource
+import io.github.vasilyrylov.archsample.common.data.preferences.PreferencesComponent
+import io.github.vasilyrylov.archsample.data.database.di.DatabaseComponent
+import io.github.vasilyrylov.archsample.data.database.di.IDatabaseSource
 import me.tatarka.inject.annotations.Scope
 
 @Scope
 annotation class AppScope
 
-@AppScope
-@Component
-abstract class AppComponent(
-    @Component val platformComponent: PlatformComponent,
-    // @Component val networkComponent: NetworkComponent,
-) {
+object AppComponent {
 
-    abstract val rootComponentDependencies: IRootComponentDependencies
-
-    @AppScope
-    @Provides
-    protected fun bind(it: RootComponentDependencies): IRootComponentDependencies = it
-
-    companion object
+    fun init(platformComponent: PlatformComponent) {
+        DatabaseComponent.apply { platformComponent.deploy() }
+        PreferencesComponent.apply { platformComponent.deploy() }
+    }
 }
 
-abstract class PlatformComponent {
-    abstract val preferences: IPreferences
-    abstract val database: ArchSampleDatabase
-}
+interface PlatformComponent :
+    IDatabaseSource,
+    IPreferencesSource
 
 //// Separate for instrumental tests mock
 //abstract class NetworkComponent {

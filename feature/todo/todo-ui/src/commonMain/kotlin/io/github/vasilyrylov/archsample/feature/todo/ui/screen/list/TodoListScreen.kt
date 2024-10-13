@@ -20,8 +20,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import io.github.vasilyrylov.archsample.common.domain.model.TodoItem
-import io.github.vasilyrylov.archsample.common.domain.model.TodoItemId
+import io.github.vasilyrylov.archsample.common.data.id.TodoItemId
 import io.github.vasilyrylov.archsample.feature.todo.ui.element.dialog.EditTodoItemDialog
 import io.github.vasilyrylov.archsample.feature.todo.ui.screen.list.model.TodoListViewState
 import io.github.vasilyrylov.archsample.feature.todo.ui.screen.list.model.TodoListScreenDialog
@@ -29,6 +28,7 @@ import io.github.vasilyrylov.archsample.resources.Res
 import io.github.vasilyrylov.archsample.resources.add
 import io.github.vasilyrylov.archsample.resources.logout
 import io.github.vasilyrylov.archsample.resources.todo_list
+import io.github.vasilyrylov.archsample.todo.data.api.model.TodoItem
 import org.jetbrains.compose.resources.stringResource
 
 @OptIn(ExperimentalMaterial3Api::class)

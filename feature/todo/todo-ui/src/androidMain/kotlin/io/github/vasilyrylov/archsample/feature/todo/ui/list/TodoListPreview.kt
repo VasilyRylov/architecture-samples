@@ -2,11 +2,11 @@ package io.github.vasilyrylov.archsample.feature.todo.ui.list
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import io.github.vasilyrylov.archsample.common.domain.model.TodoItem
 import io.github.vasilyrylov.archsample.feature.todo.ui.element.dialog.EditTodoItemDialog
 import io.github.vasilyrylov.archsample.feature.todo.ui.screen.list.TodoListScreen
 import io.github.vasilyrylov.archsample.feature.todo.ui.screen.list.TodoListScreenContent
 import io.github.vasilyrylov.archsample.feature.todo.ui.screen.list.model.TodoListViewState
+import io.github.vasilyrylov.archsample.todo.data.api.model.TodoItem
 
 @Preview(showBackground = true)
 @Composable

@@ -1,10 +1,10 @@
 package io.github.vasilyrylov.archsample.feature.auth.domain.fsm.actions
 
 import ru.kontur.mobile.visualfsm.Transition
-import io.github.vasilyrylov.archsample.feature.auth.domain.data.AuthResult
 import io.github.vasilyrylov.archsample.feature.auth.domain.fsm.AuthFSMState.AsyncWorkState
 import io.github.vasilyrylov.archsample.feature.auth.domain.fsm.AuthFSMState.Login
 import io.github.vasilyrylov.archsample.feature.auth.domain.fsm.AuthFSMState.UserAuthorized
+import io.github.vasilyrylov.archsample.feature.auth.domain.usecase.AuthResult
 
 internal class HandleAuthResult(private val result: AuthResult) : AuthFSMAction() {
 

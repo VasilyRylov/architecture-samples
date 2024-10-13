@@ -9,15 +9,13 @@ import com.arkivanov.essenty.lifecycle.LifecycleRegistry
 import io.github.vasilyrylov.archsample.di.AppComponent
 import io.github.vasilyrylov.archsample.di.JvmPlatformComponent
 import io.github.vasilyrylov.archsample.di.create
-import java.awt.Dimension
 import io.github.vasilyrylov.archsample.feature.root.component.RootFlowComponent
 import java.awt.Button
 import java.awt.Dialog
+import java.awt.Dimension
 import java.awt.FlowLayout
 import java.awt.Frame
 import java.awt.Label
-
-private val appComponent = AppComponent::class.create(JvmPlatformComponent::class.create())
 
 fun main() {
     Thread.setDefaultUncaughtExceptionHandler { _, e ->
@@ -29,18 +27,18 @@ fun main() {
                 addActionListener { dispose() }
             }
             add(button)
-            setSize(300,300)
+            setSize(300, 300)
             isVisible = true
         }
     }
 
+    val platformComponent = JvmPlatformComponent::class.create()
+    AppComponent.init(platformComponent)
+
     val lifecycle = LifecycleRegistry()
 
     val rootFlowComponent = runOnUiThread {
-        RootFlowComponent(
-            componentContext = DefaultComponentContext(lifecycle = lifecycle),
-            dependencies = appComponent.rootComponentDependencies
-        )
+        RootFlowComponent.DI.factory.create(DefaultComponentContext(lifecycle = lifecycle))
     }
 
     application {

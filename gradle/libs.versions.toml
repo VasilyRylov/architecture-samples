@@ -24,6 +24,13 @@ visualfsm = "3.0.0"
 uuid = "0.8.4"
 essenty = "2.2.0-beta01"
 modulegraph = "0.10.0"
+kotlinVersion = "1.9.0"
+coreKtx = "1.13.1"
+junit = "4.13.2"
+junitVersion = "1.2.1"
+espressoCore = "3.6.1"
+appcompat = "1.7.0"
+material = "1.12.0"
 
 
 [libraries]
@@ -52,6 +59,12 @@ visualfsm-compiler = { module = "ru.kontur.mobile.visualfsm:visualfsm-compiler",
 visualfsm-core = { module = "ru.kontur.mobile.visualfsm:visualfsm-core", version.ref = "visualfsm" }
 visualfsm-tools = { module = "ru.kontur.mobile.visualfsm:visualfsm-tools", version.ref = "visualfsm" }
 uuid = { module = "com.benasher44:uuid", version.ref = "uuid" }
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
 [plugins]
 
@@ -64,3 +77,4 @@ kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", vers
 room = { id = "androidx.room", version.ref = "room" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 modulegraph = { id = "dev.iurysouza.modulegraph", version.ref = "modulegraph" }
+jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlinVersion" }

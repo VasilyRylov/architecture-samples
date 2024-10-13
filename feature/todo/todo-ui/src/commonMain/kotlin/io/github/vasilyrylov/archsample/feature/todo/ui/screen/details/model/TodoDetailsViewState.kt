@@ -1,6 +1,6 @@
 package io.github.vasilyrylov.archsample.feature.todo.ui.screen.details.model
 
-import io.github.vasilyrylov.archsample.common.domain.model.TodoItem
+import io.github.vasilyrylov.archsample.todo.data.api.model.TodoItem
 import kotlinx.serialization.Serializable
 
 @Serializable

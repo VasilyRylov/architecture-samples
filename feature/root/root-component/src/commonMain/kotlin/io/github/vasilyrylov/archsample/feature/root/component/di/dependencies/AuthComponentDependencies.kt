@@ -1,18 +1,19 @@
 package io.github.vasilyrylov.archsample.feature.root.component.di.dependencies
 
-import io.github.vasilyrylov.archsample.common.domain.interfaces.IAuthorizedUserRepository
-import io.github.vasilyrylov.archsample.data.database.dao.UserDao
-import io.github.vasilyrylov.archsample.feature.auth.component.api.IAuthComponentDependencies
-import io.github.vasilyrylov.archsample.feature.auth.domain.interfaces.IAuthCompletionUseCase
+import io.github.vasilyrylov.archsample.common.data.preferences.IPreferences
+import io.github.vasilyrylov.archsample.data.database.ArchSampleDatabase
+import io.github.vasilyrylov.archsample.feature.auth.component.AuthFlowCallback
+import io.github.vasilyrylov.archsample.feature.auth.component.AuthFlowComponent
+import io.github.vasilyrylov.archsample.feature.root.component.di.dependencies.callback.AuthFlowCallbackImpl
 import me.tatarka.inject.annotations.Inject
 
 @Inject
 internal class AuthComponentDependencies(
-    lazyAuthCompletionUseCase: Lazy<IAuthCompletionUseCase>,
-    lazyAuthorizedUserRepository: Lazy<IAuthorizedUserRepository>,
-    lazyUserDao: Lazy<UserDao>,
-) : IAuthComponentDependencies {
-    override val authCompletionUseCase by lazyAuthCompletionUseCase
-    override val authorizedUserRepository by lazyAuthorizedUserRepository
-    override val userDao by lazyUserDao
+    callback: Lazy<AuthFlowCallbackImpl>,
+    database: Lazy<ArchSampleDatabase>,
+    preferences: Lazy<IPreferences>,
+) : AuthFlowComponent.Dependencies {
+    override val callback: AuthFlowCallback by callback
+    override val database: ArchSampleDatabase by database
+    override val preferences: IPreferences by preferences
 }

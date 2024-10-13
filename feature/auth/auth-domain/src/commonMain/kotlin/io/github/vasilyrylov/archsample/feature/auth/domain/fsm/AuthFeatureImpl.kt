@@ -22,7 +22,7 @@ class AuthFeatureImpl(
 ) : Feature<AuthFSMState, AuthFSMAction>(
     initialState = initialState,
     asyncWorker = asyncWorker,
-    transitionsFactory = GeneratedAuthFeatureTransitionsFactory()
+    transitionsFactory = GeneratedAuthFeatureImplTransitionsFactory()
 ), AuthFeature {
 
     override fun toRegistration() {
@@ -49,7 +49,11 @@ class AuthFeatureImpl(
         proceed(StartRegistration())
     }
 
-    override fun handleChangeRegistrationData(name: String, password: String, repeatPassword: String) {
+    override fun handleChangeRegistrationData(
+        name: String,
+        password: String,
+        repeatPassword: String
+    ) {
         proceed(HandleChangeRegistrationData(name, password, repeatPassword))
     }
 

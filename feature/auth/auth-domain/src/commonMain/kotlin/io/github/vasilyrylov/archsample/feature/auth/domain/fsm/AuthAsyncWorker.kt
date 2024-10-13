@@ -1,6 +1,5 @@
 package io.github.vasilyrylov.archsample.feature.auth.domain.fsm
 
-import io.github.vasilyrylov.archsample.common.domain.model.User
 import ru.kontur.mobile.visualfsm.AsyncWorker
 import ru.kontur.mobile.visualfsm.AsyncWorkerTask
 import io.github.vasilyrylov.archsample.feature.auth.domain.fsm.AuthFSMState.AsyncWorkState
@@ -9,6 +8,7 @@ import io.github.vasilyrylov.archsample.feature.auth.domain.fsm.actions.HandleAu
 import io.github.vasilyrylov.archsample.feature.auth.domain.fsm.actions.HandleRegistrationResult
 import io.github.vasilyrylov.archsample.feature.auth.domain.usecase.AuthorizeUseCase
 import io.github.vasilyrylov.archsample.feature.auth.domain.usecase.RegisterUserUseCase
+import io.github.vasilyrylov.archsample.user.data.repository.api.model.User
 import me.tatarka.inject.annotations.Inject
 
 @Inject

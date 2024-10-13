@@ -16,7 +16,6 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import io.github.vasilyrylov.archsample.common.domain.model.TodoItem
 import io.github.vasilyrylov.archsample.feature.todo.ui.screen.details.model.TodoDetailsScreenDialog
 import io.github.vasilyrylov.archsample.feature.todo.ui.screen.details.model.TodoDetailsViewState
 import io.github.vasilyrylov.archsample.feature.todo.ui.element.dialog.EditTodoItemDialog
@@ -25,6 +24,7 @@ import io.github.vasilyrylov.archsample.resources.back
 import io.github.vasilyrylov.archsample.resources.delete
 import io.github.vasilyrylov.archsample.resources.edit
 import io.github.vasilyrylov.archsample.resources.todo
+import io.github.vasilyrylov.archsample.todo.data.api.model.TodoItem
 import org.jetbrains.compose.resources.stringResource
 
 @OptIn(ExperimentalMaterial3Api::class)

@@ -5,42 +5,38 @@ import com.arkivanov.decompose.router.slot.ChildSlot
 import com.arkivanov.decompose.router.slot.SlotNavigation
 import com.arkivanov.decompose.router.slot.activate
 import com.arkivanov.decompose.router.slot.childSlot
+import com.arkivanov.decompose.router.slot.navigate
 import com.arkivanov.decompose.value.Value
+import io.github.vasilyrylov.archsample.common.ui.base.UiComponent
 import io.github.vasilyrylov.archsample.feature.auth.component.AuthFlowComponent
-import io.github.vasilyrylov.archsample.feature.root.component.di.RootFlowDIComponent
-import io.github.vasilyrylov.archsample.feature.root.ui.api.IRootFlowRouter
-import io.github.vasilyrylov.archsample.feature.todo.component.TodoFlowComponent
+import io.github.vasilyrylov.archsample.feature.root.domain.di.RootFlowScope
+import io.github.vasilyrylov.archsample.feature.todo.component.api.TodoFlowComponent
 import kotlinx.serialization.Serializable
+import me.tatarka.inject.annotations.Inject
 
+@RootFlowScope
+@Inject
 internal class RootFlowRouter(
-    componentContext: ComponentContext,
-    private val rootFlowDIComponent: RootFlowDIComponent,
-    ) : IRootFlowRouter {
+    private val authFlowComponentFactory: AuthFlowComponent.Factory,
+    private val todoFlowComponentFactory: TodoFlowComponent.Factory,
+) : IRootFlowRouter {
 
     private val slotNavigation = SlotNavigation<Configuration>()
 
-    internal val childSlot: Value<ChildSlot<*, SlotChild>> = componentContext.childSlot(
-        source = slotNavigation,
-        serializer = Configuration.serializer(),
-        handleBackButton = false,
-        childFactory = ::slotChild
-    )
-
-    private fun slotChild(config: Configuration, componentContext: ComponentContext): SlotChild {
-        return when (config) {
-            Configuration.Auth -> SlotChild.AuthFlow(
-                component = rootFlowDIComponent.authFlowComponentFactory.create(componentContext)
-            )
-
-            is Configuration.Todo -> SlotChild.TodoFlow(
-                component = TodoFlowComponent(componentContext, rootFlowDIComponent.todoComponentDependencies)
-            )
-        }
+    internal fun childSlot(context: ComponentContext): Value<ChildSlot<*, UiComponent>> {
+        return context.childSlot(
+            source = slotNavigation,
+            serializer = Configuration.serializer(),
+            handleBackButton = false,
+            childFactory = ::slotChild,
+        )
     }
 
-    internal sealed interface SlotChild {
-        data class AuthFlow(val component: AuthFlowComponent) : SlotChild
-        data class TodoFlow(val component: TodoFlowComponent) : SlotChild
+    private fun slotChild(config: Configuration, componentContext: ComponentContext): UiComponent {
+        return when (config) {
+            Configuration.Auth -> authFlowComponentFactory.create(componentContext)
+            Configuration.Todo -> todoFlowComponentFactory.create(componentContext)
+        }
     }
 
     @Serializable
@@ -57,6 +53,6 @@ internal class RootFlowRouter(
     }
 
     override fun toTodo() {
-        slotNavigation.activate(Configuration.Todo)
+        slotNavigation.navigate { Configuration.Todo }
     }
 }

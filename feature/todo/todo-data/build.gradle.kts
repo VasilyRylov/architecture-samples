@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.multiplatform)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.kotlinx.serialization)
 }
 
 kotlin {
@@ -12,10 +13,10 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(projects.feature.todo.todoDomain)
-            implementation(projects.common.commonDomain)
-            implementation(projects.common.commonData)
+            implementation(projects.data.database)
+            implementation(projects.common.commonId)
             implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.kotlinx.serialization.json)
             implementation(libs.kotlin.inject.runtime)
             api(libs.uuid)
         }
