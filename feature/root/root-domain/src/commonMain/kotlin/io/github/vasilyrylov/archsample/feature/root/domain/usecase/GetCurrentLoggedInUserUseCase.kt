@@ -1,7 +1,7 @@
 package io.github.vasilyrylov.archsample.feature.root.domain.usecase
 
-import io.github.vasilyrylov.archsample.common.domain.interfaces.IAuthorizedUserRepository
-import io.github.vasilyrylov.archsample.common.domain.model.UserId
+import io.github.vasilyrylov.archsample.common.data.id.UserId
+import io.github.vasilyrylov.archsample.user.data.repository.api.IAuthorizedUserRepository
 import me.tatarka.inject.annotations.Inject
 
 @Inject

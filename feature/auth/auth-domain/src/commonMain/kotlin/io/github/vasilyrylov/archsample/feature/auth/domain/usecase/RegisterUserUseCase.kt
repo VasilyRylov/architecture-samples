@@ -1,9 +1,14 @@
 package io.github.vasilyrylov.archsample.feature.auth.domain.usecase
 
-import io.github.vasilyrylov.archsample.feature.auth.domain.interfaces.IUserRepository
-import io.github.vasilyrylov.archsample.common.domain.model.User
-import io.github.vasilyrylov.archsample.feature.auth.domain.data.RegistrationResult
+import io.github.vasilyrylov.archsample.user.data.repository.api.IUserRepository
+import io.github.vasilyrylov.archsample.user.data.repository.api.model.User
 import me.tatarka.inject.annotations.Inject
+
+enum class RegistrationResult {
+    SUCCESS,
+    USER_ALREADY_REGISTERED,
+    NO_INTERNET
+}
 
 @Inject
 class RegisterUserUseCase(

@@ -8,7 +8,7 @@ import me.tatarka.inject.annotations.Provides
 
 @AppScope
 @Component
-abstract class JvmPlatformComponent : PlatformComponent() {
+abstract class JvmPlatformComponent : PlatformComponent {
 
     @AppScope
     @Provides

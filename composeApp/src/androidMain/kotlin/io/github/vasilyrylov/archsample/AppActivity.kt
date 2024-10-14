@@ -5,7 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.arkivanov.decompose.defaultComponentContext
-import io.github.vasilyrylov.archsample.feature.root.component.RootFlowComponent
+import io.github.vasilyrylov.archsample.feature.root.component.api.RootFlowComponent
 
 class AppActivity : ComponentActivity() {
 
@@ -14,10 +14,7 @@ class AppActivity : ComponentActivity() {
 
         enableEdgeToEdge()
 
-        val rootFlowComponent = RootFlowComponent(
-            componentContext = defaultComponentContext(),
-            dependencies = (application as ArchSampleApplication).appComponent().rootComponentDependencies
-        )
+        val rootFlowComponent = RootFlowComponent.DI.factory.create(defaultComponentContext())
 
         setContent {
             ComposeApp(rootFlowComponent = rootFlowComponent)

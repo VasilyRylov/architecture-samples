@@ -1,9 +1,14 @@
 package io.github.vasilyrylov.archsample.feature.auth.domain.usecase
 
-import io.github.vasilyrylov.archsample.common.domain.interfaces.IAuthorizedUserRepository
-import io.github.vasilyrylov.archsample.feature.auth.domain.interfaces.IUserRepository
-import io.github.vasilyrylov.archsample.feature.auth.domain.data.AuthResult
+import io.github.vasilyrylov.archsample.user.data.repository.api.IAuthorizedUserRepository
+import io.github.vasilyrylov.archsample.user.data.repository.api.IUserRepository
 import me.tatarka.inject.annotations.Inject
+
+enum class AuthResult {
+    SUCCESS,
+    BAD_CREDENTIAL,
+    NO_INTERNET
+}
 
 @Inject
 class AuthorizeUseCase(

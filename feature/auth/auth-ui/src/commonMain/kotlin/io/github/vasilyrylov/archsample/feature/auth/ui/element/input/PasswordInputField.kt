@@ -13,7 +13,7 @@ import io.github.vasilyrylov.archsample.resources.input_password
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-fun PasswordInputField(
+internal fun PasswordInputField(
     modifier: Modifier = Modifier,
     value: String,
     placeholder: String,
@@ -24,7 +24,12 @@ fun PasswordInputField(
         value = value,
         onValueChange = onValueChange,
         placeholder = { Text(text = placeholder) },
-        leadingIcon = { Icon(imageVector = Icons.Filled.Lock, contentDescription = stringResource(Res.string.input_password)) },
+        leadingIcon = {
+            Icon(
+                imageVector = Icons.Filled.Lock,
+                contentDescription = stringResource(Res.string.input_password)
+            )
+        },
         visualTransformation = PasswordVisualTransformation()
     )
 }

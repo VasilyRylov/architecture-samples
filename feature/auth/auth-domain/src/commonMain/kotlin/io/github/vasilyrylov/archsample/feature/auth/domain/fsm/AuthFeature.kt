@@ -1,67 +1,45 @@
 package io.github.vasilyrylov.archsample.feature.auth.domain.fsm
 
-import io.github.vasilyrylov.archsample.feature.auth.domain.di.AuthFlowScope
-import io.github.vasilyrylov.archsample.feature.auth.domain.fsm.actions.AuthFSMAction
-import io.github.vasilyrylov.archsample.feature.auth.domain.fsm.actions.Authenticate
-import io.github.vasilyrylov.archsample.feature.auth.domain.fsm.actions.ChangeFlow
-import io.github.vasilyrylov.archsample.feature.auth.domain.fsm.actions.HandleChangeLoginData
-import io.github.vasilyrylov.archsample.feature.auth.domain.fsm.actions.HandleChangeRegistrationData
-import io.github.vasilyrylov.archsample.feature.auth.domain.fsm.actions.HandleConfirmation
-import io.github.vasilyrylov.archsample.feature.auth.domain.fsm.actions.HandleSnackBarShowed
-import io.github.vasilyrylov.archsample.feature.auth.domain.fsm.actions.StartRegistration
-import me.tatarka.inject.annotations.Inject
-import ru.kontur.mobile.visualfsm.Feature
-import ru.kontur.mobile.visualfsm.GenerateTransitionsFactory
+import kotlinx.coroutines.flow.StateFlow
+import ru.kontur.mobile.visualfsm.State
 
-@AuthFlowScope
-@Inject
-@GenerateTransitionsFactory
-class AuthFeature(
-    initialState: AuthFSMState,
-    private val asyncWorker: AuthAsyncWorker
-) : Feature<AuthFSMState, AuthFSMAction>(
-    initialState = initialState,
-    asyncWorker = asyncWorker,
-    transitionsFactory = GeneratedAuthFeatureTransitionsFactory()
-) {
+// Этот интерфейс будет вызываться из Ui, так что я бы скрыл функции IFeature в комплексном контексте.
+// Типа interface IFeature<STATE : State> {
+//     fun IComponent.getCurrentState(): STATE
+//     fun IComponent.observeState(): StateFlow<STATE>
+// }
+interface AuthFeature : IFeature<AuthFSMState> {
 
-    fun toRegistration() {
-        proceed(ChangeFlow())
-    }
+    fun toRegistration()
 
-    fun toLogin() {
-        proceed(ChangeFlow())
-    }
+    fun toLogin()
 
-    fun confirmRegistrationData() {
-        proceed(HandleConfirmation(true))
-    }
+    fun confirmRegistrationData()
 
-    fun declineRegistrationData() {
-        proceed(HandleConfirmation(false))
-    }
+    fun declineRegistrationData()
 
-    fun startAuthenticating() {
-        proceed(Authenticate())
-    }
+    fun startAuthenticating()
 
-    fun startRegistration() {
-        proceed(StartRegistration())
-    }
+    fun startRegistration()
 
-    fun handleChangeRegistrationData(name: String, password: String, repeatPassword: String) {
-        proceed(HandleChangeRegistrationData(name, password, repeatPassword))
-    }
+    fun handleChangeRegistrationData(name: String, password: String, repeatPassword: String)
 
-    fun handleChangeLoginData(name: String, password: String) {
-        proceed(HandleChangeLoginData(name, password))
-    }
+    fun handleChangeLoginData(name: String, password: String)
 
-    fun handleSnackBarShowed() {
-        proceed(HandleSnackBarShowed())
-    }
+    fun handleSnackBarShowed()
 
-    fun onDestroy() {
-        asyncWorker.unbind()
-    }
+    fun onDestroy()
+}
+
+
+interface IFeature<STATE : State> {
+
+    /**
+     * Returns current state
+     *
+     * @return current [state][State]
+     */
+    fun getCurrentState(): STATE
+
+    fun observeState(): StateFlow<STATE>
 }

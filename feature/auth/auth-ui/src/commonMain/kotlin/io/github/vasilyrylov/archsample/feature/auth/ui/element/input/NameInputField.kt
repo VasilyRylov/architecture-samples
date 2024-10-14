@@ -15,7 +15,7 @@ import io.github.vasilyrylov.archsample.resources.name
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-fun NameInputField(
+internal fun NameInputField(
     modifier: Modifier = Modifier,
     value: String,
     onValueChange: (String) -> Unit,
@@ -27,6 +27,11 @@ fun NameInputField(
         textStyle = TextStyle(fontSize = 16.sp),
         singleLine = true,
         placeholder = { Text(text = stringResource(Res.string.name)) },
-        leadingIcon = { Icon(imageVector = Icons.Filled.Person, contentDescription = stringResource(Res.string.input_name)) }
+        leadingIcon = {
+            Icon(
+                imageVector = Icons.Filled.Person,
+                contentDescription = stringResource(Res.string.input_name)
+            )
+        }
     )
 }

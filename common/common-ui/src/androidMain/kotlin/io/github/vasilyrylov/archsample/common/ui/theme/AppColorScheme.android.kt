@@ -19,6 +19,7 @@ internal actual fun appColorScheme(useDarkTheme: Boolean): ColorScheme {
                 dynamicLightColorScheme(context)
             }
         }
+
         useDarkTheme -> DarkColorScheme
         else -> LightColorScheme
     }

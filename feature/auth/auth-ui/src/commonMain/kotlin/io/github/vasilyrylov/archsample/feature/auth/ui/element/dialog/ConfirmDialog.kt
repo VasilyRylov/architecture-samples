@@ -10,7 +10,7 @@ import io.github.vasilyrylov.archsample.resources.ok
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-fun ConfirmDialog(
+internal fun ConfirmDialog(
     title: String,
     description: String,
     onCancelClick: () -> Unit,

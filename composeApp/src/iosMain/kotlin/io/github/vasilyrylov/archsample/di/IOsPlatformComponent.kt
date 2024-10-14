@@ -10,7 +10,7 @@ import platform.Foundation.NSUserDefaults
 
 @AppScope
 @Component
-abstract class IOsPlatformComponent(private val userDefaults: NSUserDefaults) : PlatformComponent() {
+abstract class IOsPlatformComponent(private val userDefaults: NSUserDefaults) : PlatformComponent {
     @AppScope
     @Provides
     fun providesDatabase(): ArchSampleDatabase = getRoomDatabase()

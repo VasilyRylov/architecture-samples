@@ -16,8 +16,10 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(projects.common.commonUi)
             implementation(projects.feature.auth.authDomain)
+
+            implementation(projects.common.commonUi)
+
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material3)

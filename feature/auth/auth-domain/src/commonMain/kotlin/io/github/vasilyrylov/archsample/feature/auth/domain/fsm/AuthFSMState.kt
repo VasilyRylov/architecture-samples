@@ -1,7 +1,7 @@
 package io.github.vasilyrylov.archsample.feature.auth.domain.fsm
 
-import ru.kontur.mobile.visualfsm.State
 import kotlinx.serialization.Serializable
+import ru.kontur.mobile.visualfsm.State
 
 @Serializable
 sealed class AuthFSMState : State {

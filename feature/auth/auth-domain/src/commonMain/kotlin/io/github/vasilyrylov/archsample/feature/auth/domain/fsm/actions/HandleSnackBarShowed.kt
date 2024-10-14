@@ -1,7 +1,7 @@
 package io.github.vasilyrylov.archsample.feature.auth.domain.fsm.actions
 
-import ru.kontur.mobile.visualfsm.SelfTransition
 import io.github.vasilyrylov.archsample.feature.auth.domain.fsm.AuthFSMState
+import ru.kontur.mobile.visualfsm.SelfTransition
 
 internal class HandleSnackBarShowed : AuthFSMAction() {
 

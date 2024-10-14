@@ -15,9 +15,9 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(projects.common.commonDomain)
-            implementation(projects.feature.auth.authDomain)
-            implementation(projects.feature.todo.todoDomain)
+            implementation(projects.feature.user.userData)
+
+            implementation(projects.common.commonId)
 
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.kotlinx.serialization.json)
