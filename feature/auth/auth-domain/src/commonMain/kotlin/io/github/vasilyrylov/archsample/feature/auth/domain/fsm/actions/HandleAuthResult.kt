@@ -1,10 +1,10 @@
 package io.github.vasilyrylov.archsample.feature.auth.domain.fsm.actions
 
-import ru.kontur.mobile.visualfsm.Transition
 import io.github.vasilyrylov.archsample.feature.auth.domain.fsm.AuthFSMState.AsyncWorkState
 import io.github.vasilyrylov.archsample.feature.auth.domain.fsm.AuthFSMState.Login
 import io.github.vasilyrylov.archsample.feature.auth.domain.fsm.AuthFSMState.UserAuthorized
 import io.github.vasilyrylov.archsample.feature.auth.domain.usecase.AuthResult
+import ru.kontur.mobile.visualfsm.Transition
 
 internal class HandleAuthResult(private val result: AuthResult) : AuthFSMAction() {
 
@@ -24,7 +24,11 @@ internal class HandleAuthResult(private val result: AuthResult) : AuthFSMAction(
         }
 
         override fun transform(state: AsyncWorkState.Authenticating): Login {
-            return Login(name = state.name, password = state.password, errorMessage = "Bad credential")
+            return Login(
+                name = state.name,
+                password = state.password,
+                errorMessage = "Bad credential"
+            )
         }
     }
 

@@ -1,24 +1,26 @@
 package io.github.vasilyrylov.archsample.feature.todo.component.impl.list.di
 
 import com.arkivanov.essenty.instancekeeper.InstanceKeeper
-import io.github.vasilyrylov.archsample.feature.todo.component.impl.di.TodoFlowDIComponent
+import io.github.vasilyrylov.archsample.feature.todo.component.api.list.TodoListCallback
+import io.github.vasilyrylov.archsample.feature.todo.component.impl.flow.ITodoFlowRouter
 import io.github.vasilyrylov.archsample.feature.todo.component.impl.list.TodoListViewModel
-import io.github.vasilyrylov.archsample.feature.todo.domain.di.TodoListScope
-import io.github.vasilyrylov.archsample.feature.todo.ui.screen.list.model.TodoListViewState
+import io.github.vasilyrylov.archsample.feature.todo.ui.api.TodoListViewState
+import io.github.vasilyrylov.archsample.todo.data.api.di.TodoDataDI
+import io.github.vasilyrylov.archsample.user.data.repository.api.di.AuthDataDI
 import me.tatarka.inject.annotations.Component
 import me.tatarka.inject.annotations.Provides
 
 @TodoListScope
 @Component
 internal abstract class TodoListDIComponent(
-    @Component val parent: TodoFlowDIComponent,
-    private val initialState: TodoListViewState,
+    @get:Provides val initialState: TodoListViewState,
+    @get:Provides val router: ITodoFlowRouter,
+    @get:Provides val callback: TodoListCallback,
+    @Component val todoData: TodoDataDI = TodoDataDI.Instance,
+    @Component val authData: AuthDataDI = AuthDataDI.Instance,
 ) : InstanceKeeper.Instance {
 
     abstract val viewModel: TodoListViewModel
-
-    @Provides
-    protected fun getInitialState(): TodoListViewState = initialState
 
     override fun onDestroy() {
         viewModel.onDestroy()

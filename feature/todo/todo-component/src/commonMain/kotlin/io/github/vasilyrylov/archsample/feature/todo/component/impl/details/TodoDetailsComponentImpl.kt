@@ -7,15 +7,16 @@ import io.github.vasilyrylov.archsample.common.component.registerAndGetSavedStat
 import io.github.vasilyrylov.archsample.common.data.id.TodoItemId
 import io.github.vasilyrylov.archsample.feature.todo.component.impl.details.di.TodoDetailsDIComponent
 import io.github.vasilyrylov.archsample.feature.todo.component.impl.details.di.create
-import io.github.vasilyrylov.archsample.feature.todo.component.impl.di.TodoFlowDIComponent
-import io.github.vasilyrylov.archsample.feature.todo.ui.screen.details.model.TodoDetailsViewState
+import io.github.vasilyrylov.archsample.feature.todo.component.impl.flow.ITodoFlowRouter
+import io.github.vasilyrylov.archsample.feature.todo.component.impl.flow.di.TodoFlowDIComponent
+import io.github.vasilyrylov.archsample.feature.todo.ui.api.TodoDetailsViewState
 import io.github.vasilyrylov.archsample.todo.data.api.model.TodoItem
 import me.tatarka.inject.annotations.Inject
 
 internal class TodoDetailsComponentImpl(
     componentContext: ComponentContext,
     itemId: TodoItemId,
-    parent: TodoFlowDIComponent,
+    router: ITodoFlowRouter,
 ) : ComponentContext by componentContext, TodoDetailsComponent {
 
     @Composable
@@ -33,7 +34,7 @@ internal class TodoDetailsComponentImpl(
     }
 
     private val diComponent = instanceKeeper.getOrCreate {
-        TodoDetailsDIComponent::class.create(parent, savedState, itemId)
+        TodoDetailsDIComponent::class.create(savedState, itemId, router)
     }
 
     private val viewModel = diComponent.viewModel
@@ -44,12 +45,12 @@ internal class TodoDetailsComponentImpl(
 
     @Inject
     class Factory(
-        private val parent: TodoFlowDIComponent,
+        private val router: ITodoFlowRouter,
     ) : TodoDetailsComponent.Factory {
 
         override fun create(
             context: ComponentContext,
             itemId: TodoItemId
-        ) = TodoDetailsComponentImpl(context, itemId, parent)
+        ) = TodoDetailsComponentImpl(context, itemId, router)
     }
 }

@@ -31,6 +31,8 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(projects.feature.root.rootComponent)
+
+            implementation(projects.common.commonComponent)
             implementation(projects.common.commonUi)
 
             implementation(projects.data.database)

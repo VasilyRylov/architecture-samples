@@ -12,7 +12,7 @@ import io.github.vasilyrylov.archsample.feature.auth.ui.element.LoginScreenConte
 import io.github.vasilyrylov.archsample.feature.auth.ui.state.LoginViewState
 
 @Composable
-fun LoginScreen(
+internal fun LoginScreen(
     viewState: LoginViewState,
     onChangeLoginData: (String, String) -> Unit,
     startAuthenticating: () -> Unit,

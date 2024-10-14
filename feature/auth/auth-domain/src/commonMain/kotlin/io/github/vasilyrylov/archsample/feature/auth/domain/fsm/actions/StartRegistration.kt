@@ -1,9 +1,9 @@
 package io.github.vasilyrylov.archsample.feature.auth.domain.fsm.actions
 
-import ru.kontur.mobile.visualfsm.SelfTransition
-import ru.kontur.mobile.visualfsm.Transition
 import io.github.vasilyrylov.archsample.feature.auth.domain.fsm.AuthFSMState.ConfirmationRequested
 import io.github.vasilyrylov.archsample.feature.auth.domain.fsm.AuthFSMState.Registration
+import ru.kontur.mobile.visualfsm.SelfTransition
+import ru.kontur.mobile.visualfsm.Transition
 
 internal class StartRegistration : AuthFSMAction() {
     inner class RegistrationStart : Transition<Registration, ConfirmationRequested>() {

@@ -15,7 +15,7 @@ import kotlinx.coroutines.withContext
 import me.tatarka.inject.annotations.Inject
 
 @Inject
-class TodoRepository(
+internal class TodoRepository(
     private val todoDao: TodoDao,
 ) : ITodoRepository {
 

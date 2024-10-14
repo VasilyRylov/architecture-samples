@@ -1,9 +1,10 @@
 package io.github.vasilyrylov.archsample.feature.todo.component.impl.details
 
 import com.arkivanov.decompose.ComponentContext
+import io.github.vasilyrylov.archsample.common.component.UiComponent
 import io.github.vasilyrylov.archsample.common.data.id.TodoItemId
-import io.github.vasilyrylov.archsample.common.ui.base.UiComponent
-import io.github.vasilyrylov.archsample.feature.todo.component.impl.di.TodoFlowDIComponent
+import io.github.vasilyrylov.archsample.feature.todo.component.impl.flow.ITodoFlowRouter
+import io.github.vasilyrylov.archsample.feature.todo.component.impl.flow.di.TodoFlowDIComponent
 import me.tatarka.inject.annotations.Inject
 
 internal interface TodoDetailsComponent : UiComponent {
@@ -16,7 +17,7 @@ internal interface TodoDetailsComponent : UiComponent {
     }
 
     @Inject
-    class DI(parent: TodoFlowDIComponent) {
-        val factory: Factory = TodoDetailsComponentImpl.Factory(parent)
+    class DI(router: ITodoFlowRouter) {
+        val factory: Factory = TodoDetailsComponentImpl.Factory(router)
     }
 }

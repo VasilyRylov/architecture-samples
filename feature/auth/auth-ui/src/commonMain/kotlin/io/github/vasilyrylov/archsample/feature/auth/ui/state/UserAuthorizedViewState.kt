@@ -3,7 +3,7 @@ package io.github.vasilyrylov.archsample.feature.auth.ui.state
 import androidx.compose.runtime.Composable
 import io.github.vasilyrylov.archsample.feature.auth.domain.fsm.AuthFeature
 
-data class UserAuthorizedViewState(
+internal data class UserAuthorizedViewState(
     val name: String,
 ) : AuthViewState {
 

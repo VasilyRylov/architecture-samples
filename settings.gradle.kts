@@ -5,10 +5,10 @@ rootProject.name = "ArchSample"
 pluginManagement {
     repositories {
         google {
-            content { 
-              	includeGroupByRegex("com\\.android.*")
-              	includeGroupByRegex("com\\.google.*")
-              	includeGroupByRegex("androidx.*")
+            content {
+                includeGroupByRegex("com\\.android.*")
+                includeGroupByRegex("com\\.google.*")
+                includeGroupByRegex("androidx.*")
                 includeGroupByRegex("android.*")
             }
         }
@@ -21,10 +21,10 @@ dependencyResolutionManagement {
     @Suppress("UnstableApiUsage")
     repositories {
         google {
-            content { 
-              	includeGroupByRegex("com\\.android.*")
-              	includeGroupByRegex("com\\.google.*")
-              	includeGroupByRegex("androidx.*")
+            content {
+                includeGroupByRegex("com\\.android.*")
+                includeGroupByRegex("com\\.google.*")
+                includeGroupByRegex("androidx.*")
                 includeGroupByRegex("android.*")
             }
         }

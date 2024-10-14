@@ -5,8 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.arkivanov.decompose.defaultComponentContext
-import io.github.vasilyrylov.archsample.di.AppComponent
-import io.github.vasilyrylov.archsample.feature.root.component.RootFlowComponent
+import io.github.vasilyrylov.archsample.feature.root.component.api.RootFlowComponent
 
 class AppActivity : ComponentActivity() {
 

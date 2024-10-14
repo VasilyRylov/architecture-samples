@@ -2,10 +2,10 @@ package io.github.vasilyrylov.archsample.feature.auth.ui
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import io.github.vasilyrylov.archsample.feature.auth.ui.state.LoginViewState
-import io.github.vasilyrylov.archsample.feature.auth.ui.state.RegistrationViewState
 import io.github.vasilyrylov.archsample.feature.auth.ui.screen.LoginScreen
 import io.github.vasilyrylov.archsample.feature.auth.ui.screen.RegistrationScreen
+import io.github.vasilyrylov.archsample.feature.auth.ui.state.LoginViewState
+import io.github.vasilyrylov.archsample.feature.auth.ui.state.RegistrationViewState
 
 @Preview
 @Composable

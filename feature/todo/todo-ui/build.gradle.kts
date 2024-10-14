@@ -17,10 +17,10 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
+            implementation(projects.feature.todo.todoData)
+
             implementation(projects.common.commonId)
             implementation(projects.common.commonUi)
-            implementation(projects.feature.todo.todoDomain)
-            implementation(projects.feature.todo.todoData)
 
             implementation(compose.runtime)
             implementation(compose.foundation)

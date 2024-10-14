@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import io.github.vasilyrylov.archsample.feature.auth.domain.fsm.AuthFeature
 import io.github.vasilyrylov.archsample.feature.auth.ui.screen.RegistrationScreen
 
-data class RegistrationViewState(
+internal data class RegistrationViewState(
     val name: String,
     val password: String,
     val repeatedPassword: String,

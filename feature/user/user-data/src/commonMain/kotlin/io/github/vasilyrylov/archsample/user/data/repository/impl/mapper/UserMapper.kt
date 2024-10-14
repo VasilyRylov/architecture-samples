@@ -5,7 +5,7 @@ import io.github.vasilyrylov.archsample.common.data.id.UserId
 import io.github.vasilyrylov.archsample.data.database.entity.UserEntity
 import io.github.vasilyrylov.archsample.user.data.repository.api.model.User
 
-object UserMapper {
+internal object UserMapper {
     fun toDatabase(user: User, pass: String): UserEntity {
         return UserEntity(
             id = user.id.value.toString(),

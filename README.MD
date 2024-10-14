@@ -4,7 +4,8 @@
 
 - [Compose Multiplatform](https://github.com/JetBrains/compose-multiplatform)
 - [Decompose](https://github.com/arkivanov/Decompose)
-- [kotlin-inject](https://github.com/evant/kotlin-inject) or [Koin](https://github.com/InsertKoinIO/koin) DI [variants](#variants-and-ready-status)
+- [kotlin-inject](https://github.com/evant/kotlin-inject)
+  or [Koin](https://github.com/InsertKoinIO/koin) DI [variants](#variants-and-ready-status)
 - [Multiplatform Settings](https://github.com/russhwolf/multiplatform-settings)
 - [VisualFSM](https://github.com/Kontur-Mobile/VisualFSM)
 - [Room Multiplatform](https://developer.android.com/kotlin/multiplatform/room)
@@ -111,10 +112,10 @@ graph TB
 
 ### Variants and ready status
 
-| Sample                                                                                                        | Description                                                                  | Ready status     |
-|---------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------|------------------|
-| [fsm mvi, mvvm plus, kotlin-inject](https://github.com/VasilyRylov/architecture-samples/tree/main)            | Fsm-based MVI(root and auth features), MVVM+(todo feature), kotlin-inject DI | Ready            |
-| [fsm mvi, mvvm plus, Koin](https://github.com/VasilyRylov/architecture-samples/tree/mvi-and-mvvm-koin)        | Fsm-based MVI(root and auth features), MVVM+(todo feature), Koin DI          | Ready            |
+| Sample                                                                                                 | Description                                                                  | Ready status |
+|--------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------|--------------|
+| [fsm mvi, mvvm plus, kotlin-inject](https://github.com/VasilyRylov/architecture-samples/tree/main)     | Fsm-based MVI(root and auth features), MVVM+(todo feature), kotlin-inject DI | Ready        |
+| [fsm mvi, mvvm plus, Koin](https://github.com/VasilyRylov/architecture-samples/tree/mvi-and-mvvm-koin) | Fsm-based MVI(root and auth features), MVVM+(todo feature), Koin DI          | Ready        |
 
 ### Root module FSM
 

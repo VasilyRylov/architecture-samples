@@ -19,12 +19,11 @@ kotlin {
         commonMain.dependencies {
             implementation(projects.feature.root.rootDomain)
             implementation(projects.feature.user.userData)
-            
+
             implementation(projects.feature.auth.authComponent)
             implementation(projects.feature.todo.todoComponent)
 
             implementation(projects.common.commonComponent)
-            implementation(projects.common.commonUi)
 
             implementation(projects.data.database)
             implementation(projects.data.preferences)

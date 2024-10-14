@@ -11,7 +11,7 @@ import kotlinx.coroutines.withContext
 import me.tatarka.inject.annotations.Inject
 
 @Inject
-class AuthorizedUserRepository(
+internal class AuthorizedUserRepository(
     private val preferences: IPreferences,
     private val userDao: UserDao,
 ) : IAuthorizedUserRepository {

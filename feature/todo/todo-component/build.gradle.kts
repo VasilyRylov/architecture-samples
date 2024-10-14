@@ -24,7 +24,6 @@ kotlin {
             implementation(projects.feature.user.userData)
 
             implementation(projects.common.commonComponent)
-            implementation(projects.common.commonUi)
             implementation(projects.common.commonId)
 
             implementation(projects.data.database)

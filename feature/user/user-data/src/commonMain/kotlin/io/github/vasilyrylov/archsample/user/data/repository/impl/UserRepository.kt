@@ -1,9 +1,9 @@
 package io.github.vasilyrylov.archsample.user.data.repository.impl
 
 import io.github.vasilyrylov.archsample.common.data.id.UserId
+import io.github.vasilyrylov.archsample.data.database.dao.UserDao
 import io.github.vasilyrylov.archsample.user.data.repository.api.IUserRepository
 import io.github.vasilyrylov.archsample.user.data.repository.api.model.User
-import io.github.vasilyrylov.archsample.data.database.dao.UserDao
 import io.github.vasilyrylov.archsample.user.data.repository.impl.mapper.UserMapper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
@@ -11,7 +11,7 @@ import kotlinx.coroutines.withContext
 import me.tatarka.inject.annotations.Inject
 
 @Inject
-class UserRepository(
+internal class UserRepository(
     private val userDao: UserDao,
 ) : IUserRepository {
     override suspend fun saveUser(user: User, pass: String) {

@@ -4,7 +4,6 @@ import com.arkivanov.decompose.ComponentContext
 import kotlinx.serialization.DeserializationStrategy
 import kotlinx.serialization.SerializationStrategy
 
-
 fun <T : Any> ComponentContext.registerAndGetSavedState(
     key: String,
     initialValue: T,

@@ -5,7 +5,7 @@ import io.github.vasilyrylov.archsample.common.data.id.TodoItemId
 import io.github.vasilyrylov.archsample.data.database.entity.TodoEntity
 import io.github.vasilyrylov.archsample.todo.data.api.model.TodoItem
 
-object TodoMapper {
+internal object TodoMapper {
     fun toDatabase(todo: TodoItem, userId: String): TodoEntity {
         return TodoEntity(
             id = todo.id.value.toString(),

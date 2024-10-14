@@ -1,6 +1,6 @@
 package io.github.vasilyrylov.archsample.feature.auth.domain.fsm.actions
 
-import ru.kontur.mobile.visualfsm.Action
 import io.github.vasilyrylov.archsample.feature.auth.domain.fsm.AuthFSMState
+import ru.kontur.mobile.visualfsm.Action
 
 sealed class AuthFSMAction : Action<AuthFSMState>()

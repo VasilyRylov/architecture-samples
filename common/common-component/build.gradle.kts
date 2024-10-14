@@ -1,5 +1,7 @@
 plugins {
     alias(libs.plugins.multiplatform)
+    alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.compose)
 }
 
 kotlin {
@@ -11,9 +13,10 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(projects.common.commonUi)
+            implementation(compose.runtime)
 
             implementation(libs.decompose)
+            implementation(libs.kotlinx.coroutines.core)
         }
         commonTest.dependencies {
         }

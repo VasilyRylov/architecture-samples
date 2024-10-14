@@ -9,16 +9,19 @@ import me.tatarka.inject.annotations.Provides
 
 @AppScope
 @Component
-abstract class AndroidPlatformComponent(private val applicationContext: Context) : PlatformComponent {
+abstract class AndroidPlatformComponent(private val applicationContext: Context) :
+    PlatformComponent {
 
     val providesApplicationContext: Context
         @AppScope @Provides get() = applicationContext
 
     @AppScope
     @Provides
-    fun providesDatabase(applicationContext: Context): ArchSampleDatabase = getRoomDatabase(applicationContext)
+    fun providesDatabase(applicationContext: Context): ArchSampleDatabase =
+        getRoomDatabase(applicationContext)
 
     @AppScope
     @Provides
-    fun providesPreferences(applicationContext: Context): IPreferences = getPreferences(applicationContext)
+    fun providesPreferences(applicationContext: Context): IPreferences =
+        getPreferences(applicationContext)
 }

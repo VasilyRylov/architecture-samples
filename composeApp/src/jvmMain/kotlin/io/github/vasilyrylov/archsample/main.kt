@@ -9,7 +9,7 @@ import com.arkivanov.essenty.lifecycle.LifecycleRegistry
 import io.github.vasilyrylov.archsample.di.AppComponent
 import io.github.vasilyrylov.archsample.di.JvmPlatformComponent
 import io.github.vasilyrylov.archsample.di.create
-import io.github.vasilyrylov.archsample.feature.root.component.RootFlowComponent
+import io.github.vasilyrylov.archsample.feature.root.component.api.RootFlowComponent
 import java.awt.Button
 import java.awt.Dialog
 import java.awt.Dimension

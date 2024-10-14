@@ -19,11 +19,9 @@ kotlin {
         commonMain.dependencies {
             implementation(projects.feature.auth.authUi)
             implementation(projects.feature.auth.authDomain)
-            
             implementation(projects.feature.user.userData)
 
             implementation(projects.common.commonComponent)
-            implementation(projects.common.commonUi)
 
             implementation(projects.data.database)
             implementation(projects.data.preferences)
