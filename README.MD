@@ -33,23 +33,20 @@
 graph TB
   subgraph :common
     :common:common-component["common-component"]
-    :common:common-domain["common-domain"]
+    :common:common-id["common-id"]
     :common:common-ui["common-ui"]
-    :common:common-data["common-data"]
   end
   subgraph :data
-    :data:preferences["preferences"]
     :data:database["database"]
+    :data:preferences["preferences"]
   end
   subgraph :feature:auth
     :feature:auth:auth-ui["auth-ui"]
     :feature:auth:auth-domain["auth-domain"]
     :feature:auth:auth-component["auth-component"]
-    :feature:auth:auth-data["auth-data"]
   end
   subgraph :feature:root
     :feature:root:root-domain["root-domain"]
-    :feature:root:root-ui["root-ui"]
     :feature:root:root-component["root-component"]
   end
   subgraph :feature:todo
@@ -58,58 +55,53 @@ graph TB
     :feature:todo:todo-domain["todo-domain"]
     :feature:todo:todo-data["todo-data"]
   end
+  subgraph :feature:user
+    :feature:user:user-data["user-data"]
+  end
   :feature:todo:todo-component --> :feature:todo:todo-ui
   :feature:todo:todo-component --> :feature:todo:todo-domain
   :feature:todo:todo-component --> :feature:todo:todo-data
+  :feature:todo:todo-component --> :feature:user:user-data
   :feature:todo:todo-component --> :common:common-component
-  :feature:todo:todo-component --> :common:common-domain
-  :feature:todo:todo-component --> :common:common-ui
-  :feature:todo:todo-component --> :common:common-data
-  :feature:auth:auth-ui --> :common:common-ui
+  :feature:todo:todo-component --> :common:common-id
+  :feature:todo:todo-component --> :data:database
+  :feature:todo:todo-component --> :data:preferences
   :feature:auth:auth-ui --> :feature:auth:auth-domain
-  :feature:root:root-domain --> :common:common-domain
-  :feature:root:root-domain --> :feature:auth:auth-domain
-  :feature:root:root-domain --> :feature:todo:todo-domain
-  :common:common-component --> :common:common-ui
+  :feature:auth:auth-ui --> :common:common-ui
+  :feature:root:root-domain --> :feature:user:user-data
+  :feature:root:root-domain --> :common:common-id
+  :feature:todo:todo-ui --> :feature:todo:todo-data
+  :feature:todo:todo-ui --> :common:common-id
   :feature:todo:todo-ui --> :common:common-ui
-  :feature:todo:todo-ui --> :common:common-domain
-  :feature:todo:todo-ui --> :feature:todo:todo-domain
-  :feature:root:root-ui --> :common:common-ui
-  :feature:root:root-ui --> :feature:root:root-domain
-  :data:preferences --> :common:common-domain
   :composeApp --> :feature:root:root-component
+  :composeApp --> :common:common-component
   :composeApp --> :common:common-ui
-  :composeApp --> :common:common-data
+  :composeApp --> :data:database
+  :composeApp --> :data:preferences
+  :feature:user:user-data --> :common:common-id
+  :feature:user:user-data --> :data:database
+  :feature:user:user-data --> :data:preferences
   :feature:auth:auth-component --> :feature:auth:auth-ui
   :feature:auth:auth-component --> :feature:auth:auth-domain
-  :feature:auth:auth-component --> :feature:auth:auth-data
+  :feature:auth:auth-component --> :feature:user:user-data
   :feature:auth:auth-component --> :common:common-component
-  :feature:auth:auth-component --> :common:common-ui
-  :feature:auth:auth-component --> :common:common-domain
-  :feature:auth:auth-component --> :common:common-data
-  :feature:auth:auth-data --> :feature:auth:auth-domain
-  :feature:auth:auth-data --> :common:common-domain
-  :feature:auth:auth-data --> :common:common-data
-  :common:common-data --> :data:preferences
-  :common:common-data --> :data:database
-  :common:common-data --> :common:common-domain
-  :feature:todo:todo-data --> :feature:todo:todo-domain
-  :feature:todo:todo-data --> :common:common-domain
-  :feature:todo:todo-data --> :common:common-data
-  :feature:todo:todo-domain --> :common:common-domain
-  :feature:root:root-component --> :feature:root:root-ui
+  :feature:auth:auth-component --> :data:database
+  :feature:auth:auth-component --> :data:preferences
+  :feature:todo:todo-data --> :common:common-id
+  :feature:todo:todo-data --> :data:database
+  :feature:todo:todo-domain --> :feature:todo:todo-data
+  :feature:todo:todo-domain --> :feature:user:user-data
+  :feature:todo:todo-domain --> :common:common-id
   :feature:root:root-component --> :feature:root:root-domain
+  :feature:root:root-component --> :feature:user:user-data
   :feature:root:root-component --> :feature:auth:auth-component
-  :feature:root:root-component --> :feature:auth:auth-domain
   :feature:root:root-component --> :feature:todo:todo-component
-  :feature:root:root-component --> :feature:todo:todo-domain
   :feature:root:root-component --> :common:common-component
-  :feature:root:root-component --> :common:common-domain
-  :feature:root:root-component --> :common:common-ui
-  :feature:root:root-component --> :common:common-data
-  :feature:auth:auth-domain --> :common:common-domain
+  :feature:root:root-component --> :data:database
+  :feature:root:root-component --> :data:preferences
+  :feature:auth:auth-domain --> :feature:user:user-data
+  :feature:auth:auth-domain --> :common:common-id
 ```
-
 ### Variants and ready status
 
 | Sample                                                                                                 | Description                                                                  | Ready status |
