@@ -152,7 +152,7 @@ graph TB
 ### Before running!
 
 - check your system with [KDoctor](https://github.com/Kotlin/kdoctor)
-- install JDK 17 or higher on your machine
+- install JDK 21 or higher on your machine
 
 #### Android
 
